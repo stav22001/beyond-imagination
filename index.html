@@ -16,6 +16,7 @@
 
         body.lang-he * { font-family: var(--font-clean) !important; }
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
+        body.lang-en .bio-text, body.lang-en .contact-form input, body.lang-en .contact-form textarea, body.lang-en .social-link { font-family: var(--font-clean) !important; letter-spacing: normal; }
         
         #sidebar-hub { width: 340px; background: var(--sidebar-bg); border-left: 2px solid rgba(62, 56, 162, 0.05); border-right: 2px solid rgba(62, 56, 162, 0.05); display: flex; flex-direction: column; padding: 30px 20px; transition: 0.3s; }
         
@@ -40,7 +41,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         .project-card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.02); margin-bottom: 40px; border: 1px solid #f1f1f1; }
-        
         .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; margin-top: 15px; background: #000; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
@@ -80,7 +80,6 @@
         <div id="portfolio" class="page-content active">
             <header class="hero-section"><h1 data-he="הפרויקטים שלי" data-en="SELECTED WORKS">הפרויקטים שלי</h1><div class="hero-line"></div></header>
             <div id="posts-feed">
-                
                 <div class="project-card">
                     <h3 style="margin-bottom:8px; color:var(--beyond-purple); font-size:26px;" data-he="הנבחר (The Chosen One)" data-en="The Chosen One">הנבחר (The Chosen One)</h3>
                     <p class="bio-text" style="font-size:20px; margin-bottom:15px;" data-he="טריילר סינמטי מבוסס AI - גירסת מאסטרפיס" data-en="AI-based Cinematic Trailer - Masterpiece Edition">טריילר סינמטי מבוסס AI - גירסת מאסטרפיס</p>
@@ -88,7 +87,6 @@
                         <iframe src="https://drive.google.com/file/d/1bZKr2wG7QsJDWBU0K1PJKnE1V3RbFPvV/preview" allow="autoplay"></iframe>
                     </div>
                 </div>
-
                 <div class="project-card">
                     <h3 style="margin-bottom:8px; color:var(--beyond-purple); font-size:26px;" data-he="ברוכים הבאים לעתיד" data-en="Welcome to the Future">ברוכים הבאים לעתיד</h3>
                     <p class="bio-text" style="font-size:20px; margin-bottom:15px;" data-he="קונספט מדע בדיוני קולנועי" data-en="Cinematic Sci-Fi Concept">קונספט מדע בדיוני קולנועי</p>
@@ -96,19 +94,29 @@
                         <iframe src="https://drive.google.com/file/d/1b_xd7D01rYNROLQbGA7qzcinoiqfiXlT/preview" allow="autoplay"></iframe>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div id="about" class="page-content">
             <header class="hero-section"><h1 data-he="קצת עליי" data-en="ABOUT ME">קצת עליי</h1><div class="hero-line"></div></header>
+            
             <div class="bio-text">
-                <p data-he="ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'." data-en="Welcome to my creative world. I'm Stav, a Digital Artist, Video Editor, and the creator behind 'Beyond Imagination'.">ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'.</p>
+                <p data-he="ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'." data-en="Welcome to my creative world. I'm Stav, a Digital Artist, Video Editor, and the creator behind 'Beyond Imagination'.">ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'.</p><br>
+                <p data-he="המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי. כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לבניית מותג שיידבר בשפה הויזואלית הייחודית שלי." data-en="My journey started with a deep passion for photography (which I still explore as an enthusiast) and visual storytelling. Today, backed by a professional certificate in Graphic Design, I am focused on building a brand that speaks my unique visual language.">המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי. כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לבניית מותג שיידבר בשפה הויזואלית הייחודית שלי.</p><br>
+                <p data-he="אני מתמקד בחיבור שבין פוסט-פרודקשן קלאסי לטכנולוגיות AI מתקדמות. המטרה שלי היא להביא למסך רמה גבוהה ובלתי מתפשרת של איכות תוכן – מטריילרים סינמטיים ועד לבניית עולמות עתידניים סוחפים." data-en="I focus on bridging the gap between traditional post-production and cutting-edge AI technologies. My goal is to deliver an uncompromisingly high level of content quality—from cinematic trailers to immersive futuristic world-building.">אני מתמקד בחיבור שבין פוסט-פרודקשן קלאסי לטכנולוגיות AI מתקדמות. המטרה שלי היא להביא למסך רמה גבוהה ובלתי מתפשרת של איכות תוכן – מטריילרים סינמטיים ועד לבניית עולמות עתידניים סוחפים.</p><br>
+                <p data-he="אני לא פשוט 'לוחץ על כפתור'. אני מאמין בשימוש ב-AI ככלי שנועד להרחיב את חזון הבמאי, תוך זיקוק מדויק של כל פריים ב-Adobe Premiere Pro. אני לומד נצחי, תמיד חוקר טכניקות חדשות כדי לדחוף את הגבולות של מה שיוצר יחיד יכול להשיג." data-en="I don't just 'click a button.' I believe in using AI as a tool to expand the director's vision, meticulously refining every frame in Adobe Premiere Pro. I am a lifelong learner, always exploring new techniques to push the boundaries of what a solo creator can achieve.">אני לא פשוט 'לוחץ על כפתור'. אני מאמין בשימוש ב-AI ככלי שנועד להרחיב את חזון הבמאי, תוך זיקוק מדויק של כל פריים ב-Adobe Premiere Pro. אני לומד נצחי, תמיד חוקר טכניקות חדשות כדי לדחוף את הגבולות של מה שיוצר יחיד יכול להשיג.</p>
             </div>
+            
             <h3 class="section-title" style="margin-top: 40px;" data-he="ארגז הכלים היצירתי שלי" data-en="My Creative Toolkit">ארגז הכלים היצירתי שלי</h3>
             <div class="social-links" style="margin-top: 15px;">
                 <span class="social-link" style="cursor: default;">🎬 Adobe Premiere Pro</span>
                 <span class="social-link" style="cursor: default;">🎨 Adobe Photoshop</span>
+                <span class="social-link" style="cursor: default;">🤖 Kling & Freepik</span>
+                <span class="social-link" style="cursor: default;">🎙️ ElevenLabs & Suno AI</span>
+            </div>
+
+            <div class="bio-text" style="margin-top: 40px; border-left: 4px solid var(--beyond-purple); padding-left: 20px; font-style: italic;">
+                <p data-he="אני תמיד פתוח להכיר יוצרים אחרים, לעבוד על פרויקטים מעניינים, או להצטרף לצוות קריאייטיב חדשני. בואו ניצור משהו שהוא מעבר לדמיון." data-en="I'm always open to connecting with fellow creators, exciting projects, or opportunities to join an innovative creative team. Let's create something beyond imagination.">אני תמיד פתוח להכיר יוצרים אחרים, לעבוד על פרויקטים מעניינים, או להצטרף לצוות קריאייטיב חדשני. בואו ניצור משהו שהוא מעבר לדמיון.</p>
             </div>
         </div>
 
