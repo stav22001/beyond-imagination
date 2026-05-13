@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BEYOND IMAGINATION | Professional Portfolio</title>
     
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore-compat.js"></script>
-
     <style>
         @font-face { font-family: 'Righteous'; src: url('Righteous-Regular.ttf') format('truetype'); }
 
@@ -18,17 +14,13 @@
         
         body { background-color: var(--bg-white); color: var(--beyond-purple); height: 100vh; display: flex; overflow: hidden; transition: 0.3s; }
 
-        /* הגדרות פונטים לפי שפה */
         body.lang-he * { font-family: var(--font-clean) !important; }
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
-        body.lang-en .bio-text, body.lang-en .contact-form input, body.lang-en .contact-form textarea, body.lang-en .social-link { font-family: var(--font-clean) !important; letter-spacing: normal; }
         
-        /* סרגל צד */
         #sidebar-hub { width: 340px; background: var(--sidebar-bg); border-left: 2px solid rgba(62, 56, 162, 0.05); border-right: 2px solid rgba(62, 56, 162, 0.05); display: flex; flex-direction: column; padding: 30px 20px; transition: 0.3s; }
         
-        /* לוגו מוגדל - 180 פיקסלים */
-        .branding-area { text-align: center; margin-bottom: 35px; display: flex; justify-content: center; align-items: center; }
-        .brand-logo { width: auto; height: 180px; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
+        .branding-area { text-align: center; margin-bottom: 40px; display: flex; justify-content: center; align-items: center; }
+        .brand-logo { width: auto; height: 220px; display: block; margin: 0 auto; }
         
         .nav-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
         .nav-link { padding: 14px 18px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-size: 18px; opacity: 0.6; color: var(--beyond-purple); transition: 0.3s; font-weight: bold; }
@@ -39,7 +31,6 @@
         .btn-outline { padding: 15px; border: 1px solid var(--beyond-purple); background: transparent; color: var(--beyond-purple); border-radius: 12px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
         .btn-outline:hover { background: var(--beyond-purple); color: white; }
 
-        /* תוכן מרכזי */
         #main-viewport { flex-grow: 1; padding: 50px 70px; overflow-y: auto; background: #fdfdfd; transition: 0.3s; }
         .hero-section h1 { font-size: 55px; font-weight: 900; }
         .hero-line { width: 90px; height: 6px; background: var(--beyond-purple); border-radius: 3px; margin: 12px 0 40px 0; }
@@ -48,15 +39,15 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* כרטיסי פרויקטים */
         .project-card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.02); margin-bottom: 40px; border: 1px solid #f1f1f1; }
-        .project-video { width: 100%; height: 480px; border-radius: 15px; margin-top: 20px; background: #000; border: none; }
         
-        /* תוכן טקסטואלי */
+        /* נגן Drive רספונסיבי */
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; margin-top: 15px; background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
         .bio-text { font-size: 19px; line-height: 1.7; color: #333; margin-bottom: 20px; }
         .section-title { font-size: 32px; margin-bottom: 20px; border-bottom: 2px solid rgba(62, 56, 162, 0.1); padding-bottom: 10px; font-weight: bold; }
 
-        /* יצירת קשר */
         .contact-form { display: flex; flex-direction: column; }
         .contact-form input, .contact-form textarea { width: 100%; padding: 18px; margin-bottom: 20px; border: 1px solid #e0e0e0; border-radius: 12px; outline: none; font-size: 18px; }
         .contact-form button { padding: 18px 50px; background: var(--beyond-purple); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 20px; font-weight: bold; transition: 0.3s; width: max-content; }
@@ -82,7 +73,6 @@
 
         <div class="action-btns">
             <button class="btn-outline" id="lang-btn" onclick="toggleLanguage()">🌍 English</button>
-            <button class="btn-outline" id="auth-btn" data-he="כניסת מנהל" data-en="Admin Login">כניסת מנהל</button>
         </div>
     </aside>
 
@@ -91,37 +81,40 @@
         <div id="portfolio" class="page-content active">
             <header class="hero-section"><h1 data-he="הפרויקטים שלי" data-en="SELECTED WORKS">הפרויקטים שלי</h1><div class="hero-line"></div></header>
             <div id="posts-feed">
-                <p class="bio-text" data-he="טוען פרויקטים..." data-en="Loading projects...">טוען פרויקטים...</p>
+                
+                <div class="project-card">
+                    <h3 style="margin-bottom:8px; color:var(--beyond-purple); font-size:26px;" data-he="הנבחר (The Chosen One)" data-en="The Chosen One">הנבחר (The Chosen One)</h3>
+                    <p class="bio-text" style="font-size:20px; margin-bottom:15px;" data-he="טריילר סינמטי מבוסס AI - גירסת מאסטרפיס" data-en="AI-based Cinematic Trailer - Masterpiece Edition">טריילר סינמטי מבוסס AI - גירסת מאסטרפיס</p>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/embed?id=1bZKr2wG7QsJDWBU0K1PJKnE1V3RbFPvV" allow="autoplay"></iframe>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 style="margin-bottom:8px; color:var(--beyond-purple); font-size:26px;" data-he="ברוכים הבאים לעתיד" data-en="Welcome to the Future">ברוכים הבאים לעתיד</h3>
+                    <p class="bio-text" style="font-size:20px; margin-bottom:15px;" data-he="קונספט מדע בדיוני קולנועי" data-en="Cinematic Sci-Fi Concept">קונספט מדע בדיוני קולנועי</p>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/embed?id=1b_xd7D01rYNROLQbGA7qzcinoiqfiXlT" allow="autoplay"></iframe>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <div id="about" class="page-content">
             <header class="hero-section"><h1 data-he="קצת עליי" data-en="ABOUT ME">קצת עליי</h1><div class="hero-line"></div></header>
-            
             <div class="bio-text">
-                <p data-he="ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'." data-en="Welcome to my creative world. I'm Stav, a Digital Artist, Video Editor, and the creator behind 'Beyond Imagination'.">ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'.</p><br>
-                <p data-he="המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי. כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לבניית מותג שיידבר בשפה הויזואלית הייחודית שלי." data-en="My journey started with a deep passion for photography (which I still explore as an enthusiast) and visual storytelling. Today, backed by a professional certificate in Graphic Design, I am focused on building a brand that speaks my unique visual language.">המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי. כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לבניית מותג שיידבר בשפה הויזואלית הייחודית שלי.</p><br>
-                <p data-he="אני מתמקד בחיבור שבין פוסט-פרודקשן קלאסי לטכנולוגיות AI מתקדמות. המטרה שלי היא להביא למסך רמה גבוהה ובלתי מתפשרת של איכות תוכן – מטריילרים סינמטיים ועד לבניית עולמות עתידניים סוחפים." data-en="I focus on bridging the gap between traditional post-production and cutting-edge AI technologies. My goal is to deliver an uncompromisingly high level of content quality—from cinematic trailers to immersive futuristic world-building.">אני מתמקד בחיבור שבין פוסט-פרודקשן קלאסי לטכנולוגיות AI מתקדמות. המטרה שלי היא להביא למסך רמה גבוהה ובלתי מתפשרת של איכות תוכן – מטריילרים סינמטיים ועד לבניית עולמות עתידניים סוחפים.</p><br>
-                <p data-he="אני לא פשוט 'לוחץ על כפתור'. אני מאמין בשימוש ב-AI ככלי שנועד להרחיב את חזון הבמאי, תוך זיקוק מדויק של כל פריים ב-Adobe Premiere Pro. אני לומד נצחי, תמיד חוקר טכניקות חדשות כדי לדחוף את הגבולות של מה שיוצר יחיד יכול להשיג." data-en="I don't just 'click a button.' I believe in using AI as a tool to expand the director's vision, meticulously refining every frame in Adobe Premiere Pro. I am a lifelong learner, always exploring new techniques to push the boundaries of what a solo creator can achieve.">אני לא פשוט 'לוחץ על כפתור'. אני מאמין בשימוש ב-AI ככלי שנועד להרחיב את חזון הבמאי, תוך זיקוק מדויק של כל פריים ב-Adobe Premiere Pro. אני לומד נצחי, תמיד חוקר טכניקות חדשות כדי לדחוף את הגבולות של מה שיוצר יחיד יכול להשיג.</p>
+                <p data-he="ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'." data-en="Welcome to my creative world. I'm Stav, a Digital Artist, Video Editor, and the creator behind 'Beyond Imagination'.">ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'.</p>
             </div>
-            
             <h3 class="section-title" style="margin-top: 40px;" data-he="ארגז הכלים היצירתי שלי" data-en="My Creative Toolkit">ארגז הכלים היצירתי שלי</h3>
             <div class="social-links" style="margin-top: 15px;">
                 <span class="social-link" style="cursor: default;">🎬 Adobe Premiere Pro</span>
                 <span class="social-link" style="cursor: default;">🎨 Adobe Photoshop</span>
-                <span class="social-link" style="cursor: default;">🤖 Kling & Freepik</span>
-                <span class="social-link" style="cursor: default;">🎙️ ElevenLabs & Suno AI</span>
-            </div>
-
-            <div class="bio-text" style="margin-top: 40px; border-left: 4px solid var(--beyond-purple); padding-left: 20px; font-style: italic;">
-                <p data-he="אני תמיד פתוח להכיר יוצרים אחרים, לעבוד על פרויקטים מעניינים, או להצטרף לצוות קריאייטיב חדשני. בואו ניצור משהו שהוא מעבר לדמיון." data-en="I'm always open to connecting with fellow creators, exciting projects, or opportunities to join an innovative creative team. Let's create something beyond imagination.">אני תמיד פתוח להכיר יוצרים אחרים, לעבוד על פרויקטים מעניינים, או להצטרף לצוות קריאייטיב חדשני. בואו ניצור משהו שהוא מעבר לדמיון.</p>
             </div>
         </div>
 
         <div id="contact" class="page-content">
             <header class="hero-section"><h1 data-he="צור קשר" data-en="GET IN TOUCH">צור קשר</h1><div class="hero-line"></div></header>
-            <p class="bio-text" data-he="לשיתופי פעולה, הזמנת עריכה או ייעוץ בנושאי תוכן ו-AI, מוזמנים ליצור קשר." data-en="For collaborations, video editing services, or AI consultation, feel free to reach out.">לשיתופי פעולה, הזמנת עריכה או ייעוץ בנושאי תוכן ו-AI, מוזמנים ליצור קשר.</p>
-            
             <form action="https://formsubmit.co/Stav22001@gmail.com" method="POST" class="contact-form">
                 <input type="hidden" name="_subject" value="הודעה חדשה מאתר הפורטפוליו!">
                 <input type="hidden" name="_captcha" value="false">
@@ -130,23 +123,19 @@
                 <textarea name="message" id="ph-msg" placeholder="איך אוכל לעזור?" data-ph-he="איך אוכל לעזור?" data-ph-en="How can I help you?" style="height: 160px;" required></textarea>
                 <button type="submit" data-he="שלח הודעה" data-en="Send Message">שלח הודעה</button>
             </form>
-
             <div class="social-links">
                 <a href="https://www.instagram.com/beyond.imagination_official?igsh=MWc5Ymt4cHcwMWhpeA==" target="_blank" class="social-link">Instagram 📸</a>
                 <a href="https://www.youtube.com/@captured_by_stav" target="_blank" class="social-link">YouTube 📺</a>
                 <a href="https://www.linkedin.com/in/stav-eliyahu-172a3b404" target="_blank" class="social-link">LinkedIn 💼</a>
             </div>
         </div>
-
     </main>
 
     <script>
         let currentLang = 'he';
-
         function toggleLanguage() {
             currentLang = currentLang === 'he' ? 'en' : 'he';
             const htmlTag = document.documentElement;
-
             if (currentLang === 'en') {
                 htmlTag.setAttribute('dir', 'ltr');
                 document.body.classList.remove('lang-he');
@@ -158,28 +147,13 @@
                 document.body.classList.add('lang-he');
                 document.getElementById('lang-btn').innerText = '🌍 English';
             }
-
             document.querySelectorAll('[data-he]').forEach(el => {
                 el.innerHTML = el.getAttribute(`data-${currentLang}`);
             });
-            
             document.querySelectorAll('[data-ph-he]').forEach(el => {
                 el.placeholder = el.getAttribute(`data-ph-${currentLang}`);
             });
-            
-            loadPortfolio();
         }
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyCRXdJ52LGuW2FyseC7GHYAncIAFD1cGKI",
-            authDomain: "beyond-one-a2f44.firebaseapp.com",
-            projectId: "beyond-one-a2f44",
-            storageBucket: "beyond-one-a2f44.firebasestorage.app",
-            messagingSenderId: "439316596782",
-            appId: "1:439316596782:web:66c322d708b340f69df7bf"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
 
         function switchPage(id, el) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
@@ -188,45 +162,6 @@
             el.classList.add('active');
             document.getElementById('main-viewport').scrollTop = 0;
         }
-
-        function loadPortfolio() {
-            const feed = document.getElementById('posts-feed');
-            db.collection("posts").orderBy("timestamp", "desc").onSnapshot(snap => {
-                feed.innerHTML = '';
-                if (snap.empty) {
-                    feed.innerHTML = `<p class="bio-text">${currentLang === 'he' ? 'בקרוב יעלו פרויקטים חדשים...' : 'New projects coming soon...'}</p>`;
-                    return;
-                }
-                snap.forEach(doc => {
-                    const p = doc.data();
-                    let videoHtml = '';
-                    
-                    if (p.fileUrl && p.fileUrl.includes('drive.google.com')) {
-                        try {
-                            const id = p.fileUrl.split('/d/')[1].split('/')[0];
-                            videoHtml = `<iframe class="project-video" src="https://drive.google.com/file/d/${id}/preview" allowfullscreen></iframe>`;
-                        } catch(e) {
-                            videoHtml = `<a href="${p.fileUrl}" target="_blank" class="social-link">${currentLang === 'he' ? 'צפה בקישור 🔗' : 'View Link 🔗'}</a>`;
-                        }
-                    } else if (p.fileUrl) {
-                        videoHtml = `<a href="${p.fileUrl}" target="_blank" class="social-link">${currentLang === 'he' ? 'צפה בפרויקט 🔗' : 'View Project 🔗'}</a>`;
-                    }
-
-                    const defaultTitle = currentLang === 'he' ? 'פרויקט נבחר' : 'Selected Project';
-                    const authorTitle = (p.author === 'סתיו' || !p.author) ? defaultTitle : p.author;
-
-                    feed.innerHTML += `
-                        <div class="project-card">
-                            <h3 style="margin-bottom:12px; color:var(--beyond-purple); font-size:24px;">${authorTitle}</h3>
-                            <p class="bio-text" style="font-size:20px; margin-bottom:15px;">${p.text}</p>
-                            ${videoHtml}
-                        </div>
-                    `;
-                });
-            });
-        }
-
-        loadPortfolio();
     </script>
 </body>
 </html>
