@@ -13,10 +13,10 @@
         body { background-color: var(--bg-white); color: var(--beyond-purple); min-height: 100vh; display: flex; transition: 0.3s; }
 
         @media (max-width: 950px) {
-            body { flex-direction: column; overflow-y: auto; }
+            body { flex-direction: column; }
             #sidebar-hub { width: 100% !important; border-right: none !important; border-bottom: 2px solid rgba(62, 56, 162, 0.05); position: static !important; padding: 20px !important; }
-            .brand-logo { height: 130px !important; }
-            #main-viewport { padding: 30px 20px !important; overflow-y: visible !important; }
+            .brand-logo { height: 110px !important; }
+            #main-viewport { padding: 30px 20px !important; }
             .hero-section h1 { font-size: 38px !important; }
             .nav-list { flex-direction: row !important; flex-wrap: wrap; justify-content: center; gap: 8px !important; }
             .nav-link { padding: 10px 12px !important; font-size: 15px !important; }
@@ -24,17 +24,18 @@
 
         body.lang-he * { font-family: var(--font-clean) !important; }
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
-        body.lang-en .bio-text, body.lang-en .contact-form input, body.lang-en .contact-form textarea, body.lang-en .social-link, body.lang-en .workflow-title, body.lang-en .workflow-step { font-family: var(--font-clean) !important; letter-spacing: normal; }
         
-        #sidebar-hub { width: 340px; background: var(--sidebar-bg); border-left: 2px solid rgba(62, 56, 162, 0.05); border-right: 2px solid rgba(62, 56, 162, 0.05); display: flex; flex-direction: column; padding: 30px 20px; transition: 0.3s; flex-shrink: 0; }
+        #sidebar-hub { width: 340px; background: var(--sidebar-bg); border-left: 2px solid rgba(62, 56, 162, 0.05); border-right: 2px solid rgba(62, 56, 162, 0.05); display: flex; flex-direction: column; padding: 30px 20px; flex-shrink: 0; }
         .branding-area { text-align: center; margin-bottom: 30px; }
-        .brand-logo { width: auto; height: 220px; display: block; margin: 0 auto; }
+        .brand-logo { width: auto; height: 200px; display: block; margin: 0 auto; }
         
         .nav-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
         .nav-link { padding: 14px 18px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 18px; opacity: 0.6; color: var(--beyond-purple); transition: 0.3s; font-weight: bold; }
         .nav-link:hover, .nav-link.active { opacity: 1; background: rgba(62, 56, 162, 0.05); }
         .nav-link.active { background: var(--beyond-purple); color: #fff; }
         
+        .lang-switch-container { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(62, 56, 162, 0.1); }
+
         #main-viewport { flex-grow: 1; padding: 50px 70px; overflow-y: auto; background: #fdfdfd; }
         .hero-section h1 { font-size: 55px; font-weight: 900; }
         .hero-line { width: 90px; height: 6px; background: var(--beyond-purple); border-radius: 3px; margin: 12px 0 40px 0; }
@@ -43,7 +44,7 @@
         .page-content.active { display: block; animation: fadeIn 0.6s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        .project-card { background: white; padding: 35px; border-radius: 25px; box-shadow: 0 5px 25px rgba(0,0,0,0.03); margin-bottom: 50px; border: 1px solid #f1f1f1; }
+        .project-card { background: white; padding: 35px; border-radius: 25px; box-shadow: 0 5px 25px rgba(0,0,0,0.03); margin-bottom: 40px; border: 1px solid #f1f1f1; }
         .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; margin: 25px 0; background: #000; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
@@ -52,11 +53,10 @@
         .workflow-step { margin-bottom: 12px; font-size: 17px; line-height: 1.6; }
         .workflow-step strong { color: var(--beyond-purple); }
 
-        #disqus_thread { margin-top: 50px; padding: 20px; background: #f9f9f9; border-radius: 15px; }
+        #disqus_thread { margin-top: 30px; padding: 25px; background: #fff; border-radius: 20px; border: 1px solid #eee; }
 
-        .contact-form { display: flex; flex-direction: column; }
         .contact-form input, .contact-form textarea { width: 100%; padding: 18px; margin-bottom: 20px; border: 1px solid #e0e0e0; border-radius: 12px; font-size: 18px; outline: none; }
-        .contact-form button { padding: 18px 50px; background: var(--beyond-purple); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 20px; font-weight: bold; width: max-content; }
+        .contact-form button { padding: 18px 50px; background: var(--beyond-purple); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 20px; font-weight: bold; }
         
         .social-links { display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
         .social-link { text-decoration: none; color: var(--beyond-purple); border: 2px solid var(--beyond-purple); padding: 10px 20px; border-radius: 50px; font-weight: bold; transition: 0.3s; }
@@ -73,20 +73,22 @@
             <div class="nav-link active" onclick="switchPage('portfolio', this)">🎬 <span data-he="פורטפוליו" data-en="PORTFOLIO">פורטפוליו</span></div>
             <div class="nav-link" onclick="switchPage('about', this)">👤 <span data-he="קצת עליי" data-en="ABOUT ME">קצת עליי</span></div>
             <div class="nav-link" onclick="switchPage('contact', this)">📧 <span data-he="צור קשר" data-en="CONTACT">צור קשר</span></div>
-            <div class="nav-link" onclick="toggleLanguage()">🌍 <span id="lang-text">English</span></div>
         </nav>
+        <div class="lang-switch-container">
+            <div class="nav-link" onclick="toggleLanguage()" style="opacity: 1; border: 1px solid rgba(62, 56, 162, 0.2);">🌍 <span id="lang-text">English</span></div>
+        </div>
     </aside>
 
     <main id="main-viewport">
         
         <div id="portfolio" class="page-content active">
-            <header class="hero-section"><h1 data-he="הפרויקטים שלי" data-en="SELECTED WORKS">הפרויקטים שלי</h1><div class="hero-line"></div></header>
+            <header class="hero-section"><h1 data-he="פרויקטים נבחרים" data-en="SELECTED WORKS">פרויקטים נבחרים</h1><div class="hero-line"></div></header>
             
             <div class="project-card">
-                <h2 style="font-size:28px; margin-bottom:10px;" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Concept Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h2>
+                <h2 style="font-size:28px; margin-bottom:10px;" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Concept Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h2>
                 <div class="bio-text">
                     <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד." 
-                       data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. A story of power, prophecy, and a crown that changes everything. Special personal detail: the visual model for the young chosen one is based on me as a child.">
+                       data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. A story of power and prophecy. Special personal detail: the visual model for the young chosen one is based on me as a child.">
                        בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד.
                     </p>
                 </div>
@@ -105,19 +107,19 @@
             <div class="project-card">
                 <h2 style="font-size:28px; margin-bottom:10px;" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h2>
                 <div class="bio-text">
-                    <p data-he="העולם קפוא. ❄️🤖 אבל העידן החדש של עשיית סרטים כבר כאן. אני נרגש לשתף את גרסת המאסטר של הטריילר האחרון שלי מבוסס AI. המטרה הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים." 
-                       data-en="The world is frozen. ❄️🤖 But the new era of filmmaking is already here. I’m thrilled to share the Master Edition of my latest AI-driven trailer. The goal was to bridge the gap between advanced AI generation and classic post-production workflows.">
-                       העולם קפוא. ❄️🤖 אבל העידן החדש של עשיית סרטים כבר כאן. אני נרגש לשתף את גרסת המאסטר של הטריילר האחרון שלי מבוסס AI. המטרה הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים.
+                    <p data-he="העולם קפוא. ❄️🤖 אבל העידן החדש של עשיית סרטים כבר כאן. המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן." 
+                       data-en="The world is frozen. ❄️🤖 But the new era of filmmaking is already here. My goal was to bridge the gap between advanced AI generation and classic post-production workflows.">
+                       העולם קפוא. ❄️🤖 אבל העידן החדש של עשיית סרטים כבר כאן. המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן.
                     </p>
                 </div>
                 <div class="video-container">
                     <iframe src="https://drive.google.com/file/d/1b_xd7D01rYNROLQbGA7qzcinoiqfiXlT/preview"></iframe>
                 </div>
-                <h3 class="workflow-title" data-he="ארכיטקטורת הפרויקט" data-en="Project Architecture">ארכיטקטורת הפרויקט</h3>
+                <h3 class="workflow-title" data-he="טכנולוגיה וכלים" data-en="Tech Stack">טכנולוגיה וכלים</h3>
                 <div class="bio-text" style="font-size: 17px;">
-                    <div class="workflow-step">❄️ <strong>Visuals:</strong> <span data-he="Kling AI ו-Flux, עם ליטוש ב-Adobe Photoshop לבניית הריסות קפואות." data-en="Kling AI & Flux, refined in Adobe Photoshop for frozen ruins aesthetics.">Kling AI ו-Flux, עם ליטוש ב-Adobe Photoshop לבניית הריסות קפואות.</span></div>
+                    <div class="workflow-step">🧊 <strong>Visuals:</strong> <span data-he="Kling AI ו-Flux, עם ליטוש ב-Adobe Photoshop לבניית הריסות קפואות." data-en="Kling AI & Flux, refined in Adobe Photoshop for frozen ruins aesthetics.">Kling AI ו-Flux, עם ליטוש ב-Adobe Photoshop לבניית הריסות קפואות.</span></div>
                     <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="ElevenLabs ו-Suno AI לעומק רגשי, בשילוב SFX מ-Pixabay." data-en="ElevenLabs & Suno AI for emotional depth, with Pixabay SFX.">ElevenLabs ו-Suno AI לעומק רגשי, בשילוב SFX מ-Pixabay.</span></div>
-                    <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="תיקוני צבע (SDR) ומיקס סאונד בתוך Adobe Premiere Pro." data-en="Color grading (SDR) and audio mixing natively in Adobe Premiere Pro.">תיקוני צבע (SDR) ומיקס סאונד בתוך Adobe Premiere Pro.</span></div>
+                    <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="עריכה, תיקוני צבע (SDR) ומיקס סאונד בתוך Adobe Premiere Pro." data-en="Editing, color grading (SDR) and audio mixing in Adobe Premiere Pro.">עריכה, תיקוני צבע (SDR) ומיקס סאונד בתוך Adobe Premiere Pro.</span></div>
                 </div>
             </div>
 
@@ -127,27 +129,41 @@
         <div id="about" class="page-content">
             <header class="hero-section"><h1 data-he="קצת עליי" data-en="ABOUT ME">קצת עליי</h1><div class="hero-line"></div></header>
             <div class="bio-text">
-                <p data-he="ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'." data-en="Welcome to my creative world. I'm Stav, a Digital Artist, Video Editor, and the creator behind 'Beyond Imagination'.">ברוכים הבאים לעולם היצירה שלי. אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי 'Beyond Imagination'.</p><br>
-                <p data-he="המסע שלי התחיל מאהבה גדולה לצילום ולסיפור סיפורים ויזואלי. כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לבניית מותג שיידבר בשפה הויזואלית הייחודית שלי." data-en="My journey started with a deep passion for photography and visual storytelling. Today, backed by a professional certificate in Graphic Design, I am dedicated to building a brand that speaks my unique visual language.">המסע שלי התחיל מאהבה גדולה לצילום ולסיפור סיפורים ויזואלי. כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לבניית מותג שיידבר בשפה הויזואלית הייחודית שלי.</p><br>
-                <p data-he="אני מתמקד בחיבור שבין פוסט-פרודקשן קלאסי לטכנולוגיות AI מתקדמות. המטרה שלי היא להביא למסך רמה גבוהה ובלתי מתפשרת של איכות תוכן – מטריילרים סינמטיים ועד לבניית עולמות עתידניים סוחפים." data-en="I focus on bridging the gap between traditional post-production and cutting-edge AI technologies. My goal is to deliver an uncompromisingly high level of content quality—from cinematic trailers to immersive futuristic world-building.">אני מתמקד בחיבור שבין פוסט-פרודקשן קלאסי לטכנולוגיות AI מתקדמות. המטרה שלי היא להביא למסך רמה גבוהה ובלתי מתפשרת של איכות תוכן – מטריילרים סינמטיים ועד לבניית עולמות עתידניים סוחפים.</p>
+                <p data-he="אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי." 
+                   data-en="I'm Stav, a Digital Artist, Video Editor, and the creator of 'Beyond Imagination Studios'. My journey began with a deep love for photography and visual storytelling.">
+                   אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי.
+                </p><br>
+                <p data-he="כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לשילוב שבין עריכה קלאסית ב-Adobe Premiere Pro לבין טכנולוגיות Generative AI פורצות דרך. המטרה שלי היא להוכיח שעם חזון נכון, יוצר בודד יכול לבנות עולמות שלמים וסוחפים." 
+                   data-en="Today, with a professional certificate in Graphic Design, I focus on integrating classic editing in Adobe Premiere Pro with groundbreaking Generative AI. My goal is to prove that with the right vision, a solo creator can build entire immersive worlds.">
+                   כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לשילוב שבין עריכה קלאסית ב-Adobe Premiere Pro לבין טכנולוגיות Generative AI פורצות דרך. המטרה שלי היא להוכיח שעם חזון נכון, יוצר בודד יכול לבנות עולמות שלמים וסוחפים.
+                </p><br>
+                <p data-he="אני מתמחה ביצירת טריילרים סינמטיים, בניית דמויות עקביות ב-AI ופוסט-פרודקשן ברמה הגבוהה ביותר. כל פרויקט בפורטפוליו שלי הוא עדות לכך שהגבול היחיד הוא הדמיון." 
+                   data-en="I specialize in creating cinematic trailers, consistent AI character design, and high-end post-production. Every project in my portfolio is a testament that the only limit is imagination.">
+                   אני מתמחה ביצירת טריילרים סינמטיים, בניית דמויות עקביות ב-AI ופוסט-פרודקשן ברמה הגבוהה ביותר. כל פרויקט בפורטפוליו שלי הוא עדות לכך שהגבול היחיד הוא הדמיון.
+                </p>
             </div>
             <h3 class="section-title" style="margin-top:40px;" data-he="ארגז הכלים שלי" data-en="My Toolkit">ארגז הכלים שלי</h3>
             <div class="social-links" style="margin-top:15px;">
                 <span class="social-link">🎬 Adobe Premiere Pro</span>
                 <span class="social-link">🎨 Adobe Photoshop</span>
-                <span class="social-link">🤖 Kling & Flux</span>
-                <span class="social-link">🎙️ ElevenLabs & Suno</span>
+                <span class="social-link">🤖 Kling / Flux / Nano Banana</span>
+                <span class="social-link">🎙️ ElevenLabs / Suno</span>
             </div>
         </div>
 
         <div id="contact" class="page-content">
             <header class="hero-section"><h1 data-he="צור קשר" data-en="CONTACT">צור קשר</h1><div class="hero-line"></div></header>
             <form action="https://formsubmit.co/Stav22001@gmail.com" method="POST" class="contact-form">
-                <input type="text" name="name" id="ph-name" placeholder="שם מלא" data-ph-he="שם מלא" data-ph-en="Full Name" required>
-                <input type="email" name="email" id="ph-email" placeholder="אימייל" data-ph-he="אימייל" data-ph-en="Email" required>
-                <textarea name="message" id="ph-msg" placeholder="איך אוכל לעזור?" data-ph-he="איך אוכל לעזור?" data-ph-en="How can I help?" style="height:150px;" required></textarea>
+                <input type="text" name="name" placeholder="שם מלא" required>
+                <input type="email" name="email" placeholder="אימייל" required>
+                <textarea name="message" placeholder="איך אוכל לעזור?" style="height:150px;" required></textarea>
                 <button type="submit" data-he="שלח הודעה" data-en="Send Message">שלח הודעה</button>
             </form>
+            <div class="social-links">
+                <a href="https://www.instagram.com/beyond.imagination_official" target="_blank" class="social-link">Instagram</a>
+                <a href="https://www.youtube.com/@captured_by_stav" target="_blank" class="social-link">YouTube</a>
+                <a href="https://www.linkedin.com/in/stav-eliyahu-172a3b404" target="_blank" class="social-link">LinkedIn</a>
+            </div>
         </div>
     </main>
 
@@ -159,7 +175,6 @@
             document.body.className = 'lang-' + currentLang;
             document.getElementById('lang-text').innerText = currentLang === 'he' ? 'English' : 'עברית';
             document.querySelectorAll('[data-he]').forEach(el => el.innerHTML = el.getAttribute('data-' + currentLang));
-            document.querySelectorAll('[data-ph-he]').forEach(el => el.placeholder = el.getAttribute('data-ph-' + currentLang));
         }
 
         function switchPage(id, el) {
@@ -167,9 +182,9 @@
             document.getElementById(id).classList.add('active');
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
             el.classList.add('active');
-            document.getElementById('main-viewport').scrollTop = 0;
         }
 
+        /* DISQUS CONFIGURATION */
         var disqus_config = function () {
             this.page.url = window.location.href;
             this.page.identifier = 'portfolio_beyond_1';
