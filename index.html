@@ -16,7 +16,7 @@
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
         body.lang-en .bio-text, body.lang-en .workflow-step { font-family: var(--font-clean) !important; letter-spacing: normal; }
         
-        /* עיצוב למחשב (Desktop) */
+        /* עיצוב למחשב */
         #sidebar-hub { width: 340px; background: var(--sidebar-bg); border-left: 2px solid rgba(62, 56, 162, 0.05); border-right: 2px solid rgba(62, 56, 162, 0.05); display: flex; flex-direction: column; padding: 30px 20px; flex-shrink: 0; }
         .branding-area { text-align: center; margin-bottom: 30px; }
         .brand-logo { width: auto; height: 200px; display: block; margin: 0 auto; }
@@ -42,20 +42,16 @@
         .projects-gallery { display: block; }
         .project-card { background: white; padding: 35px; border-radius: 25px; box-shadow: 0 5px 25px rgba(0,0,0,0.03); margin-bottom: 40px; border: 1px solid #f1f1f1; }
         
-        /* עיצוב הפוסטרים */
+        /* פוסטרים 9:16 */
         .poster-link { display: block; text-decoration: none; margin: 25px 0; text-align: center; transition: 0.3s; }
         .poster-link:hover { transform: translateY(-5px); }
-        
         .poster-container { position: relative; width: 100%; max-width: 380px; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background: #000; }
         .poster-image { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
         .poster-link:hover .poster-image { transform: scale(1.05); }
-        
         .play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
         .poster-link:hover .play-overlay { background: rgba(0,0,0,0.4); }
-        
         .play-button { width: 70px; height: 70px; background: rgba(62, 56, 162, 0.9); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; padding-left: 6px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); backdrop-filter: blur(5px); transition: 0.3s; }
         .poster-link:hover .play-button { transform: scale(1.1); background: var(--beyond-purple); }
-        
         .watch-button { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(62, 56, 162, 0.08); color: var(--beyond-purple); border-radius: 50px; font-weight: bold; font-size: 15px; transition: 0.3s; border: 1px solid rgba(62, 56, 162, 0.1); }
         .poster-link:hover .watch-button { background: var(--beyond-purple); color: white; box-shadow: 0 5px 15px rgba(62, 56, 162, 0.3); }
 
@@ -79,7 +75,7 @@
         .social-link { text-decoration: none; color: var(--beyond-purple); border: 2px solid var(--beyond-purple); padding: 10px 20px; border-radius: 50px; font-weight: bold; transition: 0.3s; font-size: 15px; }
         .social-link:hover { background: var(--beyond-purple); color: white; }
 
-        /* התאמה למובייל */
+        /* מובייל */
         @media (max-width: 950px) {
             body { flex-direction: column; overflow-y: auto; background: #fdfdfd; }
             #sidebar-hub { width: 100% !important; border: none !important; position: relative !important; padding: 25px 20px 0px 20px !important; background: transparent; }
@@ -150,9 +146,9 @@
                 <div class="project-card">
                     <h2 style="font-size:26px; margin-bottom:10px;" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h2>
                     <div class="bio-text">
-                        <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד." 
-                           data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. A story of power, prophecy, and a crown that changes everything. Personal detail: the young chosen one is based on me as a child.">
-                           בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד.
+                        <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. המודל הויזואלי מבוסס עליי כילד." 
+                           data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. The visual model is based on me as a child.">
+                           בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. המודל הויזואלי מבוסס עליי כילד.
                         </p>
                     </div>
                     
@@ -165,19 +161,19 @@
                     </a>
 
                     <h3 class="workflow-title" data-he="תהליך היצירה (Workflow)" data-en="The Creative Workflow">תהליך היצירה (Workflow)</h3>
-                    <div class="workflow-step">🚀 <strong>Scene Gen:</strong> <span data-he="Nano Banana ו-Adobe Photoshop לתיקונים ויזואליים מדויקים." data-en="Nano Banana and Adobe Photoshop for precise visual corrections.">נוצר ב-Nano Banana עם תיקונים ב-Adobe Photoshop.</span></div>
+                    <div class="workflow-step">🚀 <strong>Scene Gen:</strong> <span data-he="נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop." data-en="Generated in Nano Banana with visual corrections in Adobe Photoshop.">נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop.</span></div>
                     <div class="workflow-step">🎞️ <strong>Animation:</strong> <span data-he="הנפשת וידאו באמצעות Kling AI." data-en="Video animation using Kling AI.">הנפשת וידאו באמצעות Kling AI.</span></div>
-                    <div class="workflow-step">🎙️ <strong>Audio:</strong> <span data-he="קריינות ב-ElevenLabs ומוזיקה ב-Suno (קרדיט: Suno.com)." data-en="Narration via ElevenLabs and music via Suno AI.">קריינות ב-ElevenLabs ומוזיקה ב-Suno (קרדיט: Suno.com).</span></div>
-                    <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro.">עריכה ומיקס סאונד ב-Adobe Premiere Pro.</span></div>
+                    <div class="workflow-step">🎙️ <strong>Audio:</strong> <span data-he="קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay." data-en="Narration via ElevenLabs, music via Suno, and sound effects from Pixabay.">קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay.</span></div>
+                    <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
                     <div class="disqus-box"><div id="disqus_thread_1"></div></div>
                 </div>
 
                 <div class="project-card">
                     <h2 style="font-size:26px; margin-bottom:10px;" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h2>
                     <div class="bio-text">
-                        <p data-he="העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם." 
-                           data-en="The world is frozen. ❄️🤖 My goal was to bridge the gap between advanced AI and classic post-production, pushing the limits of solo world-building.">
-                           העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם.
+                        <p data-he="העולם קפוא. ❄️🤖 המטרה הייתה לגשר על הפער בין יצירת AI לעריכה קלאסית בפוסט-פרודקשן כדי לדחוף את גבולות בניית העולם." 
+                           data-en="The world is frozen. ❄️🤖 My goal was to bridge the gap between AI and classic post-production.">
+                           העולם קפוא. ❄️🤖 המטרה הייתה לגשר על הפער בין יצירת AI לעריכה קלאסית בפוסט-פרודקשן כדי לדחוף את גבולות בניית העולם.
                         </p>
                     </div>
                     
@@ -190,9 +186,9 @@
                     </a>
 
                     <h3 class="workflow-title" data-he="טכנולוגיה וכלים" data-en="Tech Stack">טכנולוגיה וכלים</h3>
-                    <div class="workflow-step">🧊 <strong>Visuals:</strong> <span data-he="Kling AI ו-Flux, עם ליטוש ב-Photoshop לבניית הריסות קפואות." data-en="Kling AI & Flux, refined in Photoshop for frozen ruins aesthetics.">Kling AI ו-Flux, עם ליטוש ב-Photoshop לבניית הריסות קפואות.</span></div>
-                    <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="ElevenLabs ו-Suno AI לעומק רגשי, בשילוב SFX מ-Pixabay." data-en="ElevenLabs & Suno AI for emotional depth, with Pixabay SFX.">ElevenLabs ו-Suno AI לעומק רגשי, בשילוב SFX מ-Pixabay.</span></div>
-                    <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="תיקוני צבע (SDR) ומיקס סאונד בתוך Adobe Premiere Pro." data-en="Color grading (SDR) and audio mixing in Adobe Premiere Pro.">תיקוני צבע (SDR) ומיקס סאונד בתוך Adobe Premiere Pro.</span></div>
+                    <div class="workflow-step">🧊 <strong>Visuals:</strong> <span data-he="Kling AI ו-Flux, עם ליטוש ב-Photoshop לבניית הריסות קפואות." data-en="Kling AI & Flux, refined in Photoshop for frozen ruins.">Kling AI ו-Flux, עם ליטוש ב-Photoshop לבניית הריסות קפואות.</span></div>
+                    <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="ElevenLabs ו-Suno AI לעומק רגשי, בשילוב אפקטים קוליים מ-Pixabay." data-en="ElevenLabs & Suno AI for emotional depth, combined with Pixabay sound effects.">ElevenLabs ו-Suno AI לעומק רגשי, בשילוב אפקטים קוליים מ-Pixabay.</span></div>
+                    <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="תיקוני צבע (SDR), מיקס סאונד ו-Auto Ducking בתוך Adobe Premiere Pro. הכל שולב בצורה איכותית." data-en="Color grading (SDR), sound mixing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly.">תיקוני צבע (SDR), מיקס סאונד ו-Auto Ducking בתוך Adobe Premiere Pro. הכל שולב בצורה איכותית.</span></div>
                     <div class="disqus-box"><div id="disqus_thread_2"></div></div>
                 </div>
 
@@ -211,7 +207,7 @@
                     
                     <h3 class="workflow-title" data-he="כלים צפויים לפרויקט" data-en="Expected Tools">כלים צפויים לפרויקט</h3>
                     <div class="workflow-step">🤖 <strong>AI Generation:</strong> <span data-he="יצירת תמונות ווידאו של מוצרים." data-en="Creating product visuals.">יצירת תמונות ווידאו של מוצרים.</span></div>
-                    <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות וסאונד טרנדי ב-Premiere Pro.</span></div>
+                    <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, dynamic captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro.</span></div>
                 </div>
             </div>
         </div>
@@ -219,13 +215,13 @@
         <div id="about" class="page-content">
             <header class="hero-section"><h1 data-he="קצת עליי" data-en="ABOUT ME">קצת עליי</h1><div class="hero-line"></div></header>
             <div class="bio-text">
-                <p data-he="אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי." 
-                   data-en="I'm Stav, a Digital Artist, Video Editor, and creator of 'Beyond Imagination Studios'. My journey began with a love for photography and visual storytelling.">
-                   אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי.
+                <p data-he="אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום ולסיפור סיפורים ויזואלי." 
+                   data-en="I'm Stav, a Digital Artist, Video Editor, and creator of 'Beyond Imagination Studios'. My journey began with a love for photography.">
+                   אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום ולסיפור סיפורים ויזואלי.
                 </p><br>
-                <p data-he="כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לשילוב שבין עריכה קלאסית ב-Adobe Premiere Pro לבין טכנולוגיות Generative AI פורצות דרך. המטרה שלי היא להוכיח שעם חזון נכון, יוצר בודד יכול לבנות עולמות שלמים וסוחפים. אני לא פשוט 'לוחץ על כפתור' - אני מאמין בזיקוק מדויק של כל פריים ופריים." 
-                   data-en="With a certificate in Graphic Design, I focus on merging Adobe Premiere Pro editing with Generative AI. I prove that a solo creator can build immersive worlds with the right vision. I don't just 'click buttons' - I refine every single frame.">
-                   כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לשילוב שבין עריכה קלאסית ב-Adobe Premiere Pro לבין טכנולוגיות Generative AI פורצות דרך. המטרה שלי היא להוכיח שעם חזון נכון, יוצר בודד יכול לבנות עולמות שלמים וסוחפים. אני לא פשוט 'לוחץ על כפתור' - אני מאמין בזיקוק מדויק של כל פריים ופריים.
+                <p data-he="כיום, עם תעודה מקצועית בעיצוב גרפי, אני משלב עריכה קלאסית ב-Premiere Pro עם טכנולוגיות Generative AI מתקדמות כדי ליצור עולמות סוחפים." 
+                   data-en="With a certificate in Graphic Design, I merge Premiere Pro editing with Generative AI to create immersive worlds.">
+                   כיום, עם תעודה מקצועית בעיצוב גרפי, אני משלב עריכה קלאסית ב-Premiere Pro עם טכנולוגיות Generative AI מתקדמות כדי ליצור עולמות סוחפים.
                 </p>
             </div>
             <h3 class="section-title" style="margin-top:40px;" data-he="ארגז הכלים שלי" data-en="My Toolkit">ארגז הכלים שלי</h3>
