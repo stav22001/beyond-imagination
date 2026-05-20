@@ -64,7 +64,7 @@
         .social-link:hover { background: var(--beyond-purple); color: white; }
 
         /* ========================================================
-           התאמה למובייל (עיצוב בסגנון App Store / צף למטה)
+           התאמה למובייל (עיצוב בסגנון App Store / צף למטה - משופר!)
            ======================================================== */
         @media (max-width: 950px) {
             body { flex-direction: column; overflow-y: auto; background: #fdfdfd; }
@@ -72,34 +72,33 @@
             .branding-area { margin-bottom: 10px; }
             .brand-logo { height: 110px !important; }
             
-            /* תפריט הגלולה הצף בתחתית */
+            /* תפריט צף דק, קומפקטי ואלגנטי יותר */
             .nav-list { 
                 position: fixed; 
-                bottom: 20px; 
+                bottom: 15px; /* ירד יותר למטה */
                 left: 50%; 
                 transform: translateX(-50%); 
-                width: 92%; 
-                max-width: 420px; 
+                width: 90%; 
+                max-width: 380px; 
                 background: rgba(255, 255, 255, 0.95); 
                 backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px); /* ל-אייפון */
+                -webkit-backdrop-filter: blur(15px);
                 border-radius: 40px; 
-                box-shadow: 0 10px 35px rgba(62, 56, 162, 0.15); 
+                box-shadow: 0 8px 25px rgba(62, 56, 162, 0.15); 
                 flex-direction: row !important; 
                 justify-content: space-around !important; 
-                padding: 10px 5px !important; 
+                padding: 6px 8px !important; /* צמצום עובי */
                 z-index: 9999; 
                 border: 1px solid rgba(62, 56, 162, 0.08); 
                 gap: 0 !important;
             }
             
-            /* אייקונים וטקסט אחד מעל השני */
             .nav-link { 
                 flex-direction: column !important; 
-                gap: 4px !important; 
-                padding: 6px 12px !important; 
+                gap: 2px !important; /* קירוב האייקון לטקסט */
+                padding: 6px 10px !important; 
                 background: transparent !important; 
-                color: #a0a0b5; /* אפור לא פעיל */
+                color: #a0a0b5; 
                 transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
             .nav-link:hover { background: transparent !important; }
@@ -109,20 +108,20 @@
                 transform: translateY(-2px);
                 opacity: 1;
             }
-            .nav-icon { font-size: 22px; display: block; margin: 0 auto; line-height: 1; }
+            .nav-icon { font-size: 20px; display: block; margin: 0 auto; line-height: 1; }
             .nav-text { font-size: 11px !important; font-weight: 800; margin: 0 auto; letter-spacing: 0.5px; }
 
-            /* כפתור החלפת שפה - למעלה בצד בנייד */
+            /* כפתור שפה */
             .lang-switch-container {
                 position: absolute;
                 top: 25px;
-                left: 25px; /* בפינה משמאל */
+                left: 25px; 
                 border: none;
                 padding: 0;
                 margin: 0;
             }
             .lang-switch-container .nav-link {
-                flex-direction: row !important; /* חוזר לשורה אחת לשפה */
+                flex-direction: row !important; 
                 background: white !important;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.08);
                 padding: 8px 14px !important;
@@ -132,12 +131,17 @@
             }
             .lang-switch-container .nav-text { font-size: 13px !important; }
 
-            /* התאמות לתוכן עצמו שלא יוסתר */
-            #main-viewport { padding: 10px 20px 120px 20px !important; background: transparent; overflow-y: visible !important; }
+            /* הוספת ריווח עצום (180px) בתחתית העמוד כדי שהגלילה תעקוף את התפריט! */
+            #main-viewport { padding: 10px 20px 180px 20px !important; background: transparent; overflow-y: visible !important; }
+            
             .hero-section h1 { font-size: 38px !important; text-align: center; }
-            .hero-line { margin: 12px auto 35px auto; } /* מרכז את הקו מתחת לכותרת */
-            .project-card { padding: 25px; border-radius: 20px; }
-            .video-container { border-radius: 10px; }
+            .hero-line { margin: 12px auto 35px auto; } 
+            
+            /* יישור והתאמות לטקסטים ולסרטונים במובייל */
+            .project-card { padding: 20px; border-radius: 20px; }
+            .bio-text { text-align: right; font-size: 17px; }
+            .workflow-title { text-align: right; }
+            .video-container { border-radius: 12px; margin: 15px 0; }
         }
     </style>
 </head>
