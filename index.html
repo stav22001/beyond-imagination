@@ -20,12 +20,12 @@
         .nav-icon { display: flex; align-items: center; justify-content: center; margin: 0 auto; width: 24px; height: 24px; }
         .nav-icon svg { width: 100%; height: 100%; fill: currentColor; }
 
-        /* כפתור שפה צף למעלה (עבור כל המסכים) */
+        /* כפתור שפה צף למעלה */
         .lang-switch-container { position: fixed; top: 25px; left: 25px; z-index: 9999; }
         .lang-switch-container .nav-link { display: flex; flex-direction: row; align-items: center; gap: 8px; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 8px 16px; border-radius: 30px; color: var(--beyond-purple); font-weight: bold; cursor: pointer; border: 1px solid rgba(62, 56, 162, 0.1); transition: 0.3s; }
         .lang-switch-container .nav-link:hover { background: rgba(62, 56, 162, 0.05); }
 
-        /* תפריט צף תחתון מרכזי בסגנון Tizen OS / אפל */
+        /* תפריט צף תחתון מרכזי */
         .nav-list { 
             position: fixed; 
             bottom: 25px; 
@@ -90,61 +90,10 @@
 
         .project-card { background: white; padding: 35px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 40px; border: 1px solid #f1f1f1; }
         .project-title { font-size: 26px; margin-bottom: 10px; }
+
+        /* פוסטרים ב-9:16 לגלילה אנכית */
+        .projects-gallery { display: flex; flex-direction: column; gap: 40px; padding-bottom: 20px; }
         
-        /* קונטיינר עוטף בשביל למקם את החצים בתוך אזור הקרוסלה */
-        .projects-container-wrapper { position: relative; width: 100%; }
-
-        /* כפתורי חץ ניווט (מוקמו מחדש כדי לא לדרוס את התפריט) */
-        .arrow-button { 
-            position: absolute; 
-            top: 45%; 
-            transform: translateY(-50%); 
-            width: 70px; 
-            height: 70px; 
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(5px); 
-            -webkit-backdrop-filter: blur(5px); 
-            border-radius: 50%; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; 
-            z-index: 999; 
-            transition: 0.3s; 
-            border: 1px solid rgba(62, 56, 162, 0.15); 
-            color: var(--beyond-purple); 
-            font-size: 32px; 
-            font-weight: bold;
-        }
-        .arrow-button:hover { background: var(--beyond-purple); color: white; box-shadow: 0 10px 20px rgba(62, 56, 162, 0.3); transform: translateY(-50%) scale(1.05); }
-        .prev-arrow { left: 10px; }
-        .next-arrow { right: 10px; }
-
-        /* גלילה אופקית (קרוסלה) לפורטפוליו */
-        .projects-gallery { 
-            display: flex; 
-            flex-direction: row; 
-            overflow-x: auto; 
-            scroll-snap-type: x mandatory; 
-            gap: 25px; 
-            padding: 10px 10px 40px 10px; 
-            -webkit-overflow-scrolling: touch; 
-        }
-        .projects-gallery::-webkit-scrollbar { height: 8px; }
-        .projects-gallery::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        .projects-gallery::-webkit-scrollbar-thumb { background: rgba(62, 56, 162, 0.3); border-radius: 10px; }
-        .projects-gallery::-webkit-scrollbar-thumb:hover { background: rgba(62, 56, 162, 0.6); }
-
-        .projects-gallery .project-card { 
-            min-width: 88vw; 
-            max-width: 800px; 
-            flex-shrink: 0;
-            scroll-snap-align: center; 
-            margin-bottom: 0; 
-        }
-
-        /* עיצוב הפוסטרים 9:16 - תוקן כך שיהיה תמיד באמצע! */
         .poster-link { display: block; text-decoration: none; margin: 25px auto; text-align: center; transition: 0.3s; width: 100%; max-width: 400px; }
         .poster-link:hover { transform: translateY(-5px); }
         .poster-container { position: relative; width: 100%; aspect-ratio: 9 / 16; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: #000; margin: 0 auto; display: flex; justify-content: center; align-items: center;}
@@ -201,11 +150,9 @@
 
         /* התאמות למובייל - גדלים רספונסיביים מדויקים! */
         @media (min-width: 950px) {
-            .projects-gallery .project-card { min-width: 600px; }
             .hero-section h1 { font-size: 65px; }
         }
         
-        /* כאן כל הגדלים לטלפון כדי ששום דבר לא יהיה ענק מדי וימוקם נכון */
         @media (max-width: 600px) {
             #main-viewport { padding: 80px 10px 140px 10px; } 
             .brand-logo-home { height: 180px; margin-bottom: 20px; }
@@ -217,8 +164,10 @@
             .project-title { font-size: 22px; }
             .bio-text { font-size: 15px; line-height: 1.6; }
             
-            /* פוסטרים מוקטנים במרכז המסך בנייד */
+            /* הפוסטרים בטלפון יהיו ברוחב מושלם שלא תופס את כל המסך */
             .poster-container { max-width: 250px; margin: 15px auto; aspect-ratio: 9 / 16; }
+            .play-button { width: 60px; height: 60px; }
+            .play-button svg { width: 25px; height: 25px; }
             
             .channel-trailer-icon { font-size: 28px; }
             .channel-trailer-text { font-size: 16px; }
@@ -232,13 +181,6 @@
             
             .contact-form input, .contact-form textarea { padding: 14px; font-size: 16px; }
             .contact-form button { padding: 14px 40px; font-size: 18px; }
-            
-            /* מיקום החצים מחדש בנייד למניעת דריסה */
-            .arrow-button { top: 35%; width: 50px; height: 50px; font-size: 22px; }
-            .prev-arrow { left: 0px; }
-            .next-arrow { right: 0px; }
-            
-            .projects-gallery { gap: 15px; padding: 10px 10px 30px 10px; }
         }
     </style>
 </head>
@@ -300,91 +242,86 @@
                     </div>
                 </div>
                 
-                <p style="color: #666; font-size: 16px;" data-he="החליקו למטה או השתמשו בתפריט כדי לצפות בפורטפוליו המלא." data-en="Scroll down or use the menu to view the full portfolio.">החליקו למטה או השתמשו בתפריט כדי לצפות בפורטפוליו המלא.</p>
+                <p style="color: #666; font-size: 16px;" data-he="השתמשו בתפריט כדי לצפות בפורטפוליו המלא." data-en="Use the menu to view the full portfolio.">השתמשו בתפריט כדי לצפות בפורטפוליו המלא.</p>
             </div>
         </div>
 
         <div id="portfolio" class="page-content">
             <header class="hero-section"><h1 data-he="פרויקטים נבחרים" data-en="SELECTED WORKS">פרויקטים נבחרים</h1><div class="hero-line"></div></header>
             
-            <div class="projects-container-wrapper">
-                <div class="arrow-button prev-arrow" onclick="scrollGallery(-1)">&#10094;</div>
-                <div class="arrow-button next-arrow" onclick="scrollGallery(1)">&#10095;</div>
-
-                <div class="projects-gallery" id="projects-gallery">
-                    <div class="project-card">
-                        <h2 class="project-title" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h2>
-                        <div class="bio-text">
-                            <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד." 
-                               data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. A story of power, prophecy, and a crown that changes everything. Personal detail: the young chosen one is based on me as a child.">
-                               בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד.
-                            </p>
-                        </div>
-                        
-                        <a href="https://drive.google.com/file/d/1bZKr2wG7QsJDWBU0K1PJKnE1V3RbFPvV/view" target="_blank" class="poster-link">
-                            <div class="poster-container">
-                                <img src="1000178137.jpg" alt="הנבחר" class="poster-image">
-                                <div class="play-overlay">
-                                    <div class="play-button">
-                                        <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                                    </div>
+            <div class="projects-gallery" id="projects-gallery">
+                <div class="project-card">
+                    <h2 class="project-title" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h2>
+                    <div class="bio-text">
+                        <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד." 
+                           data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. A story of power, prophecy, and a crown that changes everything. Personal detail: the young chosen one is based on me as a child.">
+                           בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד.
+                        </p>
+                    </div>
+                    
+                    <a href="https://drive.google.com/file/d/1bZKr2wG7QsJDWBU0K1PJKnE1V3RbFPvV/view" target="_blank" class="poster-link">
+                        <div class="poster-container">
+                            <img src="1000178137.jpg" alt="הנבחר" class="poster-image">
+                            <div class="play-overlay">
+                                <div class="play-button">
+                                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
                                 </div>
                             </div>
-                            <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
-                        </a>
-
-                        <h3 class="workflow-title" data-he="תהליך היצירה (Workflow)" data-en="The Creative Workflow">תהליך היצירה (Workflow)</h3>
-                        <div class="workflow-step">✨ <strong>Branding:</strong> <span data-he="שדרוג וזיקוק לוגו תלת-מימדי (3D) פתיח באמצעות Magnific AI (Freepik)." data-en="Upscaling and refining a 3D intro logo using Magnific AI (Freepik).">שדרוג וזיקוק לוגו תלת-מימדי (3D) פתיח באמצעות Magnific AI (Freepik).</span></div>
-                        <div class="workflow-step">🚀 <strong>Scene Gen:</strong> <span data-he="נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop." data-en="Generated in Nano Banana with visual corrections in Adobe Photoshop.">נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop.</span></div>
-                        <div class="workflow-step">🎞️ <strong>Animation:</strong> <span data-he="הנפשת וידאו באמצעות Kling AI." data-en="Video animation using Kling AI.">הנפשת וידאו באמצעות Kling AI.</span></div>
-                        <div class="workflow-step">🎙️ <strong>Audio:</strong> <span data-he="קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay." data-en="Narration via ElevenLabs, music via Suno, and sound effects from Pixabay.">קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay.</span></div>
-                        <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
-                    </div>
-
-                    <div class="project-card">
-                        <h2 class="project-title" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h2>
-                        <div class="bio-text">
-                            <p data-he="העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם." 
-                               data-en="The world is frozen. ❄️🤖 My goal was to bridge the gap between advanced AI and classic post-production, pushing the limits of solo world-building.">
-                               העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם.
-                            </p>
                         </div>
-                        
-                        <a href="https://drive.google.com/file/d/1b_xd7D01rYNROLQbGA7qzcinoiqfiXlT/view" target="_blank" class="poster-link">
-                            <div class="poster-container">
-                                <img src="1000170609.png" alt="ברוכים הבאים לעתיד" class="poster-image">
-                                <div class="play-overlay">
-                                    <div class="play-button">
-                                        <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                                    </div>
+                        <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
+                    </a>
+
+                    <h3 class="workflow-title" data-he="תהליך היצירה (Workflow)" data-en="The Creative Workflow">תהליך היצירה (Workflow)</h3>
+                    <div class="workflow-step">✨ <strong>Branding:</strong> <span data-he="שדרוג וזיקוק לוגו תלת-מימדי (3D) פתיח באמצעות Magnific AI (Freepik)." data-en="Upscaling and refining a 3D intro logo using Magnific AI (Freepik).">שדרוג וזיקוק לוגו תלת-מימדי (3D) פתיח באמצעות Magnific AI (Freepik).</span></div>
+                    <div class="workflow-step">🚀 <strong>Scene Gen:</strong> <span data-he="נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop." data-en="Generated in Nano Banana with visual corrections in Adobe Photoshop.">נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop.</span></div>
+                    <div class="workflow-step">🎞️ <strong>Animation:</strong> <span data-he="הנפשת וידאו באמצעות Kling AI." data-en="Video animation using Kling AI.">הנפשת וידאו באמצעות Kling AI.</span></div>
+                    <div class="workflow-step">🎙️ <strong>Audio:</strong> <span data-he="קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay." data-en="Narration via ElevenLabs, music via Suno, and sound effects from Pixabay.">קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay.</span></div>
+                    <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
+                </div>
+
+                <div class="project-card">
+                    <h2 class="project-title" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h2>
+                    <div class="bio-text">
+                        <p data-he="העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם." 
+                           data-en="The world is frozen. ❄️🤖 My goal was to bridge the gap between advanced AI and classic post-production, pushing the limits of solo world-building.">
+                           העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם.
+                        </p>
+                    </div>
+                    
+                    <a href="https://drive.google.com/file/d/1b_xd7D01rYNROLQbGA7qzcinoiqfiXlT/view" target="_blank" class="poster-link">
+                        <div class="poster-container">
+                            <img src="1000170609.png" alt="ברוכים הבאים לעתיד" class="poster-image">
+                            <div class="play-overlay">
+                                <div class="play-button">
+                                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
                                 </div>
                             </div>
-                            <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
-                        </a>
-
-                        <h3 class="workflow-title" data-he="טכנולוגיה וכלים" data-en="Tech Stack">טכנולוגיה וכלים</h3>
-                        <div class="workflow-step">🧊 <strong>Visuals:</strong> <span data-he="יצירת העולם הקפוא בוצעה בשילוב מחוללי הוידאו של Kling ו-Flux, תוך הקפדה על חזון אמנותי מדויק וליטוש שכבות ב-Adobe Photoshop ליצירת ההריסות." data-en="The frozen world was created using Kling and Flux video generators, maintaining precise artistic vision with Photoshop layering for the ruins.">יצירת העולם הקפוא בוצעה בשילוב מחוללי הוידאו של Kling ו-Flux, תוך הקפדה על חזון אמנותי מדויק וליטוש שכבות ב-Adobe Photoshop ליצירת ההריסות.</span></div>
-                        <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay." data-en="Building emotional depth via ElevenLabs narration, Suno AI composition, and meticulous integration of Pixabay sound effects (SFX).">בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay.</span></div>
-                        <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול." data-en="High-quality integration of all elements in Adobe Premiere Pro, including color grading (SDR), advanced sound mixing, and Auto Ducking for a perfect soundtrack.">שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול.</span></div>
-                    </div>
-
-                    <div class="project-card">
-                        <h2 class="project-title" data-he="📱 וידאו שיווקי וסושיאל" data-en="📱 Marketing & Social Media">📱 וידאו שיווקי וסושיאל</h2>
-                        <div class="bio-text">
-                            <p data-he="כאן יוצג סרטון פרסומת קצבי וממיר המשלב עריכה מהירה ב-Premiere Pro ותוכן ויזואלי שנוצר בבינה מלאכותית." 
-                               data-en="This section will feature a high-paced, converting commercial optimized for social media.">
-                               כאן יוצג סרטון פרסומת קצבי וממיר המשלב עריכה מהירה ב-Premiere Pro ותוכן ויזואלי שנוצר בבינה מלאכותית.
-                            </p>
                         </div>
-                        
-                        <div class="wip-container">
-                            <span data-he="[ הפוסטר לפרסומת העתידית ]" data-en="[ Future Ad Poster ]">[ הפוסטר לפרסומת העתידית ]</span>
-                        </div>
-                        
-                        <h3 class="workflow-title" data-he="כלים צפויים לפרויקט" data-en="Expected Tools">כלים צפויים לפרויקט</h3>
-                        <div class="workflow-step">🤖 <strong>AI Generation:</strong> <span data-he="יצירת תמונות ווידאו של מוצרים." data-en="Creating product visuals.">יצירת תמונות ווידאו של מוצרים.</span></div>
-                        <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, dynamic captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro.</span></div>
+                        <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
+                    </a>
+
+                    <h3 class="workflow-title" data-he="טכנולוגיה וכלים" data-en="Tech Stack">טכנולוגיה וכלים</h3>
+                    <div class="workflow-step">🧊 <strong>Visuals:</strong> <span data-he="יצירת העולם הקפוא בוצעה בשילוב מחוללי הוידאו של Kling ו-Flux, תוך הקפדה על חזון אמנותי מדויק וליטוש שכבות ב-Adobe Photoshop ליצירת ההריסות." data-en="The frozen world was created using Kling and Flux video generators, maintaining precise artistic vision with Photoshop layering for the ruins.">יצירת העולם הקפוא בוצעה בשילוב מחוללי הוידאו של Kling ו-Flux, תוך הקפדה על חזון אמנותי מדויק וליטוש שכבות ב-Adobe Photoshop ליצירת ההריסות.</span></div>
+                    <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay." data-en="Building emotional depth via ElevenLabs narration, Suno AI composition, and meticulous integration of Pixabay sound effects (SFX).">בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay.</span></div>
+                    <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול." data-en="High-quality integration of all elements in Adobe Premiere Pro, including color grading (SDR), advanced sound mixing, and Auto Ducking for a perfect soundtrack.">שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול.</span></div>
+                </div>
+
+                <div class="project-card">
+                    <h2 class="project-title" data-he="📱 וידאו שיווקי וסושיאל" data-en="📱 Marketing & Social Media">📱 וידאו שיווקי וסושיאל</h2>
+                    <div class="bio-text">
+                        <p data-he="כאן יוצג סרטון פרסומת קצבי וממיר המשלב עריכה מהירה ב-Premiere Pro ותוכן ויזואלי שנוצר בבינה מלאכותית." 
+                           data-en="This section will feature a high-paced, converting commercial optimized for social media.">
+                           כאן יוצג סרטון פרסומת קצבי וממיר המשלב עריכה מהירה ב-Premiere Pro ותוכן ויזואלי שנוצר בבינה מלאכותית.
+                        </p>
                     </div>
+                    
+                    <div class="wip-container">
+                        <span data-he="[ הפוסטר לפרסומת העתידית ]" data-en="[ Future Ad Poster ]">[ הפוסטר לפרסומת העתידית ]</span>
+                    </div>
+                    
+                    <h3 class="workflow-title" data-he="כלים צפויים לפרויקט" data-en="Expected Tools">כלים צפויים לפרויקט</h3>
+                    <div class="workflow-step">🤖 <strong>AI Generation:</strong> <span data-he="יצירת תמונות ווידאו של מוצרים." data-en="Creating product visuals.">יצירת תמונות ווידאו של מוצרים.</span></div>
+                    <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, dynamic captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro.</span></div>
                 </div>
             </div>
         </div>
@@ -450,17 +387,6 @@
             document.querySelectorAll('.nav-link.main-nav').forEach(l => l.classList.remove('active'));
             el.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function scrollGallery(direction) {
-            const gallery = document.getElementById('projects-gallery');
-            const firstCard = gallery.querySelector('.project-card');
-            
-            if (firstCard) {
-                const cardWidth = firstCard.offsetWidth;
-                const gap = window.innerWidth <= 600 ? 15 : 25;
-                gallery.scrollBy({ left: (cardWidth + gap) * direction, behavior: 'smooth' });
-            }
         }
     </script>
 </body>
