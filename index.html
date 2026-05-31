@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BEYOND IMAGINATION | Professional Portfolio</title>
     
+    <!-- הוספת האייקון של האתר (Favicon) -->
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
     <link rel="apple-touch-icon" href="favicon.jpg">
     
@@ -18,6 +19,10 @@
         body.lang-he * { font-family: var(--font-clean) !important; }
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
         body.lang-en .bio-text, body.lang-en .workflow-step { font-family: var(--font-clean) !important; letter-spacing: normal; }
+        
+        /* הסתרת הלוגואים לפי שפה */
+        body.lang-he .logo-en { display: none !important; }
+        body.lang-en .logo-he { display: none !important; }
         
         /* אייקונים וקטוריים (SVG) בצבע המותג האחיד */
         .nav-icon { display: flex; align-items: center; justify-content: center; margin: 0 auto; width: 24px; height: 24px; }
@@ -86,10 +91,27 @@
         
         .page-content { display: none; width: 100%; }
         .page-content.active { display: block; animation: fadeIn 0.6s ease-out; }
+        
+        /* הפיכת עמוד הבית לממורכז במרכז המסך לגמרי */
+        .page-content.active#home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 65vh; 
+        }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* לוגו ענק בעמוד הבית */
-        .brand-logo-home { width: auto; height: 350px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto 40px auto; filter: drop-shadow(0 10px 20px rgba(62, 56, 162, 0.15)); }
+        /* עיצוב הלוגואים בעמוד הבית */
+        .brand-logo-home { 
+            width: 100%; 
+            max-width: 800px; 
+            height: auto; 
+            object-fit: contain; 
+            display: block; 
+            filter: drop-shadow(0 10px 20px rgba(62, 56, 162, 0.15)); 
+        }
 
         .project-card { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 40px; border: 1px solid #f1f1f1; }
         .project-title { font-size: 26px; margin-bottom: 15px; }
@@ -274,7 +296,8 @@
 
         @media (max-width: 600px) {
             #main-viewport { padding: 80px 10px 140px 10px; } 
-            .brand-logo-home { height: 180px; margin-bottom: 20px; }
+            
+            .brand-logo-home { max-width: 95%; }
             
             .hero-section h1 { font-size: 32px; }
             .hero-line { margin: 10px auto 25px auto; }
@@ -345,26 +368,10 @@
 
     <main id="main-viewport">
         
+        <!-- עמוד הבית עודכן: הלוגו ממורכז ומוחלף לפי שפה -->
         <div id="home" class="page-content active">
-            <img src="logo.jpg" alt="BEYOND IMAGINATION" class="brand-logo-home">
-            
-            <div class="project-card" style="text-align: center;">
-                <h2 class="project-title" style="font-weight: 900;" data-he="🎬 ערוץ ההשראה" data-en="🎬 Inspiration Channel">🎬 ערוץ ההשראה</h2>
-                <div class="bio-text">
-                    <p data-he="ברוכים הבאים לערוץ ההשראה של Beyond Imagination. כאן החזון הופך למציאות קולנועית." data-en="Welcome to the Beyond Imagination Inspiration Channel. Where vision becomes cinematic reality.">
-                        ברוכים הבאים לערוץ ההשראה של Beyond Imagination. כאן החזון הופך למציאות קולנועית.
-                    </p>
-                </div>
-                
-                <div class="channel-trailer-container">
-                    <div style="text-align: center; padding: 20px;">
-                        <span class="channel-trailer-icon">✨</span>
-                        <span class="channel-trailer-text" data-he="[ טריילר המותג יעלה כאן בקרוב ]" data-en="[ Brand Trailer Coming Soon ]">[ טריילר המותג יעלה כאן בקרוב ]</span>
-                    </div>
-                </div>
-                
-                <p style="color: #666; font-size: 16px;" data-he="השתמשו בתפריט כדי לצפות בפורטפוליו המלא." data-en="Use the menu to view the full portfolio.">השתמשו בתפריט כדי לצפות בפורטפוליו המלא.</p>
-            </div>
+            <img src="logo-he_2.jpg" alt="BEYOND IMAGINATION" class="brand-logo-home logo-he">
+            <img src="logo-en_2.jpg" alt="BEYOND IMAGINATION" class="brand-logo-home logo-en">
         </div>
 
         <div id="portfolio" class="page-content">
@@ -372,11 +379,13 @@
             
             <div class="projects-gallery" id="projects-gallery">
                 
+                <!-- משבצת 1: טריילרים שנעשו באמצעות בינה מלאכותית -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎬 טריילרים שנעשו באמצעות בינה מלאכותית" data-en="🎬 AI-Generated Trailers">🎬 טריילרים שנעשו באמצעות בינה מלאכותית</h2>
                     
                     <div class="grid-3-cols">
                         
+                        <!-- פריט ימין במחשב: וידאו שיווקי / טריילר יעלה בקרוב (בטלפון יופיע שלישי) -->
                         <div class="grid-item trailer-marketing">
                             <h3 class="project-title" data-he="📱 וידאו שיווקי וסושיאל" data-en="📱 Marketing & Social Media">📱 וידאו שיווקי וסושיאל</h3>
                             <div class="bio-text">
@@ -394,6 +403,7 @@
                             <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, dynamic captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro.</span></div>
                         </div>
 
+                        <!-- פריט אמצע במחשב: הנבחר (בטלפון יופיע ראשון) -->
                         <div class="grid-item trailer-chosen">
                             <h3 class="project-title" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h3>
                             <div class="bio-text">
@@ -423,6 +433,7 @@
                             <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
                         </div>
 
+                        <!-- פריט שמאל במחשב: ברוכים הבאים לעתיד (בטלפון יופיע שני) -->
                         <div class="grid-item trailer-future">
                             <h3 class="project-title" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h3>
                             <div class="bio-text">
@@ -453,6 +464,7 @@
                     </div>
                 </div>
 
+                <!-- משבצת 2: עיבוד תמונה וסליידרים לפני ואחרי -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)" data-en="🎨 Visual Upgrading (Before & After)">🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
@@ -464,6 +476,7 @@
                     
                     <div class="grid-3-cols">
                         
+                        <!-- פריט ימין במחשב: סבון הוואי -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="מארז סבון הוואי" data-en="Hawaii Soap Box">מארז סבון הוואי</h3>
                             <div class="before-after-container">
@@ -475,6 +488,7 @@
                             </div>
                         </div>
 
+                        <!-- פריט אמצע במחשב: פיוז טי -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="קמפיין Fuze Tea" data-en="Fuze Tea Campaign">קמפיין Fuze Tea</h3>
                             <div class="before-after-container">
@@ -486,6 +500,7 @@
                             </div>
                         </div>
 
+                        <!-- פריט שמאל במחשב: שעון -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="עיצוב שעון יוקרתי" data-en="Luxury Watch Design">עיצוב שעון יוקרתי</h3>
                             <div class="before-after-container">
