@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BEYOND IMAGINATION | Professional Portfolio</title>
     
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <link rel="apple-touch-icon" href="favicon.jpg">
+    
     <style>
         @font-face { font-family: 'Righteous'; src: url('Righteous-Regular.ttf') format('truetype'); }
         :root { --bg-white: #ffffff; --beyond-purple: #3e38a2; --sidebar-bg: #f8f9ff; --font-clean: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
@@ -262,6 +265,11 @@
         @media (max-width: 950px) {
             .poster-container, .wip-container { max-width: 340px; }
             .before-after-container { max-width: 380px; }
+            
+            /* סידור הטריילרים בטלפון בלבד לפי בקשתך */
+            .trailer-chosen { order: 1; }
+            .trailer-future { order: 2; }
+            .trailer-marketing { order: 3; }
         }
 
         @media (max-width: 600px) {
@@ -369,7 +377,7 @@
                     
                     <div class="grid-3-cols">
                         
-                        <div class="grid-item">
+                        <div class="grid-item trailer-marketing">
                             <h3 class="project-title" data-he="📱 וידאו שיווקי וסושיאל" data-en="📱 Marketing & Social Media">📱 וידאו שיווקי וסושיאל</h3>
                             <div class="bio-text">
                                 <p data-he="כאן יוצג סרטון פרסומת קצבי וממיר המשלב עריכה מהירה ב-Premiere Pro ותוכן ויזואלי שנוצר בבינה מלאכותית." data-en="This section will feature a high-paced, converting commercial optimized for social media.">
@@ -386,7 +394,7 @@
                             <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, dynamic captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro.</span></div>
                         </div>
 
-                        <div class="grid-item">
+                        <div class="grid-item trailer-chosen">
                             <h3 class="project-title" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h3>
                             <div class="bio-text">
                                 <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד." 
@@ -415,7 +423,7 @@
                             <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
                         </div>
 
-                        <div class="grid-item">
+                        <div class="grid-item trailer-future">
                             <h3 class="project-title" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h3>
                             <div class="bio-text">
                                 <p data-he="העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם." 
