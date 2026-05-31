@@ -9,16 +9,23 @@
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
     <link rel="apple-touch-icon" href="favicon.jpg">
     
+    <!-- הוספת פונט Heebo משרתי גוגל -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
         @font-face { font-family: 'Righteous'; src: url('Righteous-Regular.ttf') format('truetype'); }
-        :root { --bg-white: #ffffff; --beyond-purple: #3e38a2; --sidebar-bg: #f8f9ff; --font-clean: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        
+        /* עדכנתי את הפונט הראשי ל-Heebo */
+        :root { --bg-white: #ffffff; --beyond-purple: #3e38a2; --sidebar-bg: #f8f9ff; --font-clean: 'Heebo', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-white); color: var(--beyond-purple); min-height: 100vh; display: flex; flex-direction: column; transition: 0.3s; overflow-x: hidden; }
 
         body.lang-he * { font-family: var(--font-clean) !important; }
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
-        body.lang-en .bio-text, body.lang-en .workflow-step { font-family: var(--font-clean) !important; letter-spacing: normal; }
+        body.lang-en .bio-text, body.lang-en .workflow-step, body.lang-en .welcome-text { font-family: var(--font-clean) !important; letter-spacing: normal; }
         
         /* הסתרת הלוגואים לפי שפה */
         body.lang-he .logo-en { display: none !important; }
@@ -113,6 +120,37 @@
             filter: drop-shadow(0 10px 20px rgba(62, 56, 162, 0.15)); 
         }
 
+        /* טקסט הפתיחה בעמוד הבית */
+        .welcome-text {
+            max-width: 600px;
+            text-align: center;
+            margin-top: 25px;
+            font-size: 19px;
+            line-height: 1.6;
+            color: #444;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .home-cta {
+            margin-top: 25px;
+            padding: 12px 35px;
+            background: rgba(62, 56, 162, 0.08);
+            color: var(--beyond-purple);
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(62, 56, 162, 0.1);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+        .home-cta:hover {
+            background: var(--beyond-purple);
+            color: white;
+            box-shadow: 0 8px 20px rgba(62, 56, 162, 0.2);
+            transform: translateY(-3px);
+        }
+
         .project-card { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 40px; border: 1px solid #f1f1f1; }
         .project-title { font-size: 26px; margin-bottom: 15px; }
 
@@ -160,10 +198,6 @@
         .watch-button { display: inline-block; margin-top: 15px; padding: 12px 30px; background: rgba(62, 56, 162, 0.08); color: var(--beyond-purple); border-radius: 50px; font-weight: bold; font-size: 16px; transition: 0.3s; border: 1px solid rgba(62, 56, 162, 0.1); width: 100%; box-sizing: border-box; text-align: center; }
         .poster-link:hover .watch-button { background: var(--beyond-purple); color: white; box-shadow: 0 8px 20px rgba(62, 56, 162, 0.3); }
 
-        .channel-trailer-container { position: relative; width: 100%; max-width: 900px; margin: 0 auto 30px auto; aspect-ratio: 16 / 9; border-radius: 20px; background: #0f172a; border: 2px solid rgba(62, 56, 162, 0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .channel-trailer-icon { font-size: 40px; display: block; margin-bottom: 10px; }
-        .channel-trailer-text { color: white; font-size: 24px; font-weight: bold; opacity: 0.8; }
-        
         .wip-container { position: relative; width: 100%; margin: 25px auto; aspect-ratio: 9 / 16; border-radius: 15px; background: #f8f9ff; border: 2px dashed var(--beyond-purple); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 15px; }
         .wip-container span { font-size: 20px; font-weight: bold; color: var(--beyond-purple); opacity: 0.5; text-align: center; padding: 0 20px; }
 
@@ -281,6 +315,7 @@
             .grid-item h3.project-title { font-size: 20px; text-align: center; height: 55px; display: flex; align-items: center; justify-content: center; }
             .ba-title { font-size: 19px; }
             .poster-link { max-width: 100%; }
+            .welcome-text { font-size: 22px; max-width: 800px; }
         }
         
         /* התאמות למובייל ומסכים קטנים בלבד */
@@ -288,7 +323,7 @@
             .poster-container, .wip-container { max-width: 340px; }
             .before-after-container { max-width: 380px; }
             
-            /* סידור הטריילרים בטלפון בלבד לפי בקשתך */
+            /* סידור הטריילרים בטלפון בלבד */
             .trailer-chosen { order: 1; }
             .trailer-future { order: 2; }
             .trailer-marketing { order: 3; }
@@ -298,6 +333,7 @@
             #main-viewport { padding: 80px 10px 140px 10px; } 
             
             .brand-logo-home { max-width: 95%; }
+            .welcome-text { font-size: 16px; padding: 0 15px; }
             
             .hero-section h1 { font-size: 32px; }
             .hero-line { margin: 10px auto 25px auto; }
@@ -309,9 +345,6 @@
             .poster-container, .wip-container { max-width: 260px; }
             .play-button { width: 60px; height: 60px; }
             .play-button svg { width: 25px; height: 25px; }
-            
-            .channel-trailer-icon { font-size: 28px; }
-            .channel-trailer-text { font-size: 16px; }
             
             .workflow-title { font-size: 18px; margin: 20px 0 10px 0; }
             .workflow-step { font-size: 14px; }
@@ -368,10 +401,18 @@
 
     <main id="main-viewport">
         
-        <!-- עמוד הבית עודכן: הלוגו ממורכז ומוחלף לפי שפה -->
+        <!-- עמוד הבית עם טקסט הפתיחה והכפתור -->
         <div id="home" class="page-content active">
             <img src="logo-he_2.jpg" alt="BEYOND IMAGINATION" class="brand-logo-home logo-he">
             <img src="logo-en_2.jpg" alt="BEYOND IMAGINATION" class="brand-logo-home logo-en">
+            
+            <div class="welcome-text" data-he="ברוכים הבאים. המרחב הזה הוא כרטיס הכניסה שלי לעולם שלכם – כאן תמצאו את החזון הוויזואלי שלי, את תיק העבודות, ואת המקום שבו דמיון הופך למציאות." data-en="Welcome. This space is my entry ticket to your world – here you will find my visual vision, portfolio, and the exact place where imagination becomes reality.">
+                ברוכים הבאים. המרחב הזה הוא כרטיס הכניסה שלי לעולם שלכם – כאן תמצאו את החזון הוויזואלי שלי, את תיק העבודות, ואת המקום שבו דמיון הופך למציאות.
+            </div>
+            
+            <div class="home-cta" onclick="document.querySelectorAll('.main-nav')[1].click();" data-he="לצפייה בעבודות" data-en="Explore Portfolio">
+                לצפייה בעבודות
+            </div>
         </div>
 
         <div id="portfolio" class="page-content">
