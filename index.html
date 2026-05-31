@@ -72,7 +72,7 @@
         /* אזור תוכן מרכזי */
         #main-viewport { 
             width: 100%; 
-            max-width: 1400px; /* הורחב קצת כדי לאפשר ל-3 עמודות לנשום */
+            max-width: 1400px; 
             margin: 0 auto; 
             padding: 40px 20px 140px 20px; 
         }
@@ -89,25 +89,24 @@
         .brand-logo-home { width: auto; height: 350px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto 40px auto; filter: drop-shadow(0 10px 20px rgba(62, 56, 162, 0.15)); }
 
         .project-card { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 40px; border: 1px solid #f1f1f1; }
-        .project-title { font-size: 26px; margin-bottom: 10px; }
+        .project-title { font-size: 26px; margin-bottom: 15px; }
 
-        /* גריד של 3 עמודות לפרויקטים וסליידרים */
+        /* ברירת מחדל למובייל - הכל מוצג כבלוק אנכי רגיל ומרווח */
         .grid-3-cols {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            align-items: start;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
             margin-top: 30px;
         }
-
         .grid-item {
             display: flex;
             flex-direction: column;
+            width: 100%;
         }
 
         .projects-gallery { display: flex; flex-direction: column; gap: 40px; padding-bottom: 20px; }
         
-        .poster-link { display: block; text-decoration: none; margin: 25px auto; text-align: center; transition: 0.3s; width: 100%; max-width: 100%; }
+        .poster-link { display: block; text-decoration: none; margin: 25px auto; text-align: center; transition: 0.3s; width: 100%; }
         .poster-link:hover { transform: translateY(-5px); }
         .poster-container { position: relative; width: 100%; aspect-ratio: 9 / 16; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: #000; margin: 0 auto; display: flex; justify-content: center; align-items: center;}
         .poster-image { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
@@ -115,7 +114,6 @@
         .play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
         .poster-link:hover .play-overlay { background: rgba(0,0,0,0.4); }
         
-        /* כפתור עין ממותג עם אייקון SVG אחיד */
         .play-button { 
             width: 80px; 
             height: 80px; 
@@ -134,22 +132,19 @@
         .play-button svg { width: 35px; height: 35px; fill: currentColor; }
         .poster-link:hover .play-button { transform: scale(1.1); background: var(--beyond-purple); color: white; }
 
-        .watch-button { display: inline-block; margin-top: 15px; padding: 12px 30px; background: rgba(62, 56, 162, 0.08); color: var(--beyond-purple); border-radius: 50px; font-weight: bold; font-size: 16px; transition: 0.3s; border: 1px solid rgba(62, 56, 162, 0.1); width: 100%; box-sizing: border-box; }
+        .watch-button { display: inline-block; margin-top: 15px; padding: 12px 30px; background: rgba(62, 56, 162, 0.08); color: var(--beyond-purple); border-radius: 50px; font-weight: bold; font-size: 16px; transition: 0.3s; border: 1px solid rgba(62, 56, 162, 0.1); width: 100%; box-sizing: border-box; text-align: center; }
         .poster-link:hover .watch-button { background: var(--beyond-purple); color: white; box-shadow: 0 8px 20px rgba(62, 56, 162, 0.3); }
 
-        /* קונטיינר לטריילר ערוץ בסגנון טלוויזיה */
         .channel-trailer-container { position: relative; width: 100%; max-width: 900px; margin: 0 auto 30px auto; aspect-ratio: 16 / 9; border-radius: 20px; background: #0f172a; border: 2px solid rgba(62, 56, 162, 0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .channel-trailer-icon { font-size: 40px; display: block; margin-bottom: 10px; }
         .channel-trailer-text { color: white; font-size: 24px; font-weight: bold; opacity: 0.8; }
         
-        .wip-container { position: relative; width: 100%; max-width: 100%; margin: 25px auto; aspect-ratio: 9 / 16; border-radius: 15px; background: #f8f9ff; border: 2px dashed var(--beyond-purple); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 15px; }
+        .wip-container { position: relative; width: 100%; margin: 25px auto; aspect-ratio: 9 / 16; border-radius: 15px; background: #f8f9ff; border: 2px dashed var(--beyond-purple); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 15px; }
         .wip-container span { font-size: 20px; font-weight: bold; color: var(--beyond-purple); opacity: 0.5; text-align: center; padding: 0 20px; }
 
-        .bio-text { font-size: 17px; line-height: 1.6; color: #333; margin-bottom: 20px; }
-        .grid-item .bio-text { font-size: 15px; } /* פונט מעט יותר קטן בתוך העמודות */
-        
-        .workflow-title { font-size: 20px; font-weight: bold; margin: 25px 0 15px 0; color: var(--beyond-purple); border-bottom: 1px solid rgba(62, 56, 162, 0.1); padding-bottom: 8px; }
-        .workflow-step { margin-bottom: 12px; font-size: 15px; line-height: 1.5; }
+        .bio-text { font-size: 19px; line-height: 1.7; color: #333; margin-bottom: 20px; }
+        .workflow-title { font-size: 22px; font-weight: bold; margin: 25px 0 15px 0; color: var(--beyond-purple); border-bottom: 1px solid rgba(62, 56, 162, 0.1); padding-bottom: 8px; }
+        .workflow-step { margin-bottom: 12px; font-size: 17px; line-height: 1.6; }
         .workflow-step strong { color: var(--beyond-purple); }
         .section-title { font-size: 24px; margin-top: 40px; text-align: center;}
 
@@ -164,7 +159,7 @@
         .social-link:hover { background: var(--beyond-purple); color: white; }
 
         /* סליידר לפני ואחרי (Before & After) */
-        .ba-title { text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 15px; color: var(--beyond-purple); }
+        .ba-title { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 15px; color: var(--beyond-purple); }
         
         .before-after-container {
             position: relative;
@@ -174,6 +169,7 @@
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             border: 1px solid rgba(62, 56, 162, 0.1);
+            margin: 0 auto;
         }
         .ba-img {
             position: absolute;
@@ -243,17 +239,29 @@
             right: 8px;
         }
 
-        /* התאמות למובייל - גדלים רספונסיביים מדויקים! */
-        @media (min-width: 950px) {
+        /* חוקים המיועדים אך ורק למחשב (החל ממסך ברוחב 951 פיקסלים ומעלה) */
+        @media (min-width: 951px) {
             .hero-section h1 { font-size: 65px; }
-            .grid-item h3.project-title { font-size: 20px; text-align: center; height: 50px; }
+            
+            /* הפעלת סידור 3 העמודות במחשב בלבד */
+            .grid-3-cols {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+                align-items: start;
+            }
+            .grid-item .bio-text { font-size: 15px; }
+            .grid-item .workflow-title { font-size: 19px; }
+            .grid-item .workflow-step { font-size: 15px; line-height: 1.5; }
+            .grid-item h3.project-title { font-size: 20px; text-align: center; height: 55px; display: flex; align-items: center; justify-content: center; }
+            .ba-title { font-size: 19px; }
+            .poster-link { max-width: 100%; }
         }
         
+        /* התאמות למובייל ומסכים קטנים בלבד */
         @media (max-width: 950px) {
-            .grid-3-cols { grid-template-columns: 1fr; gap: 60px; }
-            .grid-item h3.project-title { text-align: center; }
-            .poster-container, .wip-container { max-width: 350px; margin: 15px auto; }
-            .before-after-container { max-width: 400px; margin: 0 auto; }
+            .poster-container, .wip-container { max-width: 340px; }
+            .before-after-container { max-width: 380px; }
         }
 
         @media (max-width: 600px) {
@@ -265,8 +273,9 @@
             
             .project-card { padding: 25px 20px; border-radius: 20px; }
             .project-title { font-size: 22px; }
+            .bio-text { font-size: 15px; line-height: 1.6; }
             
-            .poster-container, .wip-container { max-width: 250px; }
+            .poster-container, .wip-container { max-width: 260px; }
             .play-button { width: 60px; height: 60px; }
             .play-button svg { width: 25px; height: 25px; }
             
@@ -355,13 +364,11 @@
             
             <div class="projects-gallery" id="projects-gallery">
                 
-                <!-- משבצת 1: טריילרים שנעשו באמצעות בינה מלאכותית (בגריד של 3) -->
                 <div class="project-card">
-                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple);" data-he="🎬 טריילרים שנעשו באמצעות בינה מלאכותית" data-en="🎬 AI-Generated Trailers">🎬 טריילרים שנעשו באמצעות בינה מלאכותית</h2>
+                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎬 טריילרים שנעשו באמצעות בינה מלאכותית" data-en="🎬 AI-Generated Trailers">🎬 טריילרים שנעשו באמצעות בינה מלאכותית</h2>
                     
                     <div class="grid-3-cols">
                         
-                        <!-- פריט ימין: וידאו שיווקי / טריילר יעלה בקרוב -->
                         <div class="grid-item">
                             <h3 class="project-title" data-he="📱 וידאו שיווקי וסושיאל" data-en="📱 Marketing & Social Media">📱 וידאו שיווקי וסושיאל</h3>
                             <div class="bio-text">
@@ -379,12 +386,12 @@
                             <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, dynamic captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro.</span></div>
                         </div>
 
-                        <!-- פריט אמצע: הנבחר -->
                         <div class="grid-item">
-                            <h3 class="project-title" data-he="🎬 הנבחר - טריילר קונספט" data-en="🎬 THE CHOSEN ONE">🎬 הנבחר - טריילר קונספט</h3>
+                            <h3 class="project-title" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h3>
                             <div class="bio-text">
-                                <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. המודל הויזואלי של הנבחר מבוסס עליי כילד." data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. The young chosen one is based on me.">
-                                    בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. המודל הויזואלי של הנבחר מבוסס עליי כילד.
+                                <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד." 
+                                   data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. A story of power, prophecy, and a crown that changes everything. Personal detail: the young chosen one is based on me as a child.">
+                                    בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד.
                                 </p>
                             </div>
                             
@@ -397,23 +404,23 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="watch-button" data-he="לחצו לצפייה בטריילר" data-en="Watch Trailer">לחצו לצפייה בטריילר</div>
+                                <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
                             </a>
 
-                            <h3 class="workflow-title" data-he="תהליך היצירה" data-en="Workflow">תהליך היצירה</h3>
-                            <div class="workflow-step">✨ <strong>Branding:</strong> <span data-he="שדרוג וזיקוק לוגו תלת-מימדי ב-Magnific AI." data-en="Upscaling a 3D intro logo using Magnific AI.">שדרוג וזיקוק לוגו תלת-מימדי ב-Magnific AI.</span></div>
-                            <div class="workflow-step">🚀 <strong>Scene Gen:</strong> <span data-he="נוצר ב-Nano Banana עם תיקונים ב-Photoshop." data-en="Generated in Nano Banana with Photoshop corrections.">נוצר ב-Nano Banana עם תיקונים ב-Photoshop.</span></div>
+                            <h3 class="workflow-title" data-he="תהליך היצירה (Workflow)" data-en="The Creative Workflow">תהליך היצירה (Workflow)</h3>
+                            <div class="workflow-step">✨ <strong>Branding:</strong> <span data-he="שדרוג וזיקוק לוגו תלת-מימדי (3D) פתיח באמצעות Magnific AI (Freepik)." data-en="Upscaling and refining a 3D intro logo using Magnific AI (Freepik).">שדרוג וזיקוק לוגו תלת-מימדי (3D) פתיח באמצעות Magnific AI (Freepik).</span></div>
+                            <div class="workflow-step">🚀 <strong>Scene Gen:</strong> <span data-he="נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop." data-en="Generated in Nano Banana with visual corrections in Adobe Photoshop.">נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop.</span></div>
                             <div class="workflow-step">🎞️ <strong>Animation:</strong> <span data-he="הנפשת וידאו באמצעות Kling AI." data-en="Video animation using Kling AI.">הנפשת וידאו באמצעות Kling AI.</span></div>
-                            <div class="workflow-step">🎙️ <strong>Audio:</strong> <span data-he="קריינות מ-ElevenLabs, מוזיקה ב-Suno ואפקטים מ-Pixabay." data-en="ElevenLabs narration, Suno music, Pixabay SFX.">קריינות מ-ElevenLabs, מוזיקה ב-Suno ואפקטים מ-Pixabay.</span></div>
-                            <div class="workflow-step">💻 <strong>Post:</strong> <span data-he="עריכה ו-Auto Ducking ב-Premiere Pro." data-en="Editing & Auto Ducking in Premiere Pro.">עריכה ו-Auto Ducking ב-Premiere Pro.</span></div>
+                            <div class="workflow-step">🎙️ <strong>Audio:</strong> <span data-he="קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay." data-en="Narration via ElevenLabs, music via Suno, and sound effects from Pixabay.">קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay.</span></div>
+                            <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
                         </div>
 
-                        <!-- פריט שמאל: ברוכים הבאים לעתיד -->
                         <div class="grid-item">
                             <h3 class="project-title" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h3>
                             <div class="bio-text">
-                                <p data-he="העולם קפוא. ❄️🤖 המטרה הייתה לגשר על הפער בין AI לעריכה קלאסית ולדחוף את גבולות בניית העולם." data-en="The world is frozen. Bridging the gap between AI and classic post-production.">
-                                    העולם קפוא. ❄️🤖 המטרה הייתה לגשר על הפער בין AI לעריכה קלאסית ולדחוף את גבולות בניית העולם.
+                                <p data-he="העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם." 
+                                   data-en="The world is frozen. ❄️🤖 My goal was to bridge the gap between advanced AI and classic post-production, pushing the limits of solo world-building.">
+                                    העולם קפוא. ❄️🤖 המטרה שלי הייתה לגשר על הפער בין יצירת AI מתקדמת לתהליכי עבודה קלאסיים בפוסט-פרודקשן ולראות עד כמה יוצר בודד יכול לדחוף את גבולות בניית העולם.
                                 </p>
                             </div>
                             
@@ -426,21 +433,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="watch-button" data-he="לחצו לצפייה בטריילר" data-en="Watch Trailer">לחצו לצפייה בטריילר</div>
+                                <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
                             </a>
 
                             <h3 class="workflow-title" data-he="טכנולוגיה וכלים" data-en="Tech Stack">טכנולוגיה וכלים</h3>
-                            <div class="workflow-step">🧊 <strong>Visuals:</strong> <span data-he="שילוב Kling ו-Flux עם ליטושי שכבות ב-Photoshop." data-en="Kling & Flux generation with Photoshop layering.">שילוב Kling ו-Flux עם ליטושי שכבות ב-Photoshop.</span></div>
-                            <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="דיבוב ב-ElevenLabs, לחן ב-Suno AI ואפקטים של Pixabay." data-en="ElevenLabs dubbing, Suno AI score, Pixabay SFX.">דיבוב ב-ElevenLabs, לחן ב-Suno AI ואפקטים של Pixabay.</span></div>
-                            <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="מיקס סאונד מתקדם ותיקוני צבע ב-Premiere Pro." data-en="Advanced sound mixing & color grading in Premiere Pro.">מיקס סאונד מתקדם ותיקוני צבע ב-Premiere Pro.</span></div>
+                            <div class="workflow-step">🧊 <strong>Visuals:</strong> <span data-he="יצירת העולם הקפוא בוצעה בשילוב מחוללי הוידאו של Kling ו-Flux, תוך הקפדה על חזון אמנותי מדויק וליטוש שכבות ב-Adobe Photoshop ליצירת ההריסות." data-en="The frozen world was created using Kling and Flux video generators, maintaining precise artistic vision with Photoshop layering for the ruins.">יצירת העולם הקפוא בוצעה בשילוב מחוללי הוידאו של Kling ו-Flux, תוך הקפדה על חזון אמנותי מדויק וליטוש שכבות ב-Adobe Photoshop ליצירת ההריסות.</span></div>
+                            <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay." data-en="Building emotional depth via ElevenLabs narration, Suno AI composition, and meticulous integration of Pixabay sound effects (SFX).">בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay.</span></div>
+                            <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול." data-en="High-quality integration of all elements in Adobe Premiere Pro, including color grading (SDR), advanced sound mixing, and Auto Ducking for a perfect soundtrack.">שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול.</span></div>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- משבצת 2: עיבוד תמונה (בגריד של 3) -->
                 <div class="project-card">
-                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple);" data-he="🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)" data-en="🎨 Visual Upgrading (Before & After)">🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)</h2>
+                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)" data-en="🎨 Visual Upgrading (Before & After)">🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
                         <p data-he="שדרוג תמונות פשוטות לרמת פרימיום בעזרת שילוב של כלי AI מתקדמים ועריכה קפדנית ב-Photoshop. הזיזו את הסליידר ימינה ושמאלה כדי לראות את ההבדל בין חומר הגלם לתוצאה הסופית." 
                            data-en="Upgrading basic images to premium quality using advanced AI tools and meticulous Photoshop editing. Drag the slider to see the difference between the raw material and the final result.">
@@ -450,7 +456,6 @@
                     
                     <div class="grid-3-cols">
                         
-                        <!-- פריט ימין: סבון הוואי -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="מארז סבון הוואי" data-en="Hawaii Soap Box">מארז סבון הוואי</h3>
                             <div class="before-after-container">
@@ -462,7 +467,6 @@
                             </div>
                         </div>
 
-                        <!-- פריט אמצע: פיוז טי -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="קמפיין Fuze Tea" data-en="Fuze Tea Campaign">קמפיין Fuze Tea</h3>
                             <div class="before-after-container">
@@ -474,7 +478,6 @@
                             </div>
                         </div>
 
-                        <!-- פריט שמאל: שעון -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="עיצוב שעון יוקרתי" data-en="Luxury Watch Design">עיצוב שעון יוקרתי</h3>
                             <div class="before-after-container">
@@ -555,7 +558,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // פונקציה לעדכון סליידרים בצורה חלקה שתומכת במספר רב של אלמנטים על אותו עמוד
+        // פונקציה לעדכון סליידרים
         function updateSlider(input) {
             const container = input.parentElement;
             const val = input.value;
