@@ -239,9 +239,12 @@
             object-fit: cover;
             display: block;
         }
+        
+        /* כאן תוקן הכיוון! התמונה של ה"אחרי" תוצג בצד ימין (מ-50% ועד 100%) וה"לפני" תוצג בשמאל */
         .ba-img-after {
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
         }
+        
         .ba-slider {
             position: absolute;
             top: 0;
@@ -640,11 +643,11 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // פונקציה לעדכון סליידרים
+        // תוקנה הלוגיקה: התמונה הנגללת (אחרי) מופיעה בצד ימין מנקודת ה-val ועד 100%
         function updateSlider(input) {
             const container = input.parentElement;
             const val = input.value;
-            container.querySelector('.ba-img-after').style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
+            container.querySelector('.ba-img-after').style.clipPath = `polygon(${val}% 0, 100% 0, 100% 100%, ${val}% 100%)`;
             container.querySelector('.ba-line').style.left = `${val}%`;
             container.querySelector('.ba-button').style.left = `${val}%`;
         }
