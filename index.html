@@ -17,7 +17,6 @@
     <style>
         @font-face { font-family: 'Righteous'; src: url('Righteous-Regular.ttf') format('truetype'); }
         
-        /* עדכנתי את הפונט הראשי ל-Heebo */
         :root { --bg-white: #ffffff; --beyond-purple: #3e38a2; --sidebar-bg: #f8f9ff; --font-clean: 'Heebo', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,70 +26,29 @@
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
         body.lang-en .bio-text, body.lang-en .workflow-step, body.lang-en .welcome-text { font-family: var(--font-clean) !important; letter-spacing: normal; }
         
-        /* הסתרת הלוגואים לפי שפה */
         body.lang-he .logo-en { display: none !important; }
         body.lang-en .logo-he { display: none !important; }
         
-        /* אייקונים וקטוריים (SVG) בצבע המותג האחיד */
         .nav-icon { display: flex; align-items: center; justify-content: center; margin: 0 auto; width: 24px; height: 24px; }
         .nav-icon svg { width: 100%; height: 100%; fill: currentColor; }
 
-        /* כפתור שפה צף למעלה */
         .lang-switch-container { position: fixed; top: 25px; left: 25px; z-index: 9999; }
         .lang-switch-container .nav-link { display: flex; flex-direction: row; align-items: center; gap: 8px; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 8px 16px; border-radius: 30px; color: var(--beyond-purple); font-weight: bold; cursor: pointer; border: 1px solid rgba(62, 56, 162, 0.1); transition: 0.3s; }
         .lang-switch-container .nav-link:hover { background: rgba(62, 56, 162, 0.05); }
 
-        /* תפריט צף תחתון מרכזי */
         .nav-list { 
-            position: fixed; 
-            bottom: 25px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 92%; 
-            max-width: 550px; 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px); 
-            border-radius: 40px; 
-            box-shadow: 0 10px 40px rgba(62, 56, 162, 0.2); 
-            display: flex; 
-            flex-direction: row; 
-            justify-content: space-around; 
-            padding: 8px 10px; 
-            z-index: 9999; 
-            border: 1px solid rgba(62, 56, 162, 0.1); 
-            list-style: none;
+            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 550px; 
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
+            border-radius: 40px; box-shadow: 0 10px 40px rgba(62, 56, 162, 0.2); display: flex; flex-direction: row; 
+            justify-content: space-around; padding: 8px 10px; z-index: 9999; border: 1px solid rgba(62, 56, 162, 0.1); list-style: none;
         }
         
-        .nav-link.main-nav { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            gap: 6px; 
-            padding: 8px 15px; 
-            cursor: pointer; 
-            opacity: 0.6; 
-            color: var(--beyond-purple); 
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            border-radius: 20px;
-            font-weight: bold;
-        }
+        .nav-link.main-nav { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 15px; cursor: pointer; opacity: 0.6; color: var(--beyond-purple); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 20px; font-weight: bold; }
         .nav-link.main-nav:hover { background: transparent; opacity: 0.8; }
-        .nav-link.main-nav.active { 
-            background: rgba(62, 56, 162, 0.08); 
-            color: var(--beyond-purple); 
-            transform: translateY(-3px); 
-            opacity: 1; 
-        }
+        .nav-link.main-nav.active { background: rgba(62, 56, 162, 0.08); color: var(--beyond-purple); transform: translateY(-3px); opacity: 1; }
         .nav-text { font-size: 12px; font-weight: 800; margin: 0 auto; letter-spacing: 0.5px; }
 
-        /* אזור תוכן מרכזי */
-        #main-viewport { 
-            width: 100%; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 40px 20px 140px 20px; 
-        }
+        #main-viewport { width: 100%; max-width: 1400px; margin: 0 auto; padding: 40px 20px 140px 20px; }
 
         .hero-section { text-align: center; margin-bottom: 40px; }
         .hero-section h1 { font-size: 45px; font-weight: 900; }
@@ -99,73 +57,22 @@
         .page-content { display: none; width: 100%; }
         .page-content.active { display: block; animation: fadeIn 0.6s ease-out; }
         
-        /* הפיכת עמוד הבית לממורכז במרכז המסך לגמרי */
-        .page-content.active#home {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 65vh; 
-        }
+        .page-content.active#home { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 65vh; }
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* עיצוב הלוגואים בעמוד הבית */
-        .brand-logo-home { 
-            width: 100%; 
-            max-width: 800px; 
-            height: auto; 
-            object-fit: contain; 
-            display: block; 
-            filter: drop-shadow(0 10px 20px rgba(62, 56, 162, 0.15)); 
-        }
+        .brand-logo-home { width: 100%; max-width: 800px; height: auto; object-fit: contain; display: block; filter: drop-shadow(0 10px 20px rgba(62, 56, 162, 0.15)); }
 
-        /* טקסט הפתיחה בעמוד הבית */
-        .welcome-text {
-            max-width: 600px;
-            text-align: center;
-            margin-top: 25px;
-            font-size: 19px;
-            line-height: 1.6;
-            color: #444;
-            animation: fadeIn 1s ease-out 0.3s both;
-        }
+        .welcome-text { max-width: 600px; text-align: center; margin-top: 25px; font-size: 19px; line-height: 1.6; color: #444; animation: fadeIn 1s ease-out 0.3s both; }
 
-        .home-cta {
-            margin-top: 25px;
-            padding: 12px 35px;
-            background: rgba(62, 56, 162, 0.08);
-            color: var(--beyond-purple);
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            border: 1px solid rgba(62, 56, 162, 0.1);
-            animation: fadeIn 1s ease-out 0.6s both;
-        }
-        .home-cta:hover {
-            background: var(--beyond-purple);
-            color: white;
-            box-shadow: 0 8px 20px rgba(62, 56, 162, 0.2);
-            transform: translateY(-3px);
-        }
+        .home-cta { margin-top: 25px; padding: 12px 35px; background: rgba(62, 56, 162, 0.08); color: var(--beyond-purple); border-radius: 50px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; border: 1px solid rgba(62, 56, 162, 0.1); animation: fadeIn 1s ease-out 0.6s both; }
+        .home-cta:hover { background: var(--beyond-purple); color: white; box-shadow: 0 8px 20px rgba(62, 56, 162, 0.2); transform: translateY(-3px); }
 
         .project-card { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 40px; border: 1px solid #f1f1f1; }
         .project-title { font-size: 26px; margin-bottom: 15px; }
 
-        /* ברירת מחדל למובייל - הכל מוצג כבלוק אנכי רגיל ומרווח */
-        .grid-3-cols {
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            margin-top: 30px;
-        }
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
+        .grid-3-cols { display: flex; flex-direction: column; gap: 50px; margin-top: 30px; }
+        .grid-item { display: flex; flex-direction: column; width: 100%; }
 
         .projects-gallery { display: flex; flex-direction: column; gap: 40px; padding-bottom: 20px; }
         
@@ -177,21 +84,7 @@
         .play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
         .poster-link:hover .play-overlay { background: rgba(0,0,0,0.4); }
         
-        .play-button { 
-            width: 80px; 
-            height: 80px; 
-            background: rgba(255, 255, 255, 0.85); 
-            color: var(--beyond-purple); 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 0; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
-            backdrop-filter: blur(5px); 
-            transition: 0.3s; 
-            border: 2px solid rgba(62, 56, 162, 0.2);
-        }
+        .play-button { width: 80px; height: 80px; background: rgba(255, 255, 255, 0.85); color: var(--beyond-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.4); backdrop-filter: blur(5px); transition: 0.3s; border: 2px solid rgba(62, 56, 162, 0.2); }
         .play-button svg { width: 35px; height: 35px; fill: currentColor; }
         .poster-link:hover .play-button { transform: scale(1.1); background: var(--beyond-purple); color: white; }
 
@@ -217,101 +110,34 @@
         .social-link { text-decoration: none; color: var(--beyond-purple); border: 2px solid var(--beyond-purple); padding: 10px 20px; border-radius: 50px; font-weight: bold; transition: 0.3s; font-size: 15px; }
         .social-link:hover { background: var(--beyond-purple); color: white; }
 
-        /* סליידר לפני ואחרי (Before & After) */
+        /* סליידר נגרר - עבור 3 הפרויקטים (סבון, פיוזטי, שעון) */
         .ba-title { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 15px; color: var(--beyond-purple); }
-        
-        .before-after-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            border: 1px solid rgba(62, 56, 162, 0.1);
-            margin: 0 auto;
-        }
-        .ba-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        /* כאן תוקן הכיוון! התמונה של ה"אחרי" תוצג בצד ימין (מ-50% ועד 100%) וה"לפני" תוצג בשמאל */
-        .ba-img-after {
-            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-        }
-        
-        .ba-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: ew-resize;
-            z-index: 10;
-        }
-        .ba-line {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 4px;
-            height: 100%;
-            background: white;
-            z-index: 5;
-            pointer-events: none;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            transform: translateX(-50%);
-        }
-        .ba-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 44px;
-            height: 44px;
-            background: white;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 6;
-            pointer-events: none;
-            box-shadow: 0 0 15px rgba(0,0,0,0.4);
-            border: 2px solid var(--beyond-purple);
-        }
-        .ba-button::before, .ba-button::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-        }
-        .ba-button::before {
-            border-right: 8px solid var(--beyond-purple);
-            left: 8px;
-        }
-        .ba-button::after {
-            border-left: 8px solid var(--beyond-purple);
-            right: 8px;
-        }
+        .before-after-container { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 1px solid rgba(62, 56, 162, 0.1); margin: 0 auto; }
+        .ba-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        .ba-img-after { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
+        .ba-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; }
+        .ba-line { position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background: white; z-index: 5; pointer-events: none; box-shadow: 0 0 10px rgba(0,0,0,0.5); transform: translateX(-50%); }
+        .ba-button { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; background: white; border-radius: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; z-index: 6; pointer-events: none; box-shadow: 0 0 15px rgba(0,0,0,0.4); border: 2px solid var(--beyond-purple); }
+        .ba-button::before, .ba-button::after { content: ''; position: absolute; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+        .ba-button::before { border-right: 8px solid var(--beyond-purple); left: 8px; }
+        .ba-button::after { border-left: 8px solid var(--beyond-purple); right: 8px; }
 
-        /* חוקים המיועדים אך ורק למחשב (החל ממסך ברוחב 951 פיקסלים ומעלה) */
+        /* העיצוב החדש והמדויק לסיפור חוזר - סטטי עם חץ באמצע */
+        .static-ba-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 25px; margin-top: 30px; }
+        .static-ba-item { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; width: 100%; transition: 0.3s; background: #fff; }
+        .static-ba-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(62, 56, 162, 0.15); }
+        .static-ba-item img { width: 100%; height: auto; display: block; }
+        
+        .static-ba-label { position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.7); color: white; padding: 6px 16px; border-radius: 30px; font-weight: bold; font-size: 14px; backdrop-filter: blur(5px); }
+        .item-after { border: 3px solid var(--beyond-purple); box-shadow: 0 15px 35px rgba(62, 56, 162, 0.2); }
+        .item-after .static-ba-label { background: var(--beyond-purple); }
+        
+        .static-ba-arrow { width: 60px; height: 60px; background: var(--beyond-purple); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(62, 56, 162, 0.3); border: 4px solid white; flex-shrink: 0; transform: rotate(90deg); z-index: 5; margin: -10px 0;}
+        .static-ba-arrow svg { width: 30px; height: 30px; fill: currentColor; }
+
         @media (min-width: 951px) {
             .hero-section h1 { font-size: 65px; }
-            
-            /* הפעלת סידור 3 העמודות במחשב בלבד */
-            .grid-3-cols {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 40px;
-                align-items: start;
-            }
+            .grid-3-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: start; }
             .grid-item .bio-text { font-size: 15px; }
             .grid-item .workflow-title { font-size: 19px; }
             .grid-item .workflow-step { font-size: 15px; line-height: 1.5; }
@@ -319,46 +145,43 @@
             .ba-title { font-size: 19px; }
             .poster-link { max-width: 100%; }
             .welcome-text { font-size: 22px; max-width: 800px; }
+            
+            /* סידור שורה במחשב לסיפור חוזר */
+            .static-ba-wrapper { flex-direction: row; align-items: center; }
+            .static-ba-item { max-width: 380px; }
+            .item-after { max-width: 500px; } /* כי התמונה מימין רחבה יותר */
+            .static-ba-arrow { transform: rotate(0deg); margin: 0 -20px; } /* חץ ימינה */
         }
         
-        /* התאמות למובייל ומסכים קטנים בלבד */
         @media (max-width: 950px) {
             .poster-container, .wip-container { max-width: 340px; }
             .before-after-container { max-width: 380px; }
-            
-            /* סידור הטריילרים בטלפון בלבד */
             .trailer-chosen { order: 1; }
             .trailer-future { order: 2; }
             .trailer-marketing { order: 3; }
+            
+            .static-ba-item { max-width: 450px; margin: 0 auto; }
         }
 
         @media (max-width: 600px) {
             #main-viewport { padding: 80px 10px 140px 10px; } 
-            
             .brand-logo-home { max-width: 95%; }
             .welcome-text { font-size: 16px; padding: 0 15px; }
-            
             .hero-section h1 { font-size: 32px; }
             .hero-line { margin: 10px auto 25px auto; }
-            
             .project-card { padding: 25px 20px; border-radius: 20px; }
             .project-title { font-size: 22px; }
             .bio-text { font-size: 15px; line-height: 1.6; }
-            
             .poster-container, .wip-container { max-width: 260px; }
             .play-button { width: 60px; height: 60px; }
             .play-button svg { width: 25px; height: 25px; }
-            
             .workflow-title { font-size: 18px; margin: 20px 0 10px 0; }
             .workflow-step { font-size: 14px; }
-            
             .watch-button { font-size: 14px; padding: 10px 20px; }
             .wip-container span { font-size: 16px; }
             .section-title { font-size: 20px; margin-top: 30px; text-align: center;}
-            
             .contact-form input, .contact-form textarea { padding: 14px; font-size: 16px; }
             .contact-form button { padding: 14px 40px; font-size: 18px; }
-            
             .ba-title { font-size: 18px; margin-bottom: 10px; }
             .before-after-container { max-width: 100%; }
         }
@@ -377,34 +200,25 @@
 
     <nav class="nav-list">
         <div class="nav-link main-nav active" onclick="switchPage('home', this)">
-            <span class="nav-icon">
-                <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            </span>
+            <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>
             <span class="nav-text" data-he="ראשי" data-en="HOME">ראשי</span>
         </div>
         <div class="nav-link main-nav" onclick="switchPage('portfolio', this)">
-            <span class="nav-icon">
-                <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
-            </span>
+            <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></span>
             <span class="nav-text" data-he="פורטפוליו" data-en="PORTFOLIO">פורטפוליו</span>
         </div>
         <div class="nav-link main-nav" onclick="switchPage('about', this)">
-            <span class="nav-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            </span>
+            <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span>
             <span class="nav-text" data-he="קצת עליי" data-en="ABOUT ME">קצת עליי</span>
         </div>
         <div class="nav-link main-nav" onclick="switchPage('contact', this)">
-            <span class="nav-icon">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </span>
+            <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
             <span class="nav-text" data-he="צור קשר" data-en="CONTACT">צור קשר</span>
         </div>
     </nav>
 
     <main id="main-viewport">
         
-        <!-- עמוד הבית עם טקסט הפתיחה והכפתור -->
         <div id="home" class="page-content active">
             <img src="logo-he_2.jpg" alt="BEYOND IMAGINATION" class="brand-logo-home logo-he">
             <img src="logo-en_2.jpg" alt="BEYOND IMAGINATION" class="brand-logo-home logo-en">
@@ -423,13 +237,10 @@
             
             <div class="projects-gallery" id="projects-gallery">
                 
-                <!-- משבצת 1: טריילרים שנעשו באמצעות בינה מלאכותית -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎬 טריילרים שנעשו באמצעות בינה מלאכותית" data-en="🎬 AI-Generated Trailers">🎬 טריילרים שנעשו באמצעות בינה מלאכותית</h2>
                     
                     <div class="grid-3-cols">
-                        
-                        <!-- פריט ימין במחשב: וידאו שיווקי / טריילר יעלה בקרוב -->
                         <div class="grid-item trailer-marketing">
                             <h3 class="project-title" data-he="📱 וידאו שיווקי וסושיאל" data-en="📱 Marketing & Social Media">📱 וידאו שיווקי וסושיאל</h3>
                             <div class="bio-text">
@@ -447,7 +258,6 @@
                             <div class="workflow-step">📱 <strong>Social Editing:</strong> <span data-he="חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro." data-en="Fast cuts, dynamic captions, and trending sound in Premiere Pro.">חיתוכים מהירים, כתוביות דינמיות וסאונד טרנדי ב-Premiere Pro.</span></div>
                         </div>
 
-                        <!-- פריט אמצע במחשב: הנבחר -->
                         <div class="grid-item trailer-chosen">
                             <h3 class="project-title" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h3>
                             <div class="bio-text">
@@ -461,9 +271,7 @@
                                 <div class="poster-container">
                                     <img src="1000178137.jpg" alt="הנבחר" class="poster-image">
                                     <div class="play-overlay">
-                                        <div class="play-button">
-                                            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                                        </div>
+                                        <div class="play-button"><svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
                                     </div>
                                 </div>
                                 <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
@@ -477,7 +285,6 @@
                             <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
                         </div>
 
-                        <!-- פריט שמאל במחשב: ברוכים הבאים לעתיד -->
                         <div class="grid-item trailer-future">
                             <h3 class="project-title" data-he="🎬 ברוכים הבאים לעתיד" data-en="🎬 Welcome to the Future">🎬 ברוכים הבאים לעתיד</h3>
                             <div class="bio-text">
@@ -491,9 +298,7 @@
                                 <div class="poster-container">
                                     <img src="1000170609.png" alt="ברוכים הבאים לעתיד" class="poster-image">
                                     <div class="play-overlay">
-                                        <div class="play-button">
-                                            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                                        </div>
+                                        <div class="play-button"><svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
                                     </div>
                                 </div>
                                 <div class="watch-button" data-he="לחצו על התמונה לצפייה בטריילר" data-en="Click poster to watch the trailer">לחצו על התמונה לצפייה בטריילר</div>
@@ -504,11 +309,9 @@
                             <div class="workflow-step">🎭 <strong>Sound:</strong> <span data-he="בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay." data-en="Building emotional depth via ElevenLabs narration, Suno AI composition, and meticulous integration of Pixabay sound effects (SFX).">בניית עומק רגשי ואווירה דרך דיבוב ב-ElevenLabs, הלחנה ב-Suno AI, ושילוב מדוקדק של אפקטים קוליים (SFX) מספריית Pixabay.</span></div>
                             <div class="workflow-step">🎞️ <strong>Mastering:</strong> <span data-he="שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול." data-en="High-quality integration of all elements in Adobe Premiere Pro, including color grading (SDR), advanced sound mixing, and Auto Ducking for a perfect soundtrack.">שילוב איכותי של כל האלמנטים ב-Adobe Premiere Pro, כולל תיקוני צבע (SDR), מיקס סאונד מתקדם, ו-Auto Ducking לדיוק מושלם של פס הקול.</span></div>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- משבצת 2: עיבוד תמונה וסליידרים לפני ואחרי -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)" data-en="🎨 Visual Upgrading (Before & After)">🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
@@ -519,8 +322,6 @@
                     </div>
                     
                     <div class="grid-3-cols">
-                        
-                        <!-- פריט ימין במחשב: סבון הוואי -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="מארז סבון הוואי" data-en="Hawaii Soap Box">מארז סבון הוואי</h3>
                             <div class="before-after-container">
@@ -532,7 +333,6 @@
                             </div>
                         </div>
 
-                        <!-- פריט אמצע במחשב: פיוז טי -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="קמפיין Fuze Tea" data-en="Fuze Tea Campaign">קמפיין Fuze Tea</h3>
                             <div class="before-after-container">
@@ -544,7 +344,6 @@
                             </div>
                         </div>
 
-                        <!-- פריט שמאל במחשב: שעון -->
                         <div class="grid-item">
                             <h3 class="ba-title" data-he="עיצוב שעון יוקרתי" data-en="Luxury Watch Design">עיצוב שעון יוקרתי</h3>
                             <div class="before-after-container">
@@ -555,25 +354,37 @@
                                 <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
                             </div>
                         </div>
-
                     </div>
                 </div>
                 
-                <!-- משבצת 3: סיפור חוזר - מיתוג מחדש לפלאיירים -->
+                <!-- העיצוב החדש והמדויק לסיפור חוזר - כמו בתמונה ששלחת! -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📚 סיפור חוזר - מיתוג מחדש" data-en="📚 Sipur Hozer - Rebranding">📚 סיפור חוזר - מיתוג מחדש</h2>
-                    <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
-                        <p data-he="יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. הזיזו את הסליידר לראות איך הפכנו סקיצה בסיסית לתוצר פרסומי יוקרתי ומואר בעזרת AI." data-en="Creating high-end flyers from simple concepts. Use the slider to see how we transformed a basic sketch into a luxurious, illuminated promotional product using AI.">
-                            יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. הזיזו את הסליידר לראות איך הפכנו סקיצה בסיסית לתוצר פרסומי יוקרתי ומואר בעזרת AI.
+                    <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
+                        <p data-he="יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. משמאל נמצאת הסקיצה הבסיסית, ומימין התוצר הפרסומי היוקרתי והמואר בעזרת AI." data-en="Creating high-end flyers from simple concepts. On the left is the basic sketch, and on the right is the luxurious, illuminated promotional product using AI.">
+                            יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. משמאל נמצאת הסקיצה הבסיסית, ומימין התוצר הפרסומי היוקרתי והמואר בעזרת AI.
                         </p>
                     </div>
                     
-                    <div class="before-after-container" style="max-width: 450px; aspect-ratio: 7 / 10;">
-                        <img src="sipur-before.jpg" alt="Before" class="ba-img ba-img-before">
-                        <img src="sipur-after.jpg" alt="After" class="ba-img ba-img-after">
-                        <div class="ba-line"></div>
-                        <div class="ba-button"></div>
-                        <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
+                    <div class="static-ba-wrapper" dir="ltr">
+                        
+                        <!-- התמונה השמאלית - סקיצה (לפני) -->
+                        <div class="static-ba-item">
+                            <div class="static-ba-label" data-he="לפני" data-en="Before">לפני</div>
+                            <img src="sipur-before.jpg" alt="Before - Sketch">
+                        </div>
+                        
+                        <!-- החץ המעוצב באמצע -->
+                        <div class="static-ba-arrow">
+                            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+                        </div>
+                        
+                        <!-- התמונה הימנית - יוקרתי (אחרי) -->
+                        <div class="static-ba-item item-after">
+                            <div class="static-ba-label" data-he="אחרי" data-en="After">אחרי</div>
+                            <img src="sipur-after.jpg" alt="After - Premium">
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -643,7 +454,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // תוקנה הלוגיקה: התמונה הנגללת (אחרי) מופיעה בצד ימין מנקודת ה-val ועד 100%
         function updateSlider(input) {
             const container = input.parentElement;
             const val = input.value;
