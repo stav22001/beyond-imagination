@@ -82,7 +82,6 @@
         .poster-image { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
         .poster-link:hover .poster-image { transform: scale(1.05); }
         
-        /* התיקון לאפור! הרקע שקוף כברירת מחדל */
         .play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
         .poster-link:hover .play-overlay { background: rgba(0,0,0,0.4); }
         
@@ -296,7 +295,16 @@
                     </div>
                     
                     <div class="grid-3-cols">
-                        <!-- עמודה 1: I LOVE EAT -->
+                        
+                        <!-- עמודה 1: מרובע פרסומת עתידית (יופיע בצד ימין) -->
+                        <div class="grid-item">
+                            <h3 class="project-title" data-he="קמפיין עתידי" data-en="Future Campaign" style="text-align: center;">קמפיין עתידי</h3>
+                            <div class="wip-container">
+                                <span data-he="[ הפרסומת תעלה בקרוב ]" data-en="[ Commercial Coming Soon ]">[ הפרסומת תעלה בקרוב ]</span>
+                            </div>
+                        </div>
+
+                        <!-- עמודה 2: I LOVE EAT (יופיע באמצע!) -->
                         <div class="grid-item">
                             <h3 class="project-title" data-he="I LOVE EAT" data-en="I LOVE EAT" style="text-align: center;">I LOVE EAT</h3>
                             <a href="https://youtu.be/EgA2stIMqJQ?si=_uud7yHSEBstwlPd" target="_blank" class="poster-link">
@@ -317,15 +325,7 @@
                             <div class="workflow-step">🎞️ <strong>Premiere Pro:</strong> <span data-he="חיתוכים, קצב וסנכרון על הביט." data-en="Cuts, rhythm, and sync.">חיתוכים, קצב וסנכרון על הביט.</span></div>
                         </div>
 
-                        <!-- עמודה 2: מרובע פרסומת עתידית -->
-                        <div class="grid-item">
-                            <h3 class="project-title" data-he="קמפיין עתידי" data-en="Future Campaign" style="text-align: center;">קמפיין עתידי</h3>
-                            <div class="wip-container">
-                                <span data-he="[ הפרסומת תעלה בקרוב ]" data-en="[ Commercial Coming Soon ]">[ הפרסומת תעלה בקרוב ]</span>
-                            </div>
-                        </div>
-
-                        <!-- עמודה 3: מרובע פרסומת עתידית -->
+                        <!-- עמודה 3: מרובע פרסומת עתידית (יופיע בצד שמאל) -->
                         <div class="grid-item">
                             <h3 class="project-title" data-he="קמפיין עתידי" data-en="Future Campaign" style="text-align: center;">קמפיין עתידי</h3>
                             <div class="wip-container">
@@ -365,7 +365,6 @@
                                 </p>
                             </div>
                             
-                            <!-- הקישור עודכן ליוטיוב -->
                             <a href="https://youtu.be/wwu79Gszwhc?si=Q0L1v8yi1Q-91xsu" target="_blank" class="poster-link">
                                 <div class="poster-container">
                                     <img src="1000178137.jpg" alt="הנבחר" class="poster-image">
@@ -393,7 +392,6 @@
                                 </p>
                             </div>
                             
-                            <!-- הקישור עודכן ליוטיוב -->
                             <a href="https://youtu.be/qyN7IwBDmi8?si=mNEYY6HitlsqbyVx" target="_blank" class="poster-link">
                                 <div class="poster-container">
                                     <img src="1000170609.png" alt="ברוכים הבאים לעתיד" class="poster-image">
@@ -480,7 +478,6 @@
                     
                     <!-- זוג 1: גשר וכדור פורח -->
                     <div class="static-ba-wrapper landscape-view" dir="ltr" style="margin-bottom: 60px;">
-                        <!-- עמודה שמאלית - לפני -->
                         <div class="static-ba-col">
                             <div class="static-ba-top-label" data-he="לפני" data-en="Before">לפני</div>
                             <div class="static-ba-img-box" onclick="openLightboxSingle('bridge-before.jpg')">
@@ -491,12 +488,10 @@
                             </div>
                         </div>
                         
-                        <!-- החץ המעוצב באמצע -->
                         <div class="static-ba-arrow">
                             <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
                         </div>
                         
-                        <!-- עמודה ימנית - אחרי -->
                         <div class="static-ba-col col-after">
                             <div class="static-ba-top-label" data-he="אחרי" data-en="After">אחרי</div>
                             <div class="static-ba-img-box item-after" onclick="openLightboxSingle('bridge-after.jpg')">
@@ -510,7 +505,6 @@
 
                     <!-- זוג 2: אגם ושונית אלמוגים -->
                     <div class="static-ba-wrapper landscape-view" dir="ltr">
-                        <!-- עמודה שמאלית - לפני -->
                         <div class="static-ba-col">
                             <div class="static-ba-top-label" data-he="לפני" data-en="Before">לפני</div>
                             <div class="static-ba-img-box" onclick="openLightboxSingle('lake-before.jpg')">
@@ -521,12 +515,10 @@
                             </div>
                         </div>
                         
-                        <!-- החץ המעוצב באמצע -->
                         <div class="static-ba-arrow">
                             <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
                         </div>
                         
-                        <!-- עמודה ימנית - אחרי -->
                         <div class="static-ba-col col-after">
                             <div class="static-ba-top-label" data-he="אחרי" data-en="After">אחרי</div>
                             <div class="static-ba-img-box item-after" onclick="openLightboxSingle('lake-after.jpg')">
