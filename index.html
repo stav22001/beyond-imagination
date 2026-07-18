@@ -162,6 +162,49 @@
         .static-ba-arrow { width: 60px; height: 60px; background: var(--beyond-purple); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(62, 56, 162, 0.3); border: 4px solid white; flex-shrink: 0; transform: rotate(90deg); z-index: 5; margin: 10px 0;}
         .static-ba-arrow svg { width: 30px; height: 30px; fill: currentColor; }
 
+        /* ========================================= */
+        /* מסך בקשת סיבוב למובייל (נוסף לבקשתך) */
+        /* ========================================= */
+        #rotate-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--beyond-purple);
+            color: white;
+            z-index: 999999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        #rotate-overlay svg {
+            width: 70px; height: 70px; fill: white; margin-bottom: 20px;
+            animation: rotatePhone 2s infinite ease-in-out;
+        }
+        @keyframes rotatePhone {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(-90deg); }
+            100% { transform: rotate(0deg); }
+        }
+        #rotate-overlay h2 { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
+        #rotate-overlay p { font-size: 16px; opacity: 0.8; }
+
+        /* ברגע שהמסך קטן והטלפון במצב אנכי - נציג את מסך החסימה */
+        @media screen and (max-width: 950px) and (orientation: portrait) {
+            #rotate-overlay { display: flex; }
+            body { overflow: hidden; }
+        }
+
+        /* תוספת קטנה: כשהטלפון שוכב (Landscape), נקטין קצת את התפריט כדי שיהיה יותר מקום לעבודות */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .nav-list { bottom: 10px; padding: 4px 10px; }
+            .nav-icon { width: 20px; height: 20px; }
+            .nav-text { font-size: 10px; }
+            .lang-switch-container { top: 10px; left: 10px; }
+            #main-viewport { padding-top: 20px; }
+        }
+
         @media (min-width: 951px) {
             .hero-section h1 { font-size: 65px; }
             .grid-3-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: start; }
@@ -218,6 +261,13 @@
     </style>
 </head>
 <body class="lang-he">
+
+    <!-- מסך בקשת סיבוב למובייל -->
+    <div id="rotate-overlay">
+        <svg viewBox="0 0 24 24"><path d="M16.48 2.52c3.27 1.55 5.61 4.72 5.97 8.48h1.5C23.44 4.84 18.29 0 12 0l-.66.03 3.81 3.81 1.33-1.32zm-6.25-.77c-.59-.59-1.54-.59-2.12 0L1.75 8.11c-.59.59-.59 1.54 0 2.12l12.02 12.02c.59.59 1.54.59 2.12 0l6.36-6.36c.59-.59.59-1.54 0-2.12L10.23 1.75zm4.6 19.46L2.81 9.17l6.36-6.36 12.02 12.02-6.36 6.36zm-7.3-9.27L5.4 9.81l6.36-6.36 2.12 2.12-6.36 6.36z"/></svg>
+        <h2 data-he="סובב את הטלפון לחוויה יותר טובה" data-en="Rotate your phone for a better experience">סובב את הטלפון לחוויה יותר טובה</h2>
+        <p data-he="האתר מותאם לתצוגה רוחבית (Landscape)" data-en="The site is optimized for Landscape mode">האתר מותאם לתצוגה רוחבית (Landscape)</p>
+    </div>
 
     <!-- המודל הקופץ (Lightbox) -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
