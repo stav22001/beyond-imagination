@@ -115,8 +115,9 @@
         .ba-title { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 15px; color: var(--beyond-purple); }
         .before-after-container { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 1px solid rgba(62, 56, 162, 0.1); margin: 0 auto; }
         
-        /* הנה השינוי מ-16/9 ל-3/2 שיחזיר את הגודל המקורי */
-        .landscape-slider { aspect-ratio: 3 / 2; max-width: 900px; margin: 0 auto; }
+        /* הגדרות מדויקות ליחס התמונות ששלחת */
+        .bridge-slider { aspect-ratio: 3746 / 2853; max-width: 800px; margin: 0 auto; }
+        .lake-slider { aspect-ratio: 4258 / 2509; max-width: 900px; margin: 0 auto; }
 
         .ba-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
         .ba-img-after { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
@@ -205,7 +206,7 @@
         /* ========================================= */
         @media screen and (max-height: 500px) and (orientation: landscape) {
             
-            /* תפריט ימני צדדי (כמו שביקשת) */
+            /* תפריט ימני צדדי */
             .nav-list { 
                 top: 50% !important; 
                 right: 15px !important; 
@@ -271,7 +272,7 @@
             .play-button svg { width: 18px !important; height: 18px !important; }
             .watch-button { font-size: 10px !important; padding: 6px 12px !important; margin-top: 8px !important; }
             
-            /* התאמת תמונות לפני/אחרי לשורה אחת */
+            /* התאמת תמונות לפני/אחרי לשורה אחת (סיפור חוזר) */
             .ba-title { font-size: 13px !important; margin-bottom: 5px !important; }
             .static-ba-wrapper { flex-direction: row !important; gap: 10px !important; margin-top: 10px !important; }
             .static-ba-col { max-width: 45% !important; margin: 0 !important; gap: 5px !important; }
@@ -298,7 +299,7 @@
             .static-ba-arrow { transform: rotate(0deg); margin: 0; }
         }
         
-        /* גיבוי למובייל אנכי שלא נועלים אותו (כדי שהקוד הקודם לא ידרס) */
+        /* גיבוי למובייל אנכי שלא נועלים אותו */
         @media (max-width: 950px) and (orientation: portrait) {
             .poster-container, .wip-container { max-width: 340px; }
             .before-after-container { max-width: 380px; }
@@ -351,7 +352,7 @@
         <img id="lightbox-img" src="" alt="Enlarged Image" style="display: none;">
         
         <!-- לסליידרים במסך מלא -->
-        <div id="lightbox-slider" class="before-after-container landscape-slider" style="display: none; width: 90vw; max-width: 80vh; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); cursor: default; border: none; background: transparent;">
+        <div id="lightbox-slider" class="before-after-container" style="display: none; width: 90vw; max-width: 80vh; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); cursor: default; border: none; background: transparent;">
             <img id="lb-before" src="" class="ba-img ba-img-before">
             <img id="lb-after" src="" class="ba-img ba-img-after">
             <div class="ba-line" id="lb-line"></div>
@@ -603,14 +604,14 @@
                     <!-- זוג 1: גשר וכדור פורח -->
                     <div style="margin-bottom: 50px;">
                         <h3 class="ba-title" data-he="גשר - שדרוג נוף" data-en="Bridge - Landscape Upgrade">גשר - שדרוג נוף</h3>
-                        <div class="before-after-container landscape-slider" dir="ltr">
+                        <div class="before-after-container bridge-slider" dir="ltr">
                             <img src="bridge-before.jpg" alt="Before - Bridge" class="ba-img ba-img-before">
                             <img src="bridge-after.jpg" alt="After - Balloon and Graffiti" class="ba-img ba-img-after">
                             <div class="ba-line"></div>
                             <div class="ba-button"></div>
                             <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
                             
-                            <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('bridge-before.jpg', 'bridge-after.jpg')">
+                            <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('bridge-before.jpg', 'bridge-after.jpg', 'bridge-slider')">
                                 <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                             </button>
                         </div>
@@ -619,14 +620,14 @@
                     <!-- זוג 2: אגם ושונית אלמוגים -->
                     <div style="margin-bottom: 30px;">
                         <h3 class="ba-title" data-he="אגם - שונית אלמוגים" data-en="Lake - Coral Reef">אגם - שונית אלמוגים</h3>
-                        <div class="before-after-container landscape-slider" dir="ltr">
+                        <div class="before-after-container lake-slider" dir="ltr">
                             <img src="lake-before.jpg" alt="Before - Lake" class="ba-img ba-img-before">
                             <img src="lake-after.jpg" alt="After - Coral Reef" class="ba-img ba-img-after">
                             <div class="ba-line"></div>
                             <div class="ba-button"></div>
                             <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
                             
-                            <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('lake-before.jpg', 'lake-after.jpg')">
+                            <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('lake-before.jpg', 'lake-after.jpg', 'lake-slider')">
                                 <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                             </button>
                         </div>
@@ -751,9 +752,12 @@
             document.getElementById('lightbox').classList.add('active');
         }
 
-        function openLightboxSlider(srcBefore, srcAfter) {
+        function openLightboxSlider(srcBefore, srcAfter, sliderClass) {
             document.getElementById('lightbox-img').style.display = 'none';
             const lbSlider = document.getElementById('lightbox-slider');
+            
+            // מעדכנים את הקלאס של הסליידר בתוך ה-Lightbox כדי שישמור על הפרופורציה הנכונה גם במסך מלא
+            lbSlider.className = 'before-after-container ' + (sliderClass || '');
             
             const input = lbSlider.querySelector('.ba-slider');
             input.value = 50;
