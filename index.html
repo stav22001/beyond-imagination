@@ -114,11 +114,6 @@
         /* סליידר נגרר - עבור הפרויקטים הקיימים */
         .ba-title { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 15px; color: var(--beyond-purple); }
         .before-after-container { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 1px solid rgba(62, 56, 162, 0.1); margin: 0 auto; }
-        
-        /* הגדרות מדויקות ליחס התמונות ששלחת */
-        .bridge-slider { aspect-ratio: 3746 / 2853; max-width: 800px; margin: 0 auto; }
-        .lake-slider { aspect-ratio: 4258 / 2509; max-width: 900px; margin: 0 auto; }
-
         .ba-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
         .ba-img-after { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
         .ba-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; }
@@ -152,18 +147,14 @@
         .enlarge-btn:hover { transform: scale(1.15); background-color: #2c277a; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .enlarge-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-        /* העיצוב הסטטי - כותרות למעלה וכפתור הגדלה */
+        /* העיצוב הסטטי - נשמר לגיבוי כדי לא למחוק כלום! */
         .static-ba-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 35px; margin-top: 30px; }
         .static-ba-col { display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; }
-        
         .static-ba-top-label { font-size: 24px; font-weight: 800; color: #222; }
-        
         .static-ba-img-box { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; width: 100%; transition: 0.3s; background: #fff; cursor: zoom-in; }
         .static-ba-img-box:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(62, 56, 162, 0.15); }
         .static-ba-img-box img { width: 100%; height: auto; display: block; }
-        
         .item-after { border: 3px solid var(--beyond-purple); box-shadow: 0 15px 35px rgba(62, 56, 162, 0.2); }
-        
         .static-ba-arrow { width: 60px; height: 60px; background: var(--beyond-purple); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(62, 56, 162, 0.3); border: 4px solid white; flex-shrink: 0; transform: rotate(90deg); z-index: 5; margin: 10px 0;}
         .static-ba-arrow svg { width: 30px; height: 30px; fill: currentColor; }
 
@@ -272,7 +263,7 @@
             .play-button svg { width: 18px !important; height: 18px !important; }
             .watch-button { font-size: 10px !important; padding: 6px 12px !important; margin-top: 8px !important; }
             
-            /* התאמת תמונות לפני/אחרי לשורה אחת (סיפור חוזר) */
+            /* התאמת תמונות לפני/אחרי לשורה אחת (במידה ויש כאלה שעדיין עובדות ככה) */
             .ba-title { font-size: 13px !important; margin-bottom: 5px !important; }
             .static-ba-wrapper { flex-direction: row !important; gap: 10px !important; margin-top: 10px !important; }
             .static-ba-col { max-width: 45% !important; margin: 0 !important; gap: 5px !important; }
@@ -297,9 +288,12 @@
             .static-ba-col { max-width: 380px; }
             .col-after { max-width: 500px; }
             .static-ba-arrow { transform: rotate(0deg); margin: 0; }
+            
+            .static-ba-wrapper.landscape-view .static-ba-col { max-width: 480px; }
+            .static-ba-wrapper.landscape-view .col-after { max-width: 480px; }
         }
         
-        /* גיבוי למובייל אנכי שלא נועלים אותו */
+        /* גיבוי למובייל אנכי */
         @media (max-width: 950px) and (orientation: portrait) {
             .poster-container, .wip-container { max-width: 340px; }
             .before-after-container { max-width: 380px; }
@@ -409,7 +403,7 @@
             
             <div class="projects-gallery" id="projects-gallery">
                 
-                <!-- NEW SECTION: I LOVE EAT COMMERCIAL & PLACEHOLDERS -->
+                <!-- I LOVE EAT COMMERCIAL -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🍔 קמפיין פרסומי מסחרי" data-en="🍔 Commercial Advertising Campaign">🍔 קמפיין פרסומי מסחרי</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
@@ -420,8 +414,6 @@
                     </div>
                     
                     <div class="grid-3-cols">
-                        
-                        <!-- עמודה 1: מרובע פרסומת עתידית (יופיע בצד ימין) -->
                         <div class="grid-item">
                             <h3 class="project-title" data-he="קמפיין עתידי" data-en="Future Campaign" style="text-align: center;">קמפיין עתידי</h3>
                             <div class="wip-container">
@@ -429,7 +421,6 @@
                             </div>
                         </div>
 
-                        <!-- עמודה 2: I LOVE EAT (יופיע באמצע!) -->
                         <div class="grid-item">
                             <h3 class="project-title" data-he="I LOVE EAT" data-en="I LOVE EAT" style="text-align: center;">I LOVE EAT</h3>
                             <a href="https://youtu.be/EgA2stIMqJQ?si=_uud7yHSEBstwlPd" target="_blank" class="poster-link">
@@ -450,7 +441,6 @@
                             <div class="workflow-step">🎞️ <strong>Premiere Pro:</strong> <span data-he="חיתוכים, קצב וסנכרון על הביט." data-en="Cuts, rhythm, and sync.">חיתוכים, קצב וסנכרון על הביט.</span></div>
                         </div>
 
-                        <!-- עמודה 3: מרובע פרסומת עתידית (יופיע בצד שמאל) -->
                         <div class="grid-item">
                             <h3 class="project-title" data-he="קמפיין עתידי" data-en="Future Campaign" style="text-align: center;">קמפיין עתידי</h3>
                             <div class="wip-container">
@@ -460,6 +450,7 @@
                     </div>
                 </div>
 
+                <!-- AI TRAILERS -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎬 טריילרים שנעשו באמצעות בינה מלאכותית" data-en="🎬 AI-Generated Trailers">🎬 טריילרים שנעשו באמצעות בינה מלאכותית</h2>
                     
@@ -535,6 +526,7 @@
                     </div>
                 </div>
 
+                <!-- VISUAL UPGRADING -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)" data-en="🎨 Visual Upgrading (Before & After)">🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
@@ -592,76 +584,68 @@
                     </div>
                 </div>
                 
-                <!-- NEW SECTION: יצירת תמונות עוצרות נשימה (Bridge & Coral Lake) -->
+                <!-- BREATHTAKING IMAGES (NOW IN 3-COL GRID LIKE FUZE TEA) -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="✨ יצירת תמונות עוצרות נשימה" data-en="✨ Creating Breathtaking Images">✨ יצירת תמונות עוצרות נשימה</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
-                        <p data-he="שדרוג מסיבי של תמונות נוף וסביבה באמצעות בינה מלאכותית. הפיכת פריימים רגילים ליצירות אמנות סוריאליסטיות ועשירות בפרטים. הזיזו את הסליידר ימינה ושמאלה כדי לראות את ההבדל." data-en="Massive upgrading of landscape and environment images using AI. Transforming ordinary frames into surreal, highly detailed works of art. Drag the slider to see the difference.">
+                        <p data-he="שדרוג מסיבי של תמונות נוף וסביבה באמצעות בינה מלאכותית. הפיכת פריימים רגילים ליצירות אמנות סוריאליסטיות ועשירות בפרטים. הזיזו את הסליידר ימינה ושמאלה כדי לראות את ההבדל." data-en="Massive upgrading of landscape and environment images using AI. Transforming ordinary frames into surreal, highly detailed works of art. Drag the slider left and right to see the difference.">
                             שדרוג מסיבי של תמונות נוף וסביבה באמצעות בינה מלאכותית. הפיכת פריימים רגילים ליצירות אמנות סוריאליסטיות ועשירות בפרטים. הזיזו את הסליידר ימינה ושמאלה כדי לראות את ההבדל.
                         </p>
                     </div>
                     
-                    <!-- זוג 1: גשר וכדור פורח -->
-                    <div style="margin-bottom: 50px;">
-                        <h3 class="ba-title" data-he="גשר - שדרוג נוף" data-en="Bridge - Landscape Upgrade">גשר - שדרוג נוף</h3>
-                        <div class="before-after-container bridge-slider" dir="ltr">
-                            <img src="bridge-before.jpg" alt="Before - Bridge" class="ba-img ba-img-before">
-                            <img src="bridge-after.jpg" alt="After - Balloon and Graffiti" class="ba-img ba-img-after">
-                            <div class="ba-line"></div>
-                            <div class="ba-button"></div>
-                            <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
-                            
-                            <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('bridge-before.jpg', 'bridge-after.jpg', 'bridge-slider')">
-                                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- זוג 2: אגם ושונית אלמוגים -->
-                    <div style="margin-bottom: 30px;">
-                        <h3 class="ba-title" data-he="אגם - שונית אלמוגים" data-en="Lake - Coral Reef">אגם - שונית אלמוגים</h3>
-                        <div class="before-after-container lake-slider" dir="ltr">
-                            <img src="lake-before.jpg" alt="Before - Lake" class="ba-img ba-img-before">
-                            <img src="lake-after.jpg" alt="After - Coral Reef" class="ba-img ba-img-after">
-                            <div class="ba-line"></div>
-                            <div class="ba-button"></div>
-                            <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
-                            
-                            <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('lake-before.jpg', 'lake-after.jpg', 'lake-slider')">
-                                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📚 סיפור חוזר - מיתוג מחדש" data-en="📚 Sipur Hozer - Rebranding">📚 סיפור חוזר - מיתוג מחדש</h2>
-                    <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
-                        <p data-he="יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. משמאל נמצאת הסקיצה הבסיסית, ומימין התוצר הפרסומי היוקרתי והמואר בעזרת AI." data-en="Creating high-end flyers from simple concepts. On the left is the basic sketch, and on the right is the luxurious, illuminated promotional product using AI.">
-                            יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. משמאל נמצאת הסקיצה הבסיסית, ומימין התוצר הפרסומי היוקרתי והמואר בעזרת AI.
-                        </p>
-                    </div>
-                    
-                    <div class="static-ba-wrapper" dir="ltr">
-                        <div class="static-ba-col">
-                            <div class="static-ba-top-label" data-he="לפני" data-en="Before">לפני</div>
-                            <div class="static-ba-img-box" onclick="openLightboxSingle('sipur-before.jpg')">
-                                <img src="sipur-before.jpg" alt="Before - Sketch">
-                                <button class="enlarge-btn" title="הגדל תמונה" onclick="event.stopPropagation(); openLightboxSingle('sipur-before.jpg')">
+                    <div class="grid-3-cols">
+                        <div class="grid-item">
+                            <h3 class="ba-title" data-he="גשר - פנטזיה" data-en="Bridge - Fantasy">גשר - פנטזיה</h3>
+                            <div class="before-after-container">
+                                <img src="bridge-before.jpg" alt="Before" class="ba-img ba-img-before">
+                                <img src="bridge-after.jpg" alt="After" class="ba-img ba-img-after">
+                                <div class="ba-line"></div>
+                                <div class="ba-button"></div>
+                                <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
+                                
+                                <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('bridge-before.jpg', 'bridge-after.jpg')">
                                     <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                                 </button>
                             </div>
                         </div>
-                        
-                        <div class="static-ba-arrow">
-                            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+
+                        <div class="grid-item">
+                            <h3 class="ba-title" data-he="אגם אלמוגים" data-en="Coral Lake">אגם אלמוגים</h3>
+                            <div class="before-after-container">
+                                <img src="lake-before.jpg" alt="Before" class="ba-img ba-img-before">
+                                <img src="lake-after.jpg" alt="After" class="ba-img ba-img-after">
+                                <div class="ba-line"></div>
+                                <div class="ba-button"></div>
+                                <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
+                                
+                                <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('lake-before.jpg', 'lake-after.jpg')">
+                                    <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="static-ba-col col-after">
-                            <div class="static-ba-top-label" data-he="אחרי" data-en="After">אחרי</div>
-                            <div class="static-ba-img-box item-after" onclick="openLightboxSingle('sipur-after.jpg')">
-                                <img src="sipur-after.jpg" alt="After - Premium">
-                                <button class="enlarge-btn" title="הגדל תמונה" onclick="event.stopPropagation(); openLightboxSingle('sipur-after.jpg')">
+                    </div>
+                </div>
+
+                <!-- SIPUR HOZER (NOW IN 3-COL GRID) -->
+                <div class="project-card">
+                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📚 סיפור חוזר - מיתוג מחדש" data-en="📚 Sipur Hozer - Rebranding">📚 סיפור חוזר - מיתוג מחדש</h2>
+                    <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
+                        <p data-he="יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. הזיזו את הסליידר לראות את המעבר מהסקיצה הבסיסית לתוצר היוקרתי והמואר ב-AI." data-en="Creating high-end flyers from simple concepts. Drag the slider to see the transition from basic sketch to premium AI-illuminated product.">
+                            יצירת פלאיירים ברמה גבוהה מקונספטים פשוטים. הזיזו את הסליידר לראות את המעבר מהסקיצה הבסיסית לתוצר היוקרתי והמואר ב-AI.
+                        </p>
+                    </div>
+                    
+                    <div class="grid-3-cols">
+                        <div class="grid-item">
+                            <h3 class="ba-title" data-he="סיפור חוזר - סקיצה מול תוצר" data-en="Sipur Hozer - Sketch vs Final">סיפור חוזר - סקיצה מול תוצר</h3>
+                            <div class="before-after-container">
+                                <img src="sipur-before.jpg" alt="Before" class="ba-img ba-img-before">
+                                <img src="sipur-after.jpg" alt="After" class="ba-img ba-img-after">
+                                <div class="ba-line"></div>
+                                <div class="ba-button"></div>
+                                <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
+                                
+                                <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('sipur-before.jpg', 'sipur-after.jpg')">
                                     <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                                 </button>
                             </div>
@@ -752,12 +736,9 @@
             document.getElementById('lightbox').classList.add('active');
         }
 
-        function openLightboxSlider(srcBefore, srcAfter, sliderClass) {
+        function openLightboxSlider(srcBefore, srcAfter) {
             document.getElementById('lightbox-img').style.display = 'none';
             const lbSlider = document.getElementById('lightbox-slider');
-            
-            // מעדכנים את הקלאס של הסליידר בתוך ה-Lightbox כדי שישמור על הפרופורציה הנכונה גם במסך מלא
-            lbSlider.className = 'before-after-container ' + (sliderClass || '');
             
             const input = lbSlider.querySelector('.ba-slider');
             input.value = 50;
