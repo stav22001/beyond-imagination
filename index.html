@@ -163,7 +163,7 @@
         .static-ba-arrow svg { width: 30px; height: 30px; fill: currentColor; }
 
         /* ========================================= */
-        /* מסך בקשת סיבוב למובייל (נוסף לבקשתך) */
+        /* מסך בקשת סיבוב למובייל אנכי */
         /* ========================================= */
         #rotate-overlay {
             display: none;
@@ -190,21 +190,69 @@
         #rotate-overlay h2 { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
         #rotate-overlay p { font-size: 16px; opacity: 0.8; }
 
-        /* ברגע שהמסך קטן והטלפון במצב אנכי - נציג את מסך החסימה */
+        /* חסימה כשמחזיקים לאורך */
         @media screen and (max-width: 950px) and (orientation: portrait) {
             #rotate-overlay { display: flex; }
             body { overflow: hidden; }
         }
 
-        /* תוספת קטנה: כשהטלפון שוכב (Landscape), נקטין קצת את התפריט כדי שיהיה יותר מקום לעבודות */
+        /* ========================================= */
+        /* התאמה מלאה למובייל רוחבי (Landscape) */
+        /* כאן הכל מוצג ב-3 עמודות קטנות כמו במחשב */
+        /* ========================================= */
         @media screen and (max-height: 500px) and (orientation: landscape) {
-            .nav-list { bottom: 10px; padding: 4px 10px; }
-            .nav-icon { width: 20px; height: 20px; }
-            .nav-text { font-size: 10px; }
-            .lang-switch-container { top: 10px; left: 10px; }
-            #main-viewport { padding-top: 20px; }
+            /* כיווץ התפריט העליון והתחתון שלא יפריעו */
+            .nav-list { bottom: 5px !important; padding: 2px 10px !important; max-width: 400px !important; }
+            .nav-link.main-nav { padding: 4px 10px !important; gap: 2px !important; }
+            .nav-icon { width: 16px !important; height: 16px !important; }
+            .nav-text { font-size: 9px !important; }
+            .lang-switch-container { top: 5px !important; left: 15px !important; }
+            .lang-switch-container .nav-link { padding: 4px 10px !important; font-size: 11px !important; }
+            
+            #main-viewport { padding: 45px 15px 50px 15px !important; }
+            
+            .hero-section h1 { font-size: 28px !important; margin-bottom: 5px !important; }
+            .hero-line { margin: 5px auto 15px auto !important; }
+            
+            .project-card { padding: 15px !important; border-radius: 15px !important; margin-bottom: 20px !important; }
+            
+            /* 3 עמודות בדיוק כמו במחשב! */
+            .grid-3-cols { 
+                display: grid !important; 
+                grid-template-columns: repeat(3, 1fr) !important; 
+                gap: 15px !important; 
+                margin-top: 15px !important;
+                align-items: start !important;
+            }
+            
+            /* ביטול שינוי הסדר שעשינו למובייל אנכי */
+            .trailer-chosen, .trailer-future, .trailer-marketing { order: unset !important; }
+            
+            /* הקטנת טקסטים כדי שיכנסו ב-3 עמודות במסך קטן */
+            h2.project-title { font-size: 20px !important; margin-bottom: 10px !important; }
+            h3.project-title { font-size: 14px !important; height: auto !important; margin-bottom: 5px !important; }
+            .bio-text { font-size: 11px !important; line-height: 1.4 !important; margin-bottom: 10px !important; }
+            .workflow-title { font-size: 13px !important; margin: 10px 0 5px 0 !important; padding-bottom: 4px !important; }
+            .workflow-step { font-size: 10px !important; line-height: 1.3 !important; margin-bottom: 6px !important; }
+            
+            /* הקטנת כפתורים ואלמנטים ויזואליים */
+            .wip-container { margin: 10px auto !important; max-width: 100% !important; }
+            .wip-container span { font-size: 11px !important; padding: 0 5px !important; }
+            .poster-link { margin: 10px auto !important; }
+            .play-button { width: 35px !important; height: 35px !important; }
+            .play-button svg { width: 18px !important; height: 18px !important; }
+            .watch-button { font-size: 10px !important; padding: 6px 12px !important; margin-top: 8px !important; }
+            
+            /* התאמת תמונות לפני/אחרי לשורה אחת */
+            .ba-title { font-size: 13px !important; margin-bottom: 5px !important; }
+            .static-ba-wrapper { flex-direction: row !important; gap: 10px !important; margin-top: 10px !important; }
+            .static-ba-col { max-width: 45% !important; margin: 0 !important; gap: 5px !important; }
+            .static-ba-top-label { font-size: 12px !important; }
+            .static-ba-arrow { width: 25px !important; height: 25px !important; margin: 0 !important; transform: rotate(0deg) !important; border: 2px solid white !important; }
+            .static-ba-arrow svg { width: 12px !important; height: 12px !important; }
         }
 
+        /* עיצוב למחשב רגיל */
         @media (min-width: 951px) {
             .hero-section h1 { font-size: 65px; }
             .grid-3-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: start; }
@@ -226,7 +274,8 @@
             .static-ba-wrapper.landscape-view .col-after { max-width: 480px; }
         }
         
-        @media (max-width: 950px) {
+        /* גיבוי למובייל אנכי שלא נועלים אותו (כדי שהקוד הקודם לא ידרס) */
+        @media (max-width: 950px) and (orientation: portrait) {
             .poster-container, .wip-container { max-width: 340px; }
             .before-after-container { max-width: 380px; }
             .trailer-chosen { order: 1; }
@@ -236,7 +285,8 @@
             .static-ba-col { max-width: 450px; margin: 0 auto; }
         }
 
-        @media (max-width: 600px) {
+        /* הגדרות אקסטרה קטנות למובייל אנכי */
+        @media (max-width: 600px) and (orientation: portrait) {
             #main-viewport { padding: 80px 10px 140px 10px; } 
             .brand-logo-home { max-width: 95%; }
             .welcome-text { font-size: 16px; padding: 0 15px; }
@@ -410,7 +460,7 @@
                             <h3 class="project-title" data-he="🎬 הנבחר - טריילר קונספט סינמטי" data-en="🎬 THE CHOSEN ONE - Cinematic Trailer">🎬 הנבחר - טריילר קונספט סינמטי</h3>
                             <div class="bio-text">
                                 <p data-he="בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד." 
-                                   data-en="In a world where destiny chooses one brother, the other becomes a ruthless villain. A story of power, prophecy, and a crown that changes everything. Personal detail: the young chosen one is based on me as a child.">
+                                   data-en="In a world where destiny chooses sub brother, the other becomes a ruthless villain. A story of power, prophecy, and a crown that changes everything. Personal detail: the young chosen one is based on me as a child.">
                                     בעולם שבו הגורל בוחר באח אחד, השני הופך לנבל חסר רחמים. סיפור על כוח, נבואה וכתר שמשנה הכל. פרט אישי מיוחד: המודל הויזואלי של הנבחר הצעיר מבוסס עליי כילד.
                                 </p>
                             </div>
