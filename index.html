@@ -129,11 +129,10 @@
         .social-link { text-decoration: none; color: var(--beyond-purple); border: 2px solid var(--beyond-purple); padding: 10px 20px; border-radius: 50px; font-weight: bold; transition: 0.3s; font-size: 15px; text-align: center;}
         .social-link:hover { background: var(--beyond-purple); color: white; }
 
-        /* סליידר נגרר - עבור הפרויקטים הקיימים (סבון, פיוזטי, שעון) */
+        /* סליידר נגרר */
         .ba-title { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 15px; color: var(--beyond-purple); }
         .before-after-container { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 1px solid rgba(62, 56, 162, 0.1); margin: 0 auto; }
         
-        /* סליידר לנופים - רחב וענק! המידות המדויקות יגיעו ישירות מה-HTML */
         .before-after-container.landscape-slider { max-width: 900px; margin-bottom: 40px; margin-left: auto; margin-right: auto; }
         
         .ba-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -145,9 +144,7 @@
         .ba-button::before { border-right: 8px solid var(--beyond-purple); left: 8px; }
         .ba-button::after { border-left: 8px solid var(--beyond-purple); right: 8px; }
 
-        /* ========================================= */
-        /* מודל ההגדלה החדש (Lightbox) כולל תמיכה בסליידרים */
-        /* ========================================= */
+        /* מודל ההגדלה החדש */
         .lightbox {
             display: none; position: fixed; z-index: 100000; left: 0; top: 0; width: 100%; height: 100%;
             background-color: rgba(15, 23, 42, 0.95);
@@ -159,7 +156,6 @@
         .close-lightbox { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 50px; font-weight: 300; cursor: pointer; transition: 0.3s; z-index: 100001; }
         .close-lightbox:hover { color: #d0d0d0; transform: scale(1.1); }
 
-        /* כפתור ההגדלה העגול והסגול */
         .enlarge-btn {
             position: absolute; bottom: 15px; right: 15px; width: 45px; height: 45px;
             background-color: var(--beyond-purple); color: white; border: none; border-radius: 50%;
@@ -169,9 +165,7 @@
         .enlarge-btn:hover { transform: scale(1.15); background-color: #2c277a; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .enlarge-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-        /* ========================================= */
-        /* העיצוב הסטטי - הוחזר עבור סיפור חוזר */
-        /* ========================================= */
+        /* עיצוב סטטי */
         .static-ba-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 35px; margin-top: 30px; }
         .static-ba-col { display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; }
         
@@ -186,9 +180,7 @@
         .static-ba-arrow { width: 60px; height: 60px; background: var(--beyond-purple); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(62, 56, 162, 0.3); border: 4px solid white; flex-shrink: 0; transform: rotate(90deg); z-index: 5; margin: 10px 0;}
         .static-ba-arrow svg { width: 30px; height: 30px; fill: currentColor; }
 
-        /* ========================================= */
-        /* מסך בקשת סיבוב למובייל אנכי */
-        /* ========================================= */
+        /* מסך בקשת סיבוב */
         #rotate-overlay {
             display: none;
             position: fixed;
@@ -214,7 +206,6 @@
         #rotate-overlay h2 { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
         #rotate-overlay p { font-size: 16px; opacity: 0.8; }
 
-        /* חסימה כשמחזיקים לאורך */
         @media screen and (max-width: 950px) and (orientation: portrait) {
             #rotate-overlay { display: flex; }
             body { overflow: hidden; }
@@ -225,7 +216,14 @@
         /* ========================================= */
         @media screen and (max-height: 500px) and (orientation: landscape) {
             
-            /* תפריט ימני צדדי */
+            /* התאמת תמונת הפרופיל במיוחד למסך רוחבי - קטן יותר כדי לא לתפוס את כל המסך */
+            .profile-img {
+                width: 90px !important;
+                height: 90px !important;
+                margin: 0 auto 15px auto !important;
+                border-width: 2px !important;
+            }
+
             .nav-list { 
                 top: 50% !important; 
                 right: 15px !important; 
@@ -245,10 +243,8 @@
             .lang-switch-container { top: 10px !important; left: 15px !important; }
             .lang-switch-container .nav-link { padding: 4px 10px !important; font-size: 11px !important; }
             
-            /* הזזת התוכן המרכזי הצידה כדי שהתפריט הימני לא יסתיר אותו */
             #main-viewport { padding: 25px 90px 40px 20px !important; }
             
-            /* לוגו קטן ואלגנטי למובייל */
             .brand-logo-home { max-height: 110px !important; width: auto !important; margin: 0 auto 15px auto !important; }
             .welcome-text { margin-top: 10px !important; font-size: 14px !important; }
             
@@ -257,7 +253,6 @@
             
             .project-card { padding: 15px !important; border-radius: 15px !important; margin-bottom: 20px !important; }
             
-            /* 3 עמודות רק לפרויקטים הקטנים! */
             .grid-3-cols { 
                 display: grid !important; 
                 grid-template-columns: repeat(3, 1fr) !important; 
@@ -266,17 +261,14 @@
                 align-items: start !important;
             }
             
-            /* ביטול שינוי הסדר שעשינו למובייל אנכי */
             .trailer-chosen, .trailer-future, .trailer-marketing { order: unset !important; }
             
-            /* הקטנת טקסטים ואלמנטים ויזואליים בגלריה */
             h2.project-title { font-size: 20px !important; margin-bottom: 10px !important; }
             h3.project-title { font-size: 14px !important; height: auto !important; margin-bottom: 5px !important; }
             
             .bio-text { font-size: 12px !important; line-height: 1.4 !important; margin-bottom: 10px !important; }
             .bio-text p { font-size: 12px !important; }
             
-            /* ארגז כלים (Toolkit) פרופורציונלי לגודל הטקסט */
             .social-links { gap: 6px !important; margin-top: 15px !important; }
             .social-link { font-size: 10px !important; padding: 6px 12px !important; border-width: 1px !important; }
             .section-title { font-size: 16px !important; margin-top: 20px !important; }
@@ -291,10 +283,8 @@
             .play-button svg { width: 18px !important; height: 18px !important; }
             .watch-button { font-size: 10px !important; padding: 6px 12px !important; margin-top: 8px !important; }
             
-            /* התאמה לסליידרים רחבים בנייד רוחבי */
             .before-after-container.landscape-slider { max-width: 85% !important; margin: 0 auto 25px auto !important; }
             
-            /* התאמת התמונות הסטטיות (לפני/אחרי - סיפור חוזר) לשורה אחת אלגנטית למובייל הרוחבי */
             .ba-title { font-size: 13px !important; margin-bottom: 5px !important; }
             .static-ba-wrapper { flex-direction: row !important; gap: 10px !important; margin-top: 10px !important; }
             .static-ba-col { max-width: 45% !important; margin: 0 !important; gap: 5px !important; }
@@ -325,8 +315,6 @@
         @media (max-width: 950px) and (orientation: portrait) {
             .poster-container, .wip-container { max-width: 340px; }
             .before-after-container { max-width: 380px; }
-            
-            /* התאמה לסליידרים רחבים במובייל אנכי - נותן להם יחס מלא של רוחב המסך */
             .before-after-container.landscape-slider { width: 100%; max-width: 100%; }
             
             .trailer-chosen { order: 1; }
@@ -359,31 +347,27 @@
             .ba-title { font-size: 18px; margin-bottom: 10px; }
             .before-after-container { max-width: 100%; }
 
-            /* התאמת תמונת הפרופיל למובייל קטן */
+            /* התאמת תמונת הפרופיל למובייל אנכי קטן */
             .profile-img {
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
 </head>
 <body class="lang-he">
 
-    <!-- מסך בקשת סיבוב למובייל -->
     <div id="rotate-overlay">
         <svg viewBox="0 0 24 24"><path d="M16.48 2.52c3.27 1.55 5.61 4.72 5.97 8.48h1.5C23.44 4.84 18.29 0 12 0l-.66.03 3.81 3.81 1.33-1.32zm-6.25-.77c-.59-.59-1.54-.59-2.12 0L1.75 8.11c-.59.59-.59 1.54 0 2.12l12.02 12.02c.59.59 1.54.59 2.12 0l6.36-6.36c.59-.59.59-1.54 0-2.12L10.23 1.75zm4.6 19.46L2.81 9.17l6.36-6.36 12.02 12.02-6.36 6.36zm-7.3-9.27L5.4 9.81l6.36-6.36 2.12 2.12-6.36 6.36z"/></svg>
         <h2 data-he="סובב את הטלפון לחוויה יותר טובה" data-en="Rotate your phone for a better experience">סובב את הטלפון לחוויה יותר טובה</h2>
         <p data-he="האתר מותאם לתצוגה רוחבית (Landscape)" data-en="The site is optimized for Landscape mode">האתר מותאם לתצוגה רוחבית (Landscape)</p>
     </div>
 
-    <!-- המודל הקופץ (Lightbox) - כולל תיקון הפרופורציות שמעכשיו עובד דינאמית! -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
         <span class="close-lightbox" title="סגור">&times;</span>
         
-        <!-- לתמונות סטטיות -->
         <img id="lightbox-img" src="" alt="Enlarged Image" style="display: none;">
         
-        <!-- לסליידרים במסך מלא -->
         <div id="lightbox-slider" class="before-after-container" style="display: none; width: 90vw; max-width: 80vh; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); cursor: default; border: none; background: transparent;">
             <img id="lb-before" src="" class="ba-img ba-img-before">
             <img id="lb-after" src="" class="ba-img ba-img-after">
@@ -441,7 +425,6 @@
             
             <div class="projects-gallery" id="projects-gallery">
                 
-                <!-- I LOVE EAT COMMERCIAL -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🍔 קמפיין פרסומי מסחרי" data-en="🍔 Commercial Advertising Campaign">🍔 קמפיין פרסומי מסחרי</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
@@ -488,7 +471,6 @@
                     </div>
                 </div>
 
-                <!-- AI TRAILERS -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎬 טריילרים שנעשו באמצעות בינה מלאכותית" data-en="🎬 AI-Generated Trailers">🎬 טריילרים שנעשו באמצעות בינה מלאכותית</h2>
                     
@@ -564,7 +546,6 @@
                     </div>
                 </div>
 
-                <!-- VISUAL UPGRADING -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)" data-en="🎨 Visual Upgrading (Before & After)">🎨 עריכה ושדרוג ויזואלי (לפני ואחרי)</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
@@ -582,7 +563,6 @@
                                 <img src="soap-after.png" alt="After" class="ba-img ba-img-after">
                                 <div class="ba-line"></div>
                                 <div class="ba-button"></div>
-                                <!-- מעכשיו כפתורי המרובעים (כמו סבון) לא מקבלים ערך מיוחד ושומרים על יחס של 1/1 -->
                                 <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
                                 
                                 <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('soap-before.jpg', 'soap-after.png')">
@@ -623,7 +603,6 @@
                     </div>
                 </div>
                 
-                <!-- BREATHTAKING IMAGES (HUGE SLIDERS - EXACT ASPECT RATIOS) -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="✨ יצירת תמונות עוצרות נשימה" data-en="✨ Creating Breathtaking Images">✨ יצירת תמונות עוצרות נשימה</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
@@ -632,7 +611,6 @@
                         </p>
                     </div>
                     
-                    <!-- זוג 1: גשר וכדור פורח (סליידר במידות המדויקות: 3746x2853) -->
                     <div style="margin-bottom: 50px;">
                         <h3 class="ba-title" data-he="גשר - פנטזיה" data-en="Bridge - Fantasy">גשר - פנטזיה</h3>
                         <div class="before-after-container landscape-slider" style="aspect-ratio: 3746 / 2853;">
@@ -642,14 +620,12 @@
                             <div class="ba-button"></div>
                             <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
                             
-                            <!-- הוספנו את המידות לפונקציה כדי שההגדלה תהיה מושלמת -->
                             <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('bridge-before.jpg', 'bridge-after.jpg', '3746 / 2853')">
                                 <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                             </button>
                         </div>
                     </div>
 
-                    <!-- זוג 2: אגם ושונית אלמוגים (סליידר במידות המדויקות: 4258x2509) -->
                     <div>
                         <h3 class="ba-title" data-he="אגם אלמוגים" data-en="Coral Lake">אגם אלמוגים</h3>
                         <div class="before-after-container landscape-slider" style="aspect-ratio: 4258 / 2509;">
@@ -659,7 +635,6 @@
                             <div class="ba-button"></div>
                             <input type="range" min="0" max="100" value="50" class="ba-slider" dir="ltr" oninput="updateSlider(this)">
                             
-                            <!-- הוספנו את המידות לפונקציה כדי שההגדלה תהיה מושלמת -->
                             <button class="enlarge-btn" title="הגדל סליידר" onclick="openLightboxSlider('lake-before.jpg', 'lake-after.jpg', '4258 / 2509')">
                                 <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                             </button>
@@ -667,7 +642,6 @@
                     </div>
                 </div>
 
-                <!-- SIPUR HOZER (STATIC FULL WIDTH) -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📚 סיפור חוזר - מיתוג מחדש" data-en="📚 Sipur Hozer - Rebranding">📚 סיפור חוזר - מיתוג מחדש</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
@@ -709,7 +683,6 @@
         <div id="about" class="page-content">
             <header class="hero-section"><h1 data-he="קצת עליי" data-en="ABOUT ME">קצת עליי</h1><div class="hero-line"></div></header>
             
-            <!-- תמונת הפרופיל החדשה נכנסת לכאן -->
             <img src="ME.jpeg" alt="סתיו - עורך וידאו ואמן דיגיטלי" class="profile-img">
             
             <div class="bio-text">
@@ -781,7 +754,6 @@
             container.querySelector('.ba-button').style.left = `${val}%`;
         }
 
-        // --- מערכת מסך מלא (Lightbox) ---
         function openLightboxSingle(src) {
             document.getElementById('lightbox-slider').style.display = 'none';
             const img = document.getElementById('lightbox-img');
@@ -790,7 +762,6 @@
             document.getElementById('lightbox').classList.add('active');
         }
 
-        // פונקציית ההגדלה המעודכנת שמקבלת את מידות התמונה (aspectRatio)!
         function openLightboxSlider(srcBefore, srcAfter, aspectRatio = '1 / 1') {
             document.getElementById('lightbox-img').style.display = 'none';
             const lbSlider = document.getElementById('lightbox-slider');
@@ -802,13 +773,11 @@
             document.getElementById('lb-before').src = srcBefore;
             document.getElementById('lb-after').src = srcAfter;
             
-            // עדכון הפרופורציות לפי מה שמתקבל מהלחיצה (מרובע או רחב)
             lbSlider.style.aspectRatio = aspectRatio;
             
             if (aspectRatio === '1 / 1') {
                 lbSlider.style.maxWidth = '80vh';
             } else {
-                // במצב תמונה רחבה, אנחנו נותנים לזה מקסימום רוחב מחושב כדי שייראה ענק ולא ייחתך
                 lbSlider.style.maxWidth = `calc(85vh * (${aspectRatio}))`;
             }
             
