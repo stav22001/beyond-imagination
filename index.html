@@ -192,6 +192,55 @@
         .step-arrow { width: 40px; height: 40px; background: var(--beyond-purple); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(62, 56, 162, 0.3); border: 3px solid white; flex-shrink: 0; transform: rotate(90deg); margin: 5px 0; z-index: 5;}
         .step-arrow svg { width: 24px; height: 24px; fill: currentColor; }
 
+        /* ========================================= */
+        /* גלריית מתוך האינסגרם - Cadabra AI */
+        /* ========================================= */
+        .ig-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            margin-top: 30px; 
+        }
+        .ig-card { 
+            position: relative; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border: 1px solid #e0e0e0; 
+            transition: 0.3s; 
+            display: block; 
+            background: #fff; 
+        }
+        .ig-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 35px rgba(62, 56, 162, 0.2); 
+        }
+        .ig-image { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            object-fit: cover; 
+            display: block; 
+        }
+        .ig-overlay { 
+            position: absolute; 
+            inset: 0; 
+            background: rgba(62, 56, 162, 0.75); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            opacity: 0; 
+            transition: 0.3s; 
+            color: white; 
+        }
+        .ig-card:hover .ig-overlay { 
+            opacity: 1; 
+        }
+        .ig-overlay svg { 
+            width: 40px; 
+            height: 40px; 
+            fill: currentColor; 
+        }
+
         /* מסך בקשת סיבוב */
         #rotate-overlay {
             display: none;
@@ -228,7 +277,6 @@
         /* ========================================= */
         @media screen and (max-height: 500px) and (orientation: landscape) {
             
-            /* התאמת תמונת הפרופיל במיוחד למסך רוחבי - קטן יותר כדי לא לתפוס את כל המסך */
             .profile-img {
                 width: 90px !important;
                 height: 90px !important;
@@ -304,11 +352,13 @@
             .static-ba-arrow { width: 25px !important; height: 25px !important; margin: 0 !important; transform: rotate(0deg) !important; border: 2px solid white !important; }
             .static-ba-arrow svg { width: 12px !important; height: 12px !important; }
 
-            /* תוספת ל-3 שלבים רוחבי */
             .step-by-step-wrapper { flex-direction: row !important; gap: 10px !important; margin-top: 15px !important; }
             .step-label { font-size: 11px !important; }
             .step-arrow { width: 25px !important; height: 25px !important; transform: rotate(0deg) !important; margin: 0 !important; border-width: 2px !important; }
             .step-arrow svg { width: 14px !important; height: 14px !important; }
+
+            .ig-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 10px !important; }
+            .ig-overlay svg { width: 25px !important; height: 25px !important; }
         }
 
         /* עיצוב למחשב רגיל */
@@ -328,9 +378,11 @@
             .col-after { max-width: 500px; }
             .static-ba-arrow { transform: rotate(0deg); margin: 0; }
 
-            /* תוספת ל-3 שלבים מחשב */
             .step-by-step-wrapper { flex-direction: row; gap: 25px; }
             .step-arrow { transform: rotate(0deg); margin: 0; }
+
+            .ig-grid { grid-template-columns: repeat(4, 1fr); gap: 25px; }
+            .ig-overlay svg { width: 50px; height: 50px; }
         }
         
         /* גיבוי למובייל אנכי */
@@ -369,7 +421,6 @@
             .ba-title { font-size: 18px; margin-bottom: 10px; }
             .before-after-container { max-width: 100%; }
 
-            /* התאמת תמונת הפרופיל למובייל אנכי קטן */
             .profile-img {
                 width: 120px;
                 height: 120px;
@@ -699,13 +750,13 @@
                     </div>
                 </div>
 
-                <!-- PHOTOGRAPHY TO AI WORKFLOW -->
+                <!-- PHOTOGRAPHY TO AI WORKFLOW (Kadabra AI) -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📸 מצילום שטח ליצירת מופת" data-en="📸 From Field Capture to Masterpiece">📸 מצילום שטח ליצירת מופת</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
-                        <p data-he="הדגמה של תהליך העבודה שלי (Workflow): תפיסת הרגע בשטח עם מצלמת ה-Canon, עיבוד צבע דרמטי ב-Photoshop, וליטוש סופי של טקסטורות ופרטים קטנים (כמו פרוות הסוסים) באמצעות בינה מלאכותית (Kadabra)." 
-                           data-en="Demonstrating my full workflow: Capturing the moment in the field with a Canon camera, dramatic color grading in Photoshop, and final polishing of textures and fine details using AI (Kadabra).">
-                            הדגמה של תהליך העבודה שלי (Workflow): תפיסת הרגע בשטח עם מצלמת ה-Canon, עיבוד צבע דרמטי ב-Photoshop, וליטוש סופי של טקסטורות ופרטים קטנים (כמו פרוות הסוסים) באמצעות בינה מלאכותית (Kadabra).
+                        <p data-he="הדגמה של תהליך העבודה שלי (Workflow): תפיסת הרגע בשטח עם מצלמת ה-Canon, עיבוד צבע דרמטי ב-Photoshop, וליטוש סופי של טקסטורות ופרטים קטנים (כמו פרוות הסוסים) באמצעות בינה מלאכותית (Kadabra AI)." 
+                           data-en="Demonstrating my full workflow: Capturing the moment in the field with a Canon camera, dramatic color grading in Photoshop, and final polishing of textures and fine details using AI (Kadabra AI).">
+                            הדגמה של תהליך העבודה שלי (Workflow): תפיסת הרגע בשטח עם מצלמת ה-Canon, עיבוד צבע דרמטי ב-Photoshop, וליטוש סופי של טקסטורות ופרטים קטנים (כמו פרוות הסוסים) באמצעות בינה מלאכותית (Kadabra AI).
                         </p>
                     </div>
                     
@@ -749,6 +800,51 @@
                     </div>
                 </div>
 
+                <!-- מתוך האינסטגרם - Cadabra AI -->
+                <div class="project-card">
+                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📱 מתוך האינסטגרם - Cadabra AI" data-en="📱 From Instagram - Cadabra AI">📱 מתוך האינסטגרם - Cadabra AI</h2>
+                    <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
+                        <p data-he="הצצה ליצירות המיוחדות שעולות לעמוד האינסטגרם שלי, בהן אני משלב עבודת פוטושופ מתקדמת עם כלי הבינה המלאכותית Cadabra AI ליצירת אשליות ויזואליות שיוצאות מהמסגרת. לחצו על התמונות כדי לראות את הפוסט המלא!"
+                           data-en="A sneak peek at the special creations uploaded to my Instagram page, where I combine advanced Photoshop work with Cadabra AI tools to create mind-bending visual illusions. Click the images to view the full post!">
+                            הצצה ליצירות המיוחדות שעולות לעמוד האינסטגרם שלי, בהן אני משלב עבודת פוטושופ מתקדמת עם כלי הבינה המלאכותית Cadabra AI ליצירת אשליות ויזואליות שיוצאות מהמסגרת. לחצו על התמונות כדי לראות את הפוסט המלא!
+                        </p>
+                    </div>
+
+                    <div class="ig-grid">
+                        <!-- תמונה 1: רכבות מטלפונים (מקושר!) -->
+                        <a href="https://www.instagram.com/p/DHg-Wf3t1Da/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="ig-card" title="צפייה באינסטגרם">
+                            <img src="תרגיל 5- כלי החותמת.jpg" alt="רכבות יוצאות מהטלפון" class="ig-image">
+                            <div class="ig-overlay">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </div>
+                        </a>
+
+                        <!-- תמונה 2: רכבת מטאבלט (מקושר!) -->
+                        <a href="https://www.instagram.com/p/DE25sIKtgrm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="ig-card" title="צפייה באינסטגרם">
+                            <img src="תמונה שלישית.jpg" alt="רכבת מתוך הטאבלט" class="ig-image">
+                            <div class="ig-overlay">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </div>
+                        </a>
+
+                        <!-- תמונה 3: כדורים פורחים -->
+                        <a href="#" target="_blank" class="ig-card" onclick="event.preventDefault(); alert('כאן יכנס הקישור מהאינסטגרם בהמשך!');" title="צפייה באינסטגרם">
+                            <img src="3 פרויקט כדורים פורחים חדש.jpg" alt="כדורים פורחים" class="ig-image">
+                            <div class="ig-overlay">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </div>
+                        </a>
+
+                        <!-- תמונה 4: זיקוקים -->
+                        <a href="#" target="_blank" class="ig-card" onclick="event.preventDefault(); alert('כאן יכנס הקישור מהאינסטגרם בהמשך!');" title="צפייה באינסטגרם">
+                            <img src="1 פרויקט זיקוקים חדש.png" alt="זיקוקים" class="ig-image">
+                            <div class="ig-overlay">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -760,11 +856,11 @@
             <div class="bio-text">
                 <p data-he="אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי." 
                    data-en="I'm Stav, a Digital Artist, Video Editor, and creator of 'Beyond Imagination Studios'. My journey began with a love for photography and visual storytelling.">
-                   אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי.
+                    אני סתיו, אמן דיגיטלי, עורך וידאו והיוצר מאחורי המותג 'Beyond Imagination Studios'. המסע שלי התחיל מאהבה גדולה לצילום (תחום שאני עדיין חוקר כחובב) ולסיפור סיפורים ויזואלי.
                 </p><br>
                 <p data-he="כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לשילוב שבין עריכה קלאסית ב-Adobe Premiere Pro לבין טכנולוגיות Generative AI פורצות דרך. אני לא פשוט 'לוחץ על כפתור' - אני מקפיד לחשוב, להפעיל את הדמיון ולנתח את הקונספט לעומק עוד לפני שלב היצירה. כל פרויקט עובר זיקוק מדויק, החל מהחזון הוויזואלי ועד עבודת הפוסט-פרודקשן המורכבת ב-Premiere Pro, כולל מיקס סאונד מקצועי ו-Auto Ducking. המטרה שלי היא להוכיח שעם חזון נכון, יוצר בודד יכול לבנות עולמות שלמים וסוחפים." 
                    data-en="Today, with a professional certificate in Graphic Design, I focus on merging Adobe Premiere Pro editing with groundbreaking Generative AI. I don't just 'click buttons' - I think, use my imagination, and deeply analyze the concept before creating. Every project goes through precise refinement, from the visual vision to complex post-production in Premiere Pro, including professional sound mixing and Auto Ducking. My goal is to prove that with the right vision, a solo creator can build entire immersive worlds.">
-                   כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לשילוב שבין עריכה קלאסית ב-Adobe Premiere Pro לבין טכנולוגיות Generative AI פורצות דרך. אני לא פשוט 'לוחץ על כפתור' - אני מקפיד לחשוב, להפעיל את הדמיון ולנתח את הקונספט לעומק עוד לפני שלב היצירה. כל פרויקט עובר זיקוק מדויק, החל מהחזון הוויזואלי ועד עבודת הפוסט-פרודקשן המורכבת ב-Premiere Pro, כולל מיקס סאונד מקצועי ו-Auto Ducking. המטרה שלי היא להוכיח שעם חזון נכון, יוצר בודד יכול לבנות עולמות שלמים וסוחפים.
+                    כיום, עם תעודה מקצועית בעיצוב גרפי, אני מקדיש את עצמי לשילוב שבין עריכה קלאסית ב-Adobe Premiere Pro לבין טכנולוגיות Generative AI פורצות דרך. אני לא פשוט 'לוחץ על כפתור' - אני מקפיד לחשוב, להפעיל את הדמיון ולנתח את הקונספט לעומק עוד לפני שלב היצירה. כל פרויקט עובר זיקוק מדויק, החל מהחזון הוויזואלי ועד עבודת הפוסט-פרודקשן המורכבת ב-Premiere Pro, כולל מיקס סאונד מקצועי ו-Auto Ducking. המטרה שלי היא להוכיח שעם חזון נכון, יוצר בודד יכול לבנות עולמות שלמים וסוחפים.
                 </p>
             </div>
             <h3 class="section-title" data-he="ארגז הכלים שלי" data-en="My Toolkit" style="text-align: center;">ארגז הכלים שלי</h3>
