@@ -1026,6 +1026,34 @@
                 document.getElementById('lightbox').classList.remove('active');
             }
         }
+
+        // פונקציה לעדכון מונה צפיות אמיתי בזמן אמת
+        async function fetchRealViews() {
+            try {
+                let response = await fetch('https://api.counterapi.dev/v1/beyond-imagination/portfolio/hit');
+                let data = await response.json();
+                
+                if(data && data.value) {
+                    const viewsEl = document.getElementById('site-views');
+                    if(viewsEl) {
+                        viewsEl.setAttribute('data-he', `צפיות: ${data.value.toLocaleString()}`);
+                        viewsEl.setAttribute('data-en', `Views: ${data.value.toLocaleString()}`);
+                        viewsEl.innerText = currentLang === 'he' ? `צפיות: ${data.value.toLocaleString()}` : `Views: ${data.value.toLocaleString()}`;
+                    }
+                }
+            } catch (e) {
+                console.log("Counter loading error");
+                const viewsEl = document.getElementById('site-views');
+                if(viewsEl) {
+                    viewsEl.setAttribute('data-he', `צפיות: פעיל`);
+                    viewsEl.setAttribute('data-en', `Views: Active`);
+                    viewsEl.innerText = currentLang === 'he' ? `צפיות: פעיל` : `Views: Active`;
+                }
+            }
+        }
+
+        // הפעלת שליפת הצפיות ברגע שהעמוד נטען
+        window.addEventListener('DOMContentLoaded', fetchRealViews);
     </script>
 </body>
 </html>
