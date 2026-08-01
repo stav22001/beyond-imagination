@@ -43,6 +43,13 @@
             user-select: none; 
         }
 
+        /* מחלקה שתאפשר למנהל לסמן ולבחור טקסט חופשי */
+        body.admin-select * {
+            -webkit-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+
         body.lang-he * { font-family: var(--font-clean) !important; }
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
         body.lang-en .bio-text, body.lang-en .workflow-step, body.lang-en .welcome-text { font-family: var(--font-clean) !important; letter-spacing: normal; }
@@ -482,6 +489,13 @@
 </head>
 <body class="lang-he">
 
+    <!-- בדיקה אוטומטית בטעינה האם המשתמש כבר מוגדר כמנהל -->
+    <script>
+        if (localStorage.getItem('is_owner') === 'true') {
+            document.body.classList.add('admin-select');
+        }
+    </script>
+
     <div id="rotate-overlay">
         <svg viewBox="0 0 24 24"><path d="M16.48 2.52c3.27 1.55 5.61 4.72 5.97 8.48h1.5C23.44 4.84 18.29 0 12 0l-.66.03 3.81 3.81 1.33-1.32zm-6.25-.77c-.59-.59-1.54-.59-2.12 0L1.75 8.11c-.59.59-.59 1.54 0 2.12l12.02 12.02c.59.59 1.54.59 2.12 0l6.36-6.36c.59-.59.59-1.54 0-2.12L10.23 1.75zm4.6 19.46L2.81 9.17l6.36-6.36 12.02 12.02-6.36 6.36zm-7.3-9.27L5.4 9.81l6.36-6.36 2.12 2.12-6.36 6.36z"/></svg>
         <h2 data-he="סובב את הטלפון לחוויה יותר טובה" data-en="Rotate your phone for a better experience">סובב את הטלפון לחוויה יותר טובה</h2>
@@ -503,11 +517,12 @@
     </div>
 
     <div class="lang-switch-container">
-        <!-- מונה הצפיות החי (כולל זיהוי שם אמיתי בלחיצה) -->
-        <div class="nav-link" onclick="handleVisitorName()" title="לחץ לראות את שמך" style="cursor: pointer; padding: 6px 12px; gap: 6px;">
+        <!-- מונה הצפיות החי (כולל זיהוי סיסמה בלחיצה) -->
+        <div class="nav-link" onclick="handleVisitorName()" title="לחץ להזנת סיסמת מנהל" style="cursor: pointer; padding: 6px 12px; gap: 6px;">
             <span class="nav-icon" style="width: 18px; height: 18px;">
                 <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
             </span>
+
             <img id="hits-img" src="https://hits.sh/beyond-imagination-delta.vercel.app.svg?style=flat-square&color=3e38a2" alt="Live Views" style="height: 20px; border-radius: 3px; display: block;">
             <span id="visitor-name-display" style="display: none; font-size: 13px; font-weight: bold;"></span>
         </div>
@@ -950,12 +965,6 @@
     </main>
 
     <script>
-       // זיהוי אוטומטי שלך כמנהל דרך קישור סודי
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('admin') === 'stav') {
-            localStorage.setItem('is_owner', 'true');
-        }
-
         let currentLang = 'he';
         
         function toggleLanguage() {
@@ -964,6 +973,9 @@
             
             const isCinematic = document.body.classList.contains('cinematic-mode');
             document.body.className = isCinematic ? 'lang-' + currentLang + ' cinematic-mode' : 'lang-' + currentLang;
+            if (localStorage.getItem('is_owner') === 'true') {
+                document.body.classList.add('admin-select');
+            }
             
             document.getElementById('lang-text').innerText = currentLang === 'he' ? 'English' : 'עברית';
             document.querySelectorAll('[data-he]').forEach(el => el.innerHTML = el.getAttribute('data-' + currentLang));
@@ -1051,14 +1063,13 @@
             }
         }
 
-        // פונקציית אימות סיסמה קפדנית ושמירת מכשיר לצמיתות
+        // פונקציית אימות סיסמה מנהל ושמירת מכשיר לצמיתות (כולל פתיחת סימון טקסט)
         function handleVisitorName() {
             const imgEl = document.getElementById('hits-img');
             const textEl = document.getElementById('visitor-name-display');
             
             let isOwner = localStorage.getItem('is_owner') === 'true';
             
-            // זיהוי ושמירת סוג המכשיר לצמיתות
             let deviceType = localStorage.getItem('device_type');
             if (!deviceType) {
                 deviceType = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'מובייל (Mobile)' : 'מחשב (Desktop)';
@@ -1067,20 +1078,20 @@
 
             if (!isOwner) {
                 const password = prompt(currentLang === 'he' ? "הכנס סיסמת מנהל:" : "Enter admin password:");
-                if (password === null) return; // המשתמש ביטל
+                if (password === null) return;
                 
                 if (password === 'SE10101997') {
                     localStorage.setItem('is_owner', 'true');
                     localStorage.setItem('visitor_name', 'סתיו');
+                    document.body.classList.add('admin-select');
                     isOwner = true;
-                    alert(currentLang === 'he' ? "סיסמה נכונה! הוגדרת כמנהל והמכשיר נשמר בהצלחה." : "Password correct! Admin set and device saved.");
+                    alert(currentLang === 'he' ? "סיסמה נכונה! הוגדרת כמנהל, מעכשיו תוכל גם לסמן טקסט באתר." : "Password correct! Admin set and text selection enabled.");
                 } else {
                     alert(currentLang === 'he' ? "סיסמה שגויה!" : "Incorrect password!");
                     return;
                 }
             }
             
-            // החלפה בין הצגת מונה הצפיות לבין פרטי המשתמש והמכשיר
             if (imgEl.style.display !== 'none') {
                 imgEl.style.display = 'none';
                 textEl.style.display = 'inline';
@@ -1091,7 +1102,7 @@
             }
         }
 
-        // חסימת העתקה וקליק ימני לכל מי שאינו המנהל המאומת
+        // חסימת העתקה וקליק ימני לכל מי שאינו מנהל
         document.addEventListener('contextmenu', function(e) {
             if (localStorage.getItem('is_owner') !== 'true') {
                 e.preventDefault();
