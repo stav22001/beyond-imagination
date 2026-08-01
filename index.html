@@ -30,7 +30,18 @@
         :root { --bg-white: #ffffff; --beyond-purple: #3e38a2; --sidebar-bg: #f8f9ff; --font-clean: 'Heebo', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-white); color: var(--beyond-purple); min-height: 100vh; display: flex; flex-direction: column; transition: 0.3s; overflow-x: hidden; }
+        body { 
+            background-color: var(--bg-white); 
+            color: var(--beyond-purple); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            transition: 0.3s; 
+            overflow-x: hidden;
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+        }
 
         body.lang-he * { font-family: var(--font-clean) !important; }
         body.lang-en * { font-family: 'Righteous', sans-serif !important; letter-spacing: 1px; }
@@ -42,7 +53,6 @@
         .nav-icon { display: flex; align-items: center; justify-content: center; margin: 0 auto; width: 24px; height: 24px; }
         .nav-icon svg { width: 100%; height: 100%; fill: currentColor; }
 
-        /* עודכן: הוספת display: flex; gap: 10px; כדי שהכפתורים ישבו יחד */
         .lang-switch-container { position: fixed; top: 25px; left: 25px; z-index: 9999; display: flex; gap: 10px; }
         .lang-switch-container .nav-link { display: flex; flex-direction: row; align-items: center; gap: 8px; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 8px 16px; border-radius: 30px; color: var(--beyond-purple); font-weight: bold; cursor: pointer; border: 1px solid rgba(62, 56, 162, 0.1); transition: 0.3s; }
         .lang-switch-container .nav-link:hover { background: rgba(62, 56, 162, 0.05); }
@@ -493,12 +503,13 @@
     </div>
 
     <div class="lang-switch-container">
-        <!-- מונה הצפיות החי (תמונה) -->
-        <div class="nav-link" title="צפיות באתר" style="cursor: default; padding: 6px 12px; gap: 6px;">
+        <!-- מונה הצפיות החי (כולל זיהוי שם אמיתי בלחיצה) -->
+        <div class="nav-link" onclick="handleVisitorName()" title="לחץ לראות את שמך" style="cursor: pointer; padding: 6px 12px; gap: 6px;">
             <span class="nav-icon" style="width: 18px; height: 18px;">
                 <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
             </span>
-            <img src="https://hits.sh/beyond-imagination-delta.vercel.app.svg?style=flat-square&color=3e38a2" alt="Live Views" style="height: 20px; border-radius: 3px; display: block;">
+            <img id="hits-img" src="https://hits.sh/beyond-imagination-delta.vercel.app.svg?style=flat-square&color=3e38a2" alt="Live Views" style="height: 20px; border-radius: 3px; display: block;">
+            <span id="visitor-name-display" style="display: none; font-size: 13px; font-weight: bold;"></span>
         </div>
 
         <!-- כפתור שינוי שפה -->
@@ -648,7 +659,7 @@
                             <div class="workflow-step">🚀 <strong>Scene Gen:</strong> <span data-he="נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop." data-en="Generated in Nano Banana with visual corrections in Adobe Photoshop.">נוצר ב-Nano Banana עם תיקונים ויזואליים ב-Adobe Photoshop.</span></div>
                             <div class="workflow-step">🎞️ <strong>Animation:</strong> <span data-he="הנפשת וידאו באמצעות Kling AI." data-en="Video animation using Kling AI.">הנפשת וידאו באמצעות Kling AI.</span></div>
                             <div class="workflow-step">🎙️ <strong>Audio:</strong> <span data-he="קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay." data-en="Narration via ElevenLabs, music via Suno, and sound effects from Pixabay.">קריינות ב-ElevenLabs, מוזיקה ב-Suno ואפקטים קוליים (SFX) מ-Pixabay.</span></div>
-                            <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומدויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומדויקת.</span></div>
+                            <div class="workflow-step">💻 <strong>Post-Production:</strong> <span data-he="עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומدויקת." data-en="Editing, syncing, and Auto Ducking in Adobe Premiere Pro. Everything was integrated seamlessly with high quality.">עריכה, סנכרון ו-Auto Ducking ב-Adobe Premiere Pro. הכל שולב בצורה איכותית ומدויקת.</span></div>
                         </div>
 
                         <div class="grid-item trailer-future">
@@ -809,7 +820,7 @@
                     </div>
                 </div>
 
-                <!-- PHOTOGRAPHY TO AI WORKFLOW (Kadabra AI) - הוחזר למקומו -->
+                <!-- PHOTOGRAPHY TO AI WORKFLOW (Kadabra AI) -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📸 מצילום שטח ליצירת מופת" data-en="📸 From Field Capture to Masterpiece">📸 מצילום שטח ליצירת מופת</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
@@ -856,7 +867,7 @@
                     </div>
                 </div>
 
-                <!-- מתוך האינסטגרם - beyond imagination - הוחזר למקומו -->
+                <!-- מתוך האינסטגרם - beyond imagination -->
                 <div class="project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="📱 מתוך האינסטגרם - beyond imagination" data-en="📱 From Instagram - beyond imagination AI">📱 מתוך האינסטגרם - Beyond Imagination</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
@@ -939,13 +950,18 @@
     </main>
 
     <script>
+       // זיהוי אוטומטי שלך כמנהל דרך קישור סודי
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('admin') === 'stav') {
+            localStorage.setItem('is_owner', 'true');
+        }
+
         let currentLang = 'he';
         
         function toggleLanguage() {
             currentLang = currentLang === 'he' ? 'en' : 'he';
             document.documentElement.dir = currentLang === 'he' ? 'rtl' : 'ltr';
             
-            // עדכון ששומר גם את המצב הסינמטי במידה והוא דלוק בזמן החלפת שפה
             const isCinematic = document.body.classList.contains('cinematic-mode');
             document.body.className = isCinematic ? 'lang-' + currentLang + ' cinematic-mode' : 'lang-' + currentLang;
             
@@ -963,7 +979,6 @@
                 }
             });
             
-            // עדכון הכיתוב של הכפתור הסינמטי בהתאם לשפה
             const cinText = document.getElementById('cinematic-text');
             if(currentLang === 'he') {
                 cinText.innerText = isCinematic ? '🏨 מצב רגיל' : '🏨 מצב 3D';
@@ -972,7 +987,6 @@
             }
         }
 
-        // הפונקציה החדשה להפעלת המצב הסינמטי
         function toggleCinematicMode() {
             document.body.classList.toggle('cinematic-mode');
             const isCinematic = document.body.classList.contains('cinematic-mode');
@@ -1037,33 +1051,46 @@
             }
         }
 
-        // פונקציה לעדכון מונה צפיות אמיתי בזמן אמת
-        async function fetchRealViews() {
-            try {
-                let response = await fetch('https://api.counterapi.dev/v1/beyond-imagination/portfolio/hit');
-                let data = await response.json();
-                
-                if(data && data.value) {
-                    const viewsEl = document.getElementById('site-views');
-                    if(viewsEl) {
-                        viewsEl.setAttribute('data-he', `צפיות: ${data.value.toLocaleString()}`);
-                        viewsEl.setAttribute('data-en', `Views: ${data.value.toLocaleString()}`);
-                        viewsEl.innerText = currentLang === 'he' ? `צפיות: ${data.value.toLocaleString()}` : `Views: ${data.value.toLocaleString()}`;
-                    }
+        // פונקציית זיהוי שם אמיתי בלחיצה על כפתור הצפיות
+        function handleVisitorName() {
+            const imgEl = document.getElementById('hits-img');
+            const textEl = document.getElementById('visitor-name-display');
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            let currentName = urlParams.get('name') || localStorage.getItem('visitor_name');
+            
+            if (!currentName) {
+                currentName = prompt(currentLang === 'he' ? "הכנס את שמך כדי שנדע מי מבקר:" : "Enter your name:");
+                if (currentName) {
+                    localStorage.setItem('visitor_name', currentName);
+                } else {
+                    return;
                 }
-            } catch (e) {
-                console.log("Counter loading error");
-                const viewsEl = document.getElementById('site-views');
-                if(viewsEl) {
-                    viewsEl.setAttribute('data-he', `צפיות: פעיל`);
-                    viewsEl.setAttribute('data-en', `Views: Active`);
-                    viewsEl.innerText = currentLang === 'he' ? `צפיות: פעיל` : `Views: Active`;
-                }
+            }
+            
+            if (imgEl.style.display !== 'none') {
+                imgEl.style.display = 'none';
+                textEl.style.display = 'inline';
+                textEl.innerText = currentLang === 'he' ? `מבקר: ${currentName}` : `Visitor: ${currentName}`;
+            } else {
+                textEl.style.display = 'none';
+                imgEl.style.display = 'block';
             }
         }
 
-        // הפעלת שליפת הצפיות ברגע שהעמוד נטען
-        window.addEventListener('DOMContentLoaded', fetchRealViews);
+        // חסימת העתקה וקליק ימני לכולם חוץ ממך (המנהל)
+        document.addEventListener('contextmenu', function(e) {
+            if (localStorage.getItem('is_owner') !== 'true') {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('copy', function(e) {
+            if (localStorage.getItem('is_owner') !== 'true') {
+                e.preventDefault();
+                alert(currentLang === 'he' ? "התוכן באתר זה מוגן בזכויות יוצרים!" : "Content on this site is protected by copyright!");
+            }
+        });
     </script>
 </body>
 </html>
