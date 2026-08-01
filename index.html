@@ -524,13 +524,17 @@
             .ig-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 10px !important; }
             .ig-overlay svg { width: 25px !important; height: 25px !important; }
 
-            /* תיקון ספציפי לגודל בובת הפופ במצב רוחבי בטלפון כך שלא תהיה ענקית */
+            /* תיקון מושלם לבובת הפופ במצב רוחבי בטלפון - ללא רווחים וללא מראה קוביה */
             .funko-project-card .static-ba-col { max-width: 42% !important; }
-            .funko-project-card .col-after { max-width: 220px !important; }
+            .funko-project-card .col-after { max-width: 200px !important; }
+            .funko-project-card .col-after .static-ba-img-box {
+                aspect-ratio: 3 / 4 !important;
+            }
             .funko-project-card .col-after .static-ba-img-box img {
-                max-height: 45vh !important;
-                width: auto !important;
-                margin: 0 auto !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                max-height: none !important;
             }
         }
 
@@ -1101,7 +1105,7 @@
                     </div>
                 </div>
 
-                <!-- בובת Funko Pop אישית (עם המחלקה funko-project-card להתאמה מושלמת במסכים רוחביים) -->
+                <!-- בובת Funko Pop אישית -->
                 <div class="project-card funko-project-card">
                     <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🧸 בובת Funko Pop אישית" data-en="🧸 Custom Funko Pop Figure">🧸 בובת Funko Pop אישית</h2>
                     <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
