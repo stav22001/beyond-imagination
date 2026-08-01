@@ -1051,34 +1051,47 @@
             }
         }
 
-        // פונקציית זיהוי שם אמיתי בלחיצה על כפתור הצפיות
+        // פונקציית אימות סיסמה קפדנית ושמירת מכשיר לצמיתות
         function handleVisitorName() {
             const imgEl = document.getElementById('hits-img');
             const textEl = document.getElementById('visitor-name-display');
             
-            const urlParams = new URLSearchParams(window.location.search);
-            let currentName = urlParams.get('name') || localStorage.getItem('visitor_name');
+            let isOwner = localStorage.getItem('is_owner') === 'true';
             
-            if (!currentName) {
-                currentName = prompt(currentLang === 'he' ? "הכנס את שמך כדי שנדע מי מבקר:" : "Enter your name:");
-                if (currentName) {
-                    localStorage.setItem('visitor_name', currentName);
+            // זיהוי ושמירת סוג המכשיר לצמיתות
+            let deviceType = localStorage.getItem('device_type');
+            if (!deviceType) {
+                deviceType = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'מובייל (Mobile)' : 'מחשב (Desktop)';
+                localStorage.setItem('device_type', deviceType);
+            }
+
+            if (!isOwner) {
+                const password = prompt(currentLang === 'he' ? "הכנס סיסמת מנהל:" : "Enter admin password:");
+                if (password === null) return; // המשתמש ביטל
+                
+                if (password === 'SE10101997') {
+                    localStorage.setItem('is_owner', 'true');
+                    localStorage.setItem('visitor_name', 'סתיו');
+                    isOwner = true;
+                    alert(currentLang === 'he' ? "סיסמה נכונה! הוגדרת כמנהל והמכשיר נשמר בהצלחה." : "Password correct! Admin set and device saved.");
                 } else {
+                    alert(currentLang === 'he' ? "סיסמה שגויה!" : "Incorrect password!");
                     return;
                 }
             }
             
+            // החלפה בין הצגת מונה הצפיות לבין פרטי המשתמש והמכשיר
             if (imgEl.style.display !== 'none') {
                 imgEl.style.display = 'none';
                 textEl.style.display = 'inline';
-                textEl.innerText = currentLang === 'he' ? `מבקר: ${currentName}` : `Visitor: ${currentName}`;
+                textEl.innerText = currentLang === 'he' ? `סתיו (${deviceType})` : `Stav (${deviceType})`;
             } else {
                 textEl.style.display = 'none';
                 imgEl.style.display = 'block';
             }
         }
 
-        // חסימת העתקה וקליק ימני לכולם חוץ ממך (המנהל)
+        // חסימת העתקה וקליק ימני לכל מי שאינו המנהל המאומת
         document.addEventListener('contextmenu', function(e) {
             if (localStorage.getItem('is_owner') !== 'true') {
                 e.preventDefault();
