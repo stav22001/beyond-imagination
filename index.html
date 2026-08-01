@@ -600,14 +600,14 @@
     <div id="admin-dashboard-page">
         <div class="admin-container">
             <div class="admin-header">
-                <h1 class="admin-title" data-he="👥 ניהול מבקרים במערכת" data-en="👥 System Visitors Management">👥 ניהול מבקרים במערכת</h1>
+                <h1 class="admin-title" data-he="👥 ניהול מבקרים בענן (Google Sheets)" data-en="👥 Cloud Visitors Management">👥 ניהול מבקרים בענן (Google Sheets)</h1>
                 <div class="admin-actions">
                     <button class="admin-btn btn-logout" onclick="logoutAdmin()" data-he="🚪 יציאה מהמערכת" data-en="🚪 Logout">🚪 יציאה מהמערכת</button>
                     <button class="admin-btn btn-close-admin" onclick="closeAdminDashboard()" data-he="✖️ סגור עמוד" data-en="✖️ Close Page">✖️ סגור עמוד</button>
                 </div>
             </div>
             <div class="visitors-list-grid" id="visitors-list-container">
-                <!-- כאן יופיעו כל המבקרים בצורה גרפית כפתורים סגולים -->
+                <p style="text-align: center; font-size: 18px; opacity: 0.6;" data-he="טוען מבקרים מהענן..." data-en="Loading visitors from cloud...">טוען מבקרים מהענן...</p>
             </div>
         </div>
     </div>
@@ -1081,6 +1081,9 @@
     </main>
 
     <script>
+        // הקישור שלך מעודכן כאן באופן אוטומטי
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJ_TRORanigvS0wkkBtRmFhGBRdmoCUSTsjt9foeuB8fFtXJASOH6m8hNfShS_Foqt/exec';
+
         let currentLang = 'he';
         
         // זיהוי דגם מדויק של המכשיר
@@ -1103,14 +1106,12 @@
             return 'מחשב / מכשיר כללי';
         }
 
-        // שמירה אוטומטית של המבקר הנוכחי בטעינת האתר
-        async function registerCurrentVisitor() {
-            let visitors = JSON.parse(localStorage.getItem('visitors_list') || '[]');
-            
-            // בדיקה אם המבקר כבר רשום במכשיר זה כדי לא ליפול בכפילויות מיותרות בטעינה
+        // שליחת נתוני המבקר הנוכחי ל-Google Sheets בענן
+        async function registerCurrentVisitorToCloud() {
+            if (!GOOGLE_SCRIPT_URL) return;
+
             let isOwner = localStorage.getItem('is_owner') === 'true';
             let visitorName = isOwner ? 'סתיו (מנהל)' : 'מבקר מערכת';
-            
             let device = getDetailedDeviceModel();
             let country = 'ישראל (Israel)';
 
@@ -1121,10 +1122,9 @@
                     country = `${data.country_name} (${data.country_code || ''})`;
                 }
             } catch (e) {
-                // נפילה חלופית אם אין חיבור חיצוני ל-API
+                // נפילה חלופית במקרה של חסימה
             }
 
-            // רישום או עדכון ברשימה
             const visitorData = {
                 name: visitorName,
                 device: device,
@@ -1132,14 +1132,21 @@
                 time: new Date().toLocaleString('he-IL')
             };
 
-            // הוספה תמיד אם זה מנהל או אורח חדש
-            visitors.push(visitorData);
-            localStorage.setItem('visitors_list', JSON.stringify(visitors));
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(visitorData)
+                });
+            } catch (err) {
+                console.error('Error saving visitor', err);
+            }
         }
 
         // הרצה בטעינת עמוד
         window.addEventListener('DOMContentLoaded', () => {
-            registerCurrentVisitor();
+            registerCurrentVisitorToCloud();
             updateVisitorDisplayUI();
         });
 
@@ -1255,7 +1262,7 @@
             }
         }
 
-        // לחיצה על כפתור המבקרים/מנהל: אם מנהל -> פותח את עמוד רשימת המבקרים. אם לא -> מבקש סיסמה.
+        // לחיצה על כפתור המבקרים/מנהל: אם מנהל -> פותח את עמוד רשימת המבקרים מהענן. אם לא -> מבקש סיסמה.
         function handleVisitorAction() {
             let isOwner = localStorage.getItem('is_owner') === 'true';
 
@@ -1268,42 +1275,52 @@
                     localStorage.setItem('visitor_name', 'סתיו');
                     document.body.classList.add('admin-select');
                     updateVisitorDisplayUI();
-                    alert(currentLang === 'he' ? "סיסמה נכונה! מעבר לעמוד ניהול המבקרים." : "Correct password! Opening admin dashboard.");
+                    alert(currentLang === 'he' ? "סיסמה נכונה! טוען את רשימת המבקרים מהענן." : "Correct password! Loading cloud visitors.");
                     openAdminDashboard();
                 } else {
                     alert(currentLang === 'he' ? "סיסמה שגויה!" : "Incorrect password!");
                 }
             } else {
-                // כבר מנהל -> פותח ישירות את עמוד הניהול החדש
                 openAdminDashboard();
             }
         }
 
-        // פתיחת עמוד ניהול המבקרים
-        function openAdminDashboard() {
+        // פתיחת עמוד ניהול המבקרים ומשיכת נתונים מהענן
+        async function openAdminDashboard() {
             const container = document.getElementById('visitors-list-container');
-            container.innerHTML = '';
+            container.innerHTML = `<p style="text-align: center; font-size: 18px; opacity: 0.6;">טוען מבקרים מהענן...</p>`;
+            document.getElementById('admin-dashboard-page').classList.add('active');
 
-            let visitors = JSON.parse(localStorage.getItem('visitors_list') || '[]');
-
-            if (visitors.length === 0) {
-                container.innerHTML = `<p style="text-align: center; font-size: 18px; opacity: 0.6;">אין מבקרים רשומים במערכת כרגע.</p>`;
-            } else {
-                visitors.forEach((v, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'visitor-badge-card';
-                    card.innerHTML = `
-                        <div class="visitor-info-main">
-                            <span class="visitor-name-tag">👤 ${v.name}</span>
-                            <span class="visitor-meta-tag">📱 מכשיר: ${v.device} | 🌍 מדינה: ${v.country}</span>
-                        </div>
-                        <div class="visitor-time-tag">⏰ ${v.time}</div>
-                    `;
-                    container.appendChild(card);
-                });
+            if (!GOOGLE_SCRIPT_URL) {
+                container.innerHTML = `<p style="text-align: center; font-size: 18px; color: #ff4757;">שגיאה: קישור הענן חסר.</p>`;
+                return;
             }
 
-            document.getElementById('admin-dashboard-page').classList.add('active');
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const visitors = await response.json();
+
+                container.innerHTML = '';
+
+                if (!visitors || visitors.length === 0) {
+                    container.innerHTML = `<p style="text-align: center; font-size: 18px; opacity: 0.6;">אין מבקרים רשומים במערכת עדיין.</p>`;
+                } else {
+                    visitors.reverse().forEach((v) => {
+                        const card = document.createElement('div');
+                        card.className = 'visitor-badge-card';
+                        card.innerHTML = `
+                            <div class="visitor-info-main">
+                                <span class="visitor-name-tag">👤 ${v.name}</span>
+                                <span class="visitor-meta-tag">📱 מכשיר: ${v.device} | 🌍 מדינה: ${v.country}</span>
+                            </div>
+                            <div class="visitor-time-tag">⏰ ${v.time}</div>
+                        `;
+                        container.appendChild(card);
+                    });
+                }
+            } catch (error) {
+                container.innerHTML = `<p style="text-align: center; font-size: 18px; color: #ff4757;">שגיאה בטעינת הנתונים מהענן. בדוק את חיבור האינטרנט.</p>`;
+            }
         }
 
         // סגירת עמוד ניהול
