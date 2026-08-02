@@ -524,13 +524,13 @@
             .ig-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 10px !important; }
             .ig-overlay svg { width: 25px !important; height: 25px !important; }
 
-            /* תיקון מושלם לבובת הפופ במצב רוחבי בטלפון - ללא רווחים וללא מראה קוביה */
-            .funko-project-card .static-ba-col { max-width: 42% !important; }
-            .funko-project-card .col-after { max-width: 200px !important; }
-            .funko-project-card .col-after .static-ba-img-box {
+            /* תיקון מושלם לפרויקטים עומדים (כמו בובת הפופ וריימן) במצב רוחבי בטלפון */
+            .funko-project-card .static-ba-col, .rayman-project-card .static-ba-col { max-width: 42% !important; }
+            .funko-project-card .col-after, .rayman-project-card .col-after { max-width: 200px !important; }
+            .funko-project-card .col-after .static-ba-img-box, .rayman-project-card .col-after .static-ba-img-box {
                 aspect-ratio: 3 / 4 !important;
             }
-            .funko-project-card .col-after .static-ba-img-box img {
+            .funko-project-card .col-after .static-ba-img-box img, .rayman-project-card .col-after .static-ba-img-box img {
                 width: 100% !important;
                 height: 100% !important;
                 object-fit: cover !important;
@@ -1135,6 +1135,43 @@
                             <div class="static-ba-img-box item-after" onclick="openLightboxSingle('funko-pop.png')">
                                 <img src="funko-pop.png" alt="Funko Pop Figure">
                                 <button class="enlarge-btn" title="הגדל תמונה" onclick="event.stopPropagation(); openLightboxSingle('funko-pop.png')">
+                                    <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- מציור באילוסטרייטור אל קסם אומנותי באמצעות AI (פרויקט ריימן החדש) -->
+                <div class="project-card rayman-project-card">
+                    <h2 class="project-title" style="text-align: center; font-size: 34px; font-weight: 900; color: var(--beyond-purple); margin-bottom: 20px;" data-he="🎨 מציור באילוסטרייטור אל קסם אומנותי באמצעות AI" data-en="🎨 From Illustrator to AI Artistic Magic">🎨 מציור באילוסטרייטור אל קסם אומנותי באמצעות AI</h2>
+                    <div class="bio-text" style="text-align: center; max-width: 800px; margin: 0 auto 15px auto;">
+                        <p data-he="שדרוג ציור וקטורי של ריימן (Rayman) שנוצר באילוסטרייטור, והפיכתו ליצירת תלת-מימד מרהיבה ומוארת בעזרת בינה מלאכותית. הדגמה לכוח של AI להפיח חיים וקסם אומנותי בתוך סקיצות ויצירות דיגיטליות." 
+                           data-en="Upgrading a vector drawing of Rayman created in Illustrator, transforming it into a spectacular, illuminated 3D masterpiece using AI. A demonstration of AI's power to bring artistic magic and life into sketches.">
+                            שדרוג ציור וקטורי של ריימן (Rayman) שנוצר באילוסטרייטור, והפיכתו ליצירת תלת-מימד מרהיבה ומוארת בעזרת בינה מלאכותית. הדגמה לכוח של AI להפיח חיים וקסם אומנותי בתוך סקיצות ויצירות דיגיטליות.
+                        </p>
+                    </div>
+                    
+                    <div class="static-ba-wrapper" dir="ltr">
+                        <div class="static-ba-col">
+                            <div class="static-ba-top-label" data-he="לפני (אילוסטרייטור)" data-en="Before (Illustrator)">לפני (אילוסטרייטור)</div>
+                            <div class="static-ba-img-box" onclick="openLightboxSingle('לפני.jpg')">
+                                <img src="לפני.jpg" alt="Rayman Before">
+                                <button class="enlarge-btn" title="הגדל תמונה" onclick="event.stopPropagation(); openLightboxSingle('לפני.jpg')">
+                                    <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="static-ba-arrow">
+                            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+                        </div>
+                        
+                        <div class="static-ba-col col-after">
+                            <div class="static-ba-top-label" data-he="אחרי (AI Magic)" data-en="After (AI Magic)">אחרי (AI Magic)</div>
+                            <div class="static-ba-img-box item-after" onclick="openLightboxSingle('אחרי.jpg')">
+                                <img src="אחרי.jpg" alt="Rayman After">
+                                <button class="enlarge-btn" title="הגדל תמונה" onclick="event.stopPropagation(); openLightboxSingle('אחרי.jpg')">
                                     <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                                 </button>
                             </div>
